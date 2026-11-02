@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Benjamin P. Bucad | Portfolio</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{mac:{bg:'#07090E',surface:'#121620',elevated:'#191F2C',graphite:'#283044',silver:'#F2F2F7',titanium:'#D1D1D6',muted:'#AEAEB2',blue:'#0A84FF',green:'#30D158',amber:'#FFB340',ggred:'#FF5A36',}},fontFamily:{sans:['-apple-system','BlinkMacSystemFont','"SF Pro Display"','"SF Pro Text"','"Helvetica Neue"','Helvetica','Arial','sans-serif'],mono:['"SF Mono"','ui-monospace','SFMono-Regular','Menlo','Monaco','Consolas','monospace'],},borderRadius:{'mac':'18px','mac-lg':'24px','ios':'20px',},transitionTimingFunction:{'spring':'cubic-bezier(0.22, 1, 0.36, 1)','dock':'cubic-bezier(0.175, 0.885, 0.32, 1.22)',}}}}
+</script>
+<style>
+body{background-color:#07090E;color:#F5F5F7;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;}
+body.locked-scroll{overflow:hidden!important;}
+h1,h2,h3,h4,p{text-shadow:0 2px 12px rgba(0,0,0,0.45);}
+.hero-subtitle-bright{color:#FFF6E9;text-shadow:0 0 24px rgba(255,179,64,0.45),0 2px 10px rgba(0,0,0,0.65);}
+@keyframes course-idle-glow{0%,100%{text-shadow:0 0 24px rgba(255,179,64,0.45),0 2px 10px rgba(0,0,0,0.65);filter:brightness(1);}50%{text-shadow:0 0 45px rgba(255,179,64,0.95),0 2px 15px rgba(0,0,0,0.85);filter:brightness(1.15);}}
+.idle-course-anim{animation:course-idle-glow 3.5s ease-in-out infinite;transform-origin:left center;}
+.mac-dock-popup-init{opacity:0;transform:translateY(44vh) scaleX(0.32) scaleY(0.12);transform-origin:bottom center;filter:blur(14px);pointer-events:none;}
+.mac-dock-popup-active{opacity:1;transform:translateY(0) scaleX(1) scaleY(1);transform-origin:bottom center;filter:blur(0px);pointer-events:auto;transition:transform 0.78s cubic-bezier(0.18, 1.12, 0.32, 1),opacity 0.38s ease-out,filter 0.48s ease-out;}
+.billboard-stage{perspective:1400px;perspective-origin:56% 46%;}
+.billboard-rig{--tilt-y:-14deg;--tilt-x:2deg;--spot-x:68%;--spot-y:28%;position:relative;transform-style:preserve-3d;}
+@media (min-width: 1024px){.billboard-rig{transform:rotateY(var(--tilt-y)) rotateX(var(--tilt-x)) scale(0.97);}.portfolio-main-window{transform:translateZ(0px);transform-style:preserve-3d;box-shadow:-36px 34px 80px -16px rgba(0,0,0,0.88),0 0 0 1px rgba(255,255,255,0.20),inset 0 1.5px 1.5px 0 rgba(255,255,255,0.78);}.portrait-overlap-window{transform:translateZ(75px);transform-style:preserve-3d;box-shadow:-38px 36px 78px -8px rgba(0,0,0,0.95),22px 18px 60px -12px rgba(255,255,255,0.08),0 0 0 1px rgba(255,255,255,0.32),inset -2.5px 0 2px 0 rgba(255,255,255,0.4),inset 0 1.5px 1.5px 0 rgba(255,255,255,0.9);}.portrait-overlap-window::after{content:'';position:absolute;top:2px;bottom:2px;right:-5px;width:5px;border-radius:0 24px 24px 0;background:linear-gradient(180deg,rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.3) 48%,rgba(10,132,255,0.3) 82%,rgba(255,255,255,0.7) 100%);transform:rotateY(90deg);transform-origin:left center;box-shadow:0 0 16px rgba(255,255,255,0.2);pointer-events:none;}}
+.billboard-surface-spotlight{position:absolute;inset:0;border-radius:inherit;background:radial-gradient(580px circle at var(--spot-x) var(--spot-y),rgba(255,255,255,0.12) 0%,rgba(255,255,255,0.03) 32%,transparent 68%),linear-gradient(105deg,rgba(0,0,0,0.32) 0%,rgba(255,255,255,0.02) 45%,rgba(255,255,255,0.08) 85%,rgba(255,255,255,0.12) 100%);pointer-events:none;z-index:3;}
+.billboard-floor-shadow{position:absolute;bottom:-38px;left:6%;right:2%;height:68px;background:radial-gradient(ellipse at 65% 50%,rgba(0,0,0,0.88) 0%,rgba(255,255,255,0.06) 38%,transparent 75%);filter:blur(22px);transform:rotateZ(-1.5deg);pointer-events:none;z-index:0;}
+#background-layer{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:#0B0B16;}
+#background-layer img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.01);}
+#background-layer::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 42%,rgba(8,11,18,0.08) 0%,rgba(4,6,10,0.48) 100%);pointer-events:none;}
+.mac-menubar{background:rgba(5,5,7,0.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.11);box-shadow:0 2px 12px rgba(0,0,0,0.65);}
+.liquid-glass{--mouse-x:25%;--mouse-y:15%;position:relative;isolation:isolate;background:radial-gradient(480px circle at var(--mouse-x) var(--mouse-y),rgba(255,255,255,0.10) 0%,rgba(255,255,255,0.03) 40%,transparent 75%),linear-gradient(135deg,rgba(255,255,255,0.12) 0%,rgba(255,255,255,0.04) 38%,rgba(14,18,28,0.34) 72%,rgba(255,255,255,0.05) 100%);backdrop-filter:url(#liquid-refraction) blur(22px) saturate(230%) brightness(1.08);-webkit-backdrop-filter:blur(22px) saturate(230%) brightness(1.08);border:1px solid rgba(255,255,255,0.16);box-shadow:0 28px 60px -12px rgba(0,0,0,0.7),0 6px 20px rgba(0,0,0,0.4),inset 0 1.5px 1px 0 rgba(255,255,255,0.7),inset 0 -1px 1px 0 rgba(255,255,255,0.15),inset 0 16px 32px -8px rgba(255,255,255,0.11),inset 0 -14px 28px -10px rgba(0,0,0,0.42);transition:border-color 0.35s ease,box-shadow 0.4s cubic-bezier(0.22,1,0.36,1),background 0.35s ease;}
+.liquid-glass::before,.liquid-glass-elevated::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1.35px;background:linear-gradient(135deg,rgba(255,255,255,0.88) 0%,rgba(255,255,255,0.25) 25%,rgba(255,255,255,0.04) 50%,rgba(255,255,255,0.20) 78%,rgba(255,255,255,0.65) 100%);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;z-index:2;}
+.liquid-glass::after{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(180deg,rgba(255,255,255,0.18) 0%,rgba(255,255,255,0.03) 26%,transparent 50%);pointer-events:none;z-index:1;}
+.liquid-glass:hover{border-color:rgba(255,255,255,0.32);box-shadow:0 34px 72px -12px rgba(0,0,0,0.8),0 10px 28px rgba(0,0,0,0.48),inset 0 1.5px 1.5px 0 rgba(255,255,255,0.88),inset 0 -1.5px 1px 0 rgba(255,255,255,0.25),inset 0 22px 40px -6px rgba(255,255,255,0.16),inset 0 -14px 28px -10px rgba(0,0,0,0.45);}
+.liquid-glass-elevated{--mouse-x:30%;--mouse-y:10%;position:relative;isolation:isolate;background:radial-gradient(520px circle at var(--mouse-x) var(--mouse-y),rgba(255,255,255,0.12) 0%,rgba(255,255,255,0.03) 45%,transparent 75%),linear-gradient(155deg,rgba(255,255,255,0.15) 0%,rgba(20,25,38,0.38) 48%,rgba(10,13,20,0.52) 100%);backdrop-filter:url(#liquid-refraction) blur(28px) saturate(240%) brightness(1.08);-webkit-backdrop-filter:blur(28px) saturate(240%) brightness(1.08);border:1px solid rgba(255,255,255,0.22);box-shadow:0 36px 80px -16px rgba(0,0,0,0.84),0 8px 24px rgba(0,0,0,0.48),inset 0 1.5px 1px 0 rgba(255,255,255,0.78),inset 0 -1px 1px 0 rgba(255,255,255,0.26),inset 0 18px 36px -10px rgba(255,255,255,0.14);}
+
+.mac-titlebar{background:linear-gradient(180deg,rgba(255,255,255,0.16) 0%,rgba(15,19,28,0.38) 100%);backdrop-filter:blur(24px) saturate(220%);-webkit-backdrop-filter:blur(24px) saturate(220%);border-bottom:1px solid rgba(255,255,255,0.18);box-shadow:inset 0 1px 0 0 rgba(255,255,255,0.45);}
+.mac-dock{position:relative;background:linear-gradient(180deg,rgba(255,255,255,0.20) 0%,rgba(22,27,40,0.36) 55%,rgba(10,13,20,0.48) 100%);backdrop-filter:url(#liquid-refraction) blur(28px) saturate(240%) brightness(1.08);-webkit-backdrop-filter:blur(28px) saturate(240%) brightness(1.08);border:1px solid rgba(255,255,255,0.28);box-shadow:0 28px 64px rgba(0,0,0,0.78),0 4px 16px rgba(0,0,0,0.48),inset 0 1.5px 1px 0 rgba(255,255,255,0.75),inset 0 -1px 1px 0 rgba(255,255,255,0.24);}
+.dock-squircle{position:relative;background:radial-gradient(circle at 30% 20%,rgba(255,255,255,0.32) 0%,transparent 55%),linear-gradient(145deg,rgba(255,255,255,0.18) 0%,rgba(20,26,38,0.42) 100%);backdrop-filter:blur(16px) saturate(200%);-webkit-backdrop-filter:blur(16px) saturate(200%);border:1px solid rgba(255,255,255,0.32);box-shadow:0 10px 22px -4px rgba(0,0,0,0.55),inset 0 1.5px 1px 0 rgba(255,255,255,0.72),inset 0 -1px 1px 0 rgba(255,255,255,0.20);transition:all 0.25s cubic-bezier(0.22, 1, 0.36, 1);}
+.dock-item{position:relative;transition:transform 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.22),margin 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.22);transform-origin:bottom center;}
+@media (min-width: 768px){.dock-item:hover{transform:translateY(-9px) scale(1.2);margin-left:5px;margin-right:5px;z-index:20;}.dock-item:hover .dock-squircle{border-color:rgba(255,255,255,0.65);background:radial-gradient(circle at 30% 20%,rgba(255,255,255,0.45) 0%,transparent 60%),linear-gradient(145deg,rgba(255,255,255,0.28) 0%,rgba(30,38,54,0.48) 100%);box-shadow:0 14px 28px -4px rgba(0,0,0,0.7),inset 0 1.5px 1.5px 0 rgba(255,255,255,0.9);}.dock-item:hover + .dock-item,.dock-item:has(+ .dock-item:hover){transform:translateY(-4px) scale(1.08);}}
+.dock-tooltip{position:absolute;top:-42px;left:50%;transform:translateX(-50%) translateY(6px) scale(0.94);opacity:0;pointer-events:none;transition:all 0.2s cubic-bezier(0.22, 1, 0.36, 1);white-space:nowrap;}
+.dock-item:hover .dock-tooltip{opacity:1;transform:translateX(-50%) translateY(0) scale(1);}
+.mac-app-icon{position:relative;border-radius:14px;box-shadow:0 10px 22px -4px rgba(0,0,0,0.45);transition:all 0.25s cubic-bezier(0.22, 1, 0.36, 1);}
+.mac-app-icon::after{content:'';position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 1.5px 1px 0 rgba(255,255,255,0.4),inset 0 -1px 1px 0 rgba(255,255,255,0.1);pointer-events:none;transition:all 0.25s cubic-bezier(0.22, 1, 0.36, 1);}
+@media (min-width: 768px){.dock-item:hover .mac-app-icon{box-shadow:0 14px 28px -4px rgba(0,0,0,0.6);}.dock-item:hover .mac-app-icon::after{box-shadow:inset 0 1.5px 1.5px 0 rgba(255,255,255,0.7),inset 0 -1px 1px 0 rgba(255,255,255,0.2);}}
+.glass-tag{background:linear-gradient(135deg,rgba(255,255,255,0.20) 0%,rgba(255,255,255,0.06) 100%);backdrop-filter:blur(12px) saturate(190%);-webkit-backdrop-filter:blur(12px) saturate(190%);border:1px solid rgba(255,255,255,0.28);box-shadow:0 4px 12px rgba(0,0,0,0.22),inset 0 1px 0.5px 0 rgba(255,255,255,0.65);transition:all 0.2s ease;}
+.glass-tag:hover{background:linear-gradient(135deg,rgba(255,255,255,0.30) 0%,rgba(255,255,255,0.12) 100%);border-color:rgba(255,255,255,0.52);transform:translateY(-1px);}
+.reveal{opacity:0;transform:translateY(22px) scale(0.99);transition:opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);}
+.reveal.visible{opacity:1;transform:translateY(0) scale(1);}
+.cursor::after{content:'|';animation:blink 0.9s step-start infinite;color:#FFB340;margin-left:2px;font-weight:300;}
+.terminal-cursor::after{content:'▋';animation:blink 0.9s step-start infinite;color:#F2F2F7;margin-left:4px;font-size:0.85em;}
+@keyframes blink{50%{opacity:0;}}
+.mac-window-transition{transition:all 0.42s cubic-bezier(0.22, 1, 0.36, 1);}
+.traffic-group:hover .traffic-icon{opacity:1;}
+.traffic-icon{opacity:0;transition:opacity 0.15s ease;}
+@media (prefers-reduced-motion: reduce){*,::before,::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important;}}
+</style>
+</head>
+<body class="relative min-h-screen selection:bg-white/30 selection:text-white pb-28 locked-scroll">
+<div id="global-loader" class="fixed inset-0 z-[9999] bg-white transition-opacity duration-700 ease-in-out"></div>
+<div id="background-layer">
+<svg class="absolute w-0 h-0 pointer-events-none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<filter id="liquid-refraction" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+<feTurbulence type="fractalNoise" baseFrequency="0.012 0.018" numOctaves="2" seed="7" result="noise" />
+<feGaussianBlur in="noise" stdDeviation="2.5" result="smoothNoise" />
+<feDisplacementMap in="SourceGraphic" in2="smoothNoise" scale="6" xChannelSelector="R" yChannelSelector="G" />
+</filter>
+</defs>
+</svg>
+<img id="bg-wallpaper-img" src="27-Golden-Gate-Dark.webp" alt="macOS Dark Wave Background" class="absolute inset-0 w-full h-full object-cover transform scale-[1.01]">
+</div>
+<header class="fixed top-0 inset-x-0 h-8 z-[45] mac-menubar px-4 sm:px-6 flex items-center justify-between text-[12px] font-medium select-none">
+<div class="flex items-center gap-5">
+<a href="#home" class="flex items-center gap-1.5 font-semibold text-white tracking-tight hover:text-mac-silver transition-colors focus:outline-none focus:ring-1 focus:ring-white rounded">
+<i data-lucide="command" class="w-3.5 h-3.5 text-mac-silver"></i>
+<span>Benjamin P. Bucad</span>
+</a>
+<div class="hidden sm:flex items-center gap-4 text-mac-silver text-[11.5px]">
+<a href="#home" class="hover:text-white transition-colors">Homepage</a>
+<a href="#about" class="hover:text-white transition-colors">About Myself</a>
+<a href="#family" class="hover:text-white transition-colors">Foundation</a>
+<a href="#education" class="hover:text-white transition-colors">Education</a>
+<a href="#achievements" class="hover:text-white transition-colors">Achievements</a>
+</div>
+</div>
+<div class="flex items-center gap-3.5 text-mac-silver text-[11.5px]">
+<span class="hidden lg:inline-flex items-center gap-1 text-white mr-2">
+<i data-lucide="map-pin" class="w-3 h-3 text-mac-silver"></i>
+Baguio, PH
+</span>
+<i data-lucide="wifi" class="w-3.5 h-3.5 hidden sm:block text-mac-silver"></i>
+<span id="mac-menubar-clock" class="font-mono text-[11px] text-white"></span>
+</div>
+</header>
+<nav aria-label="macOS Dock Navigation" class="fixed bottom-4 sm:bottom-5 left-1/2 -translate-x-1/2 z-[60] max-w-[96vw]">
+<div class="mac-dock rounded-[24px] px-3 sm:px-4 py-2 flex items-center gap-2 sm:gap-2.5">
+<a href="#home" data-section="home" class="dock-item group flex flex-col items-center cursor-pointer focus:outline-none">
+<div class="dock-tooltip liquid-glass-elevated px-2.5 py-1 rounded-lg text-[11px] font-medium text-white shadow-lg">Page 1 Homepage</div>
+<div class="mac-app-icon w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center">
+<svg class="w-full h-full rounded-[14px]" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="grad-home" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+<stop stop-color="#0A84FF"/>
+<stop offset="1" stop-color="#30D158"/>
+</linearGradient>
+</defs>
+<rect width="64" height="64" rx="14" fill="url(#grad-home)"/>
+<text x="32" y="39" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="900" fill="white" text-anchor="middle" letter-spacing="-0.5">BPB</text>
+</svg>
+</div>
+<span class="dock-dot w-1 h-1 rounded-full bg-white mt-1 transition-all duration-300 opacity-100"></span>
+</a>
+<a href="#about" data-section="about" class="dock-item group flex flex-col items-center cursor-pointer focus:outline-none">
+<div class="dock-tooltip liquid-glass-elevated px-2.5 py-1 rounded-lg text-[11px] font-medium text-white shadow-lg">Page 2: About Myself</div>
+<div class="mac-app-icon w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center">
+<svg class="w-full h-full rounded-[14px]" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="grad-about" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+<stop stop-color="#5E5CE6"/>
+<stop offset="1" stop-color="#0A84FF"/>
+</linearGradient>
+</defs>
+<rect width="64" height="64" rx="14" fill="url(#grad-about)"/>
+<circle cx="32" cy="24" r="9" fill="white"/>
+<path d="M16 50C16 41.7157 23.1634 35 32 35C40.8366 35 48 41.7157 48 50V52H16V50Z" fill="white"/>
+</svg>
+</div>
+<span class="dock-dot w-1 h-1 rounded-full bg-white mt-1 transition-all duration-300 opacity-0"></span>
+</a>
+<a href="#family" data-section="family" class="dock-item group flex flex-col items-center cursor-pointer focus:outline-none">
+<div class="dock-tooltip liquid-glass-elevated px-2.5 py-1 rounded-lg text-[11px] font-medium text-white shadow-lg">Page 3: Foundation</div>
+<div class="mac-app-icon w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center">
+<svg class="w-full h-full rounded-[14px]" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="64" height="64" rx="14" fill="#98989D"/>
+<path d="M50 14H54V22H50V14Z" fill="#FF3B30"/>
+<path d="M50 28H54V36H50V28Z" fill="#FF9500"/>
+<path d="M50 42H54V50H50V42Z" fill="#0A84FF"/>
+<circle cx="27" cy="24" r="9" fill="white"/>
+<path d="M11 52C11 43.16 18.16 36 27 36C35.84 36 43 43.16 43 52V56H11V52Z" fill="white"/>
+</svg>
+</div>
+<span class="dock-dot w-1 h-1 rounded-full bg-white mt-1 transition-all duration-300 opacity-0"></span>
+</a>
+<a href="#education" data-section="education" class="dock-item group flex flex-col items-center cursor-pointer focus:outline-none">
+<div class="dock-tooltip liquid-glass-elevated px-2.5 py-1 rounded-lg text-[11px] font-medium text-white shadow-lg">Page 4: Education Journey</div>
+<div class="mac-app-icon w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center">
+<svg class="w-full h-full rounded-[14px]" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="grad-books" x1="32" y1="0" x2="32" y2="64" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FF9500"/>
+<stop offset="1" stop-color="#FF5E3A"/>
+</linearGradient>
+</defs>
+<rect width="64" height="64" rx="14" fill="url(#grad-books)"/>
+<path d="M32 46L16 41V16L32 21V46Z" fill="#E5E5EA"/>
+<path d="M32 46L48 41V16L32 21V46Z" fill="#FFFFFF"/>
+<path d="M21 24L28 25.5" stroke="#C7C7CC" stroke-width="2" stroke-linecap="round"/>
+<path d="M21 30L28 31.5" stroke="#C7C7CC" stroke-width="2" stroke-linecap="round"/>
+<path d="M43 24L36 25.5" stroke="#E5E5EA" stroke-width="2" stroke-linecap="round"/>
+<path d="M43 30L36 31.5" stroke="#E5E5EA" stroke-width="2" stroke-linecap="round"/>
+</svg>
+</div>
+<span class="dock-dot w-1 h-1 rounded-full bg-white mt-1 transition-all duration-300 opacity-0"></span>
+</a>
+<a href="#achievements" data-section="achievements" class="dock-item group flex flex-col items-center cursor-pointer focus:outline-none">
+<div class="dock-tooltip liquid-glass-elevated px-2.5 py-1 rounded-lg text-[11px] font-medium text-white shadow-lg">Page 5: Achievements</div>
+<div class="mac-app-icon w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center">
+<svg class="w-full h-full rounded-[14px]" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="64" height="64" rx="14" fill="#000000"/>
+<circle cx="32" cy="32" r="17" stroke="#FF0055" stroke-width="5" stroke-linecap="round"/>
+<circle cx="32" cy="32" r="11" stroke="#4CFF00" stroke-width="5" stroke-linecap="round"/>
+<circle cx="32" cy="32" r="5" stroke="#00E5FF" stroke-width="5" stroke-linecap="round"/>
+</svg>
+</div>
+<span class="dock-dot w-1 h-1 rounded-full bg-white mt-1 transition-all duration-300 opacity-0"></span>
+</a>
+<div class="w-[1px] h-8 bg-white/25 mx-1 self-center"></div>
+<button type="button" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'}); runSkillsTerminalSequence(true);" class="dock-item group flex flex-col items-center cursor-pointer focus:outline-none">
+<div class="dock-tooltip liquid-glass-elevated px-2.5 py-1 rounded-lg text-[11px] font-medium text-white shadow-lg">Terminal</div>
+<div class="mac-app-icon w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center">
+<svg class="w-full h-full rounded-[14px]" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="64" height="64" rx="14" fill="#1E1E1E"/>
+<path d="M0 14C0 6.268 6.268 0 14 0H50C57.732 0 64 6.268 64 14V16H0V14Z" fill="#3A3A3C"/>
+<circle cx="10" cy="8" r="2.5" fill="#FF5F56"/>
+<circle cx="18" cy="8" r="2.5" fill="#FFBD2E"/>
+<circle cx="26" cy="8" r="2.5" fill="#27C93F"/>
+<text x="8" y="38" font-family="ui-monospace, SFMono-Regular, monospace" font-size="18" font-weight="bold" fill="#30D158">&gt;_</text>
+</svg>
+</div>
+<span class="w-1 h-1 rounded-full bg-white/60 mt-1"></span>
+</button>
+<button type="button" onclick="openContactSheet()" class="dock-item group flex flex-col items-center cursor-pointer focus:outline-none">
+<div class="dock-tooltip liquid-glass-elevated px-2.5 py-1 rounded-lg text-[11px] font-medium text-white shadow-lg">Contact Me</div>
+<div class="mac-app-icon w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center">
+<svg class="w-full h-full rounded-[14px]" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="grad-mail" x1="32" y1="0" x2="32" y2="64" gradientUnits="userSpaceOnUse">
+<stop stop-color="#4E9CFF"/>
+<stop offset="1" stop-color="#0062E0"/>
+</linearGradient>
+</defs>
+<rect width="64" height="64" rx="14" fill="url(#grad-mail)"/>
+<path d="M12 23 L32 37 L52 23 V43 C52 45.2 50.2 47 48 47 H16 C13.8 47 12 45.2 12 43 V23 Z" fill="#FFFFFF"/>
+<path d="M12 23 C12 20.8 13.8 19 16 19 H48 C50.2 19 52 20.8 52 23 L32 37 L12 23 Z" fill="#E5E5EA"/>
+</svg>
+</div>
+<span class="w-1 h-1 rounded-full bg-transparent mt-1"></span>
+</button>
+</div>
+</nav>
+<main class="relative z-10 container mx-auto px-4 md:px-8 lg:px-16 pt-12 pb-20 space-y-24">
+<section id="home" class="relative min-h-[calc(100dvh-4rem)] py-10 lg:py-14 flex items-center justify-center w-full scroll-mt-12 overflow-visible">
+<div class="billboard-stage relative w-full max-w-[82rem] mx-auto z-10 px-1 sm:px-4">
+<div id="billboard-rig" class="billboard-rig relative flex flex-col lg:flex-row items-center lg:items-start justify-center w-full">
+<div id="portfolio-window-wrapper" class="mac-dock-popup-init w-full lg:w-[68%] relative z-10">
+<div id="main-hero-card" class="portfolio-main-window liquid-glass-elevated rounded-[24px] sm:rounded-[28px] w-full overflow-hidden">
+<div class="billboard-surface-spotlight"></div>
+<div class="mac-titlebar px-5 sm:px-6 py-3 flex items-center justify-between select-none relative z-20">
+<div class="flex items-center gap-2 traffic-group">
+<span class="w-3.5 h-3.5 rounded-full bg-[#FF5F56] border border-[#E0443E] flex items-center justify-center text-[9px] font-black text-black">
+<span class="traffic-icon">&times;</span>
+</span>
+<span class="w-3.5 h-3.5 rounded-full bg-[#FFBD2E] border border-[#DEA123] flex items-center justify-center text-[9px] font-black text-black">
+<span class="traffic-icon">&minus;</span>
+</span>
+<span class="w-3.5 h-3.5 rounded-full bg-[#27C93F] border border-[#1AAB29] flex items-center justify-center text-[9px] font-black text-black">
+<span class="traffic-icon">+</span>
+</span>
+</div>
+<div class="flex items-center gap-1.5">
+<i data-lucide="folder-kanban" class="w-3.5 h-3.5 text-mac-amber"></i>
+<span class="font-mono text-[12px] text-white font-semibold tracking-tight">Portfolio</span>
+</div>
+<div class="w-12"></div>
+</div>
+<div class="relative z-20 p-6 sm:p-10 lg:py-12 lg:pl-12 lg:pr-28 xl:pr-32 flex flex-col justify-center min-h-[380px] sm:min-h-[430px]">
+<div class="inline-flex items-center gap-2 glass-tag px-3.5 py-1.5 rounded-full w-fit mb-6">
+<i data-lucide="map-pin" class="w-3.5 h-3.5 text-mac-amber"></i>
+<span class="text-[11px] font-semibold tracking-widest uppercase text-white">Baguio, PH</span>
+</div>
+<div class="flex flex-col mb-7 sm:mb-9">
+<h1 class="text-[2.6rem] sm:text-[3.4rem] lg:text-[3.5rem] xl:text-[4.1rem] font-black text-white leading-[1.03] tracking-tighter">
+<span id="hero-line-1" class="block w-fit min-h-[1.1em]"></span>
+<span id="hero-line-2" class="block w-fit min-h-[1.1em]"></span>
+</h1>
+<h2 id="course-heading" class="hero-subtitle-bright text-[1.3rem] sm:text-[1.7rem] lg:text-[1.85rem] xl:text-[2.15rem] tracking-tight font-extrabold mt-4 sm:mt-5 leading-[1.12]">
+<span id="hero-line-3" class="block w-fit min-h-[1.1em]"></span>
+<span id="hero-line-4" class="block w-fit text-mac-amber min-h-[1.1em]"></span>
+</h2>
+<h3 class="mt-5 sm:mt-6">
+<span id="hero-line-5" class="inline-block text-[0.78rem] sm:text-[0.88rem] lg:text-[0.95rem] text-mac-silver font-bold tracking-[0.25em] uppercase w-fit min-h-[1.2em]"></span>
+</h3>
+</div>
+<div id="hero-cta-container" class="flex flex-wrap items-center gap-3 w-full opacity-0 translate-y-3 pointer-events-none transition-all duration-700 ease-out">
+<a href="#achievements" class="group flex items-center gap-2 bg-white hover:bg-mac-silver text-black px-5 py-2.5 rounded-full text-[13.5px] font-bold transition-all shadow-[0_8px_24px_rgba(255,255,255,0.25),inset_0_1px_1px_#fff] hover:-translate-y-0.5 active:scale-95 focus:outline-none focus:ring-2 focus:ring-white">
+<span>View My Projects</span>
+<i data-lucide="arrow-up-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i>
+</a>
+<a href="#education" class="group flex items-center gap-2 liquid-glass text-white px-5 py-2.5 rounded-full text-[13.5px] font-semibold transition-all hover:-translate-y-0.5 active:scale-95 focus:outline-none focus:ring-2 focus:ring-white">
+<i data-lucide="download" class="w-4 h-4 text-white transition-transform group-hover:-translate-y-0.5 relative z-10"></i>
+<span class="relative z-10">Download Résumé</span>
+</a>
+<button type="button" onclick="openContactSheet()" class="group flex items-center gap-1.5 px-3 py-2.5 text-[13.5px] font-semibold text-white hover:text-mac-silver transition-colors focus:outline-none focus:ring-1 focus:ring-white rounded">
+<i data-lucide="mail" class="w-4 h-4"></i>
+<span>Contact Me</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div id="portrait-window-wrapper" class="mac-dock-popup-init w-full max-w-[340px] sm:max-w-[390px] lg:max-w-none lg:w-[40%] -mt-6 sm:-mt-8 lg:mt-12 lg:-ml-20 xl:-ml-24 relative z-30 flex flex-col items-center">
+<div id="portrait-restore-dock" class="hidden z-30 my-16">
+<button onclick="restorePortraitWindow()" class="flex items-center gap-3 liquid-glass-elevated px-5 py-3 rounded-full text-xs font-semibold text-white hover:text-mac-silver transition-all hover:-translate-y-0.5 shadow-2xl">
+<span class="w-2 h-2 rounded-full bg-mac-green"></span>
+Reopen <span class="font-mono text-white">portrait.png</span>
+</button>
+</div>
+<div id="portrait-mac-window" class="portrait-overlap-window mac-window-transition relative z-30 w-full rounded-mac-lg overflow-hidden liquid-glass-elevated">
+<div class="mac-titlebar px-4 py-3 flex items-center justify-between select-none relative z-20">
+<div class="flex items-center gap-2 traffic-group">
+<button type="button" onclick="closePortraitWindow()" title="Close Window" class="w-3.5 h-3.5 rounded-full bg-[#FF5F56] border border-[#E0443E] flex items-center justify-center text-[9px] font-black text-black hover:brightness-110 active:scale-90 transition-all cursor-pointer">
+<span class="traffic-icon">&times;</span>
+</button>
+<button type="button" onclick="minimizePortraitWindow()" title="Minimize Window" class="w-3.5 h-3.5 rounded-full bg-[#FFBD2E] border border-[#DEA123] flex items-center justify-center text-[9px] font-black text-black hover:brightness-110 active:scale-90 transition-all cursor-pointer">
+<span class="traffic-icon">&minus;</span>
+</button>
+<button type="button" onclick="maximizePortraitWindow()" title="Full Screen Preview" class="w-3.5 h-3.5 rounded-full bg-[#27C93F] border border-[#1AAB29] flex items-center justify-center text-[9px] font-black text-black hover:brightness-110 active:scale-90 transition-all cursor-pointer">
+<span class="traffic-icon">+</span>
+</button>
+</div>
+<div onclick="minimizePortraitWindow()" class="flex items-center gap-1.5 cursor-pointer" title="Click to toggle minimize">
+<i data-lucide="image" class="w-3.5 h-3.5 text-white"></i>
+<span class="font-mono text-[11.5px] text-white font-semibold tracking-tight">portrait.png</span>
+</div>
+<div class="w-10"></div>
+</div>
+<div id="portrait-window-body" onclick="maximizePortraitWindow()" title="Click for Quick Look Preview" class="relative overflow-hidden transition-all duration-500 max-h-[540px] opacity-100 bg-black/35 z-10 cursor-pointer group">
+<div class="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white/20 to-transparent pointer-events-none z-20"></div>
+<img id="heroProfileImage" src="portrait.png" alt="Benjamin Profile Cutout" class="w-full h-[350px] sm:h-[400px] lg:h-[430px] xl:h-[460px] object-cover transition-transform duration-700 group-hover:scale-[1.03] relative z-10" onerror="this.onerror=null; this.src='https://placehold.co/1000x1200/10141d/F2F2F7?text=Benjamin+P.+Bucad';">
+</div>
+<div id="portrait-minimized-bar" onclick="restorePortraitWindow()" class="hidden px-4 py-2.5 bg-white/10 text-[11.5px] text-white hover:text-mac-silver cursor-pointer items-center justify-between transition-colors relative z-20">
+<span>Window minimized</span>
+<span class="text-white font-bold">Click to expand &darr;</span>
+</div>
+</div>
+</div>
+</div>
+<div class="billboard-floor-shadow hidden lg:block"></div>
+</div>
+</section>
+<section id="about" class="min-h-[calc(100dvh-4rem)] py-12 flex flex-col justify-center scroll-mt-12">
+<div class="max-w-[80rem] mx-auto w-full px-2 sm:px-6">
+<div class="reveal mb-8 text-center md:text-left">
+<p class="text-mac-amber font-bold text-xs uppercase tracking-[0.2em] mb-2">Profile</p>
+<h2 class="text-3xl sm:text-4xl font-bold text-white mb-4 scroll-type min-h-[2.75rem] tracking-tight" data-text="About Myself">About Myself</h2>
+<p id="hero-bio" class="text-white text-[15px] sm:text-[16.5px] lg:text-[1.08rem] max-w-2xl leading-relaxed mb-8 opacity-0 translate-y-2 transition-all duration-700 font-normal mx-auto md:mx-0">
+Based in Baguio, PH, I build practical software solutions, analyze technical problems, and apply programming fundamentals to create reliable, user-focused systems.
+</p>
+</div>
+<div class="reveal flex flex-col gap-6 max-w-2xl">
+<div class="grid grid-cols-3 gap-2 sm:gap-4 liquid-glass p-4 rounded-ios w-full max-w-md">
+<div class="flex flex-col items-center sm:items-start text-center sm:text-left relative z-10">
+<span class="text-lg sm:text-xl font-bold text-white tracking-tight">IT</span>
+<span class="text-[10.5px] text-mac-silver uppercase font-semibold tracking-wider">Systems Analysis</span>
+</div>
+<div class="flex flex-col items-center sm:items-start text-center sm:text-left border-l border-white/25 pl-3 sm:pl-4 relative z-10">
+<span class="text-lg sm:text-xl font-bold text-white tracking-tight">Math</span>
+<span class="text-[10.5px] text-mac-silver uppercase font-semibold tracking-wider">& Research Focus</span>
+</div>
+<div class="flex flex-col items-center sm:items-start text-center sm:text-left border-l border-white/25 pl-3 sm:pl-4 relative z-10">
+<span class="text-lg sm:text-xl font-bold text-white tracking-tight">100%</span>
+<span class="text-[10.5px] text-mac-silver uppercase font-semibold tracking-wider">Secure Design</span>
+</div>
+</div>
+<div id="skills-widget-wrapper" class="w-full max-w-xl relative">
+<div id="terminal-popup-window" class="mac-window-transition rounded-mac overflow-hidden liquid-glass-elevated">
+<div class="mac-titlebar px-3.5 py-2.5 flex items-center justify-between select-none relative z-10">
+<div class="flex items-center gap-2 traffic-group">
+<button onclick="skipTerminalToUI()" title="Close Terminal & View Skills Card" class="w-3 h-3 rounded-full bg-[#FF5F56] border border-[#E0443E] flex items-center justify-center text-[8px] font-black text-black hover:brightness-110 transition-all cursor-pointer">
+<span class="traffic-icon">&times;</span>
+</button>
+<button onclick="toggleMinimizeTerminal()" title="Minimize / Collapse Terminal" class="w-3 h-3 rounded-full bg-[#FFBD2E] border border-[#DEA123] flex items-center justify-center text-[8px] font-black text-black hover:brightness-110 transition-all cursor-pointer">
+<span class="traffic-icon">&minus;</span>
+</button>
+<button onclick="skipTerminalToUI()" title="Switch to Full UI View" class="w-3 h-3 rounded-full bg-[#27C93F] border border-[#1AAB29] flex items-center justify-center text-[8px] font-black text-black hover:brightness-110 transition-all cursor-pointer">
+<span class="traffic-icon">+</span>
+</button>
+<span class="ml-2 font-mono text-[11.5px] text-mac-silver tracking-tight">bpb@macbook-pro: ~/technical-skills — zsh</span>
+</div>
+<button onclick="skipTerminalToUI()" class="text-[10.5px] font-mono text-white hover:text-mac-silver glass-tag px-2.5 py-0.5 rounded-md transition-colors">
+Skip &raquo;
+</button>
+</div>
+<div id="terminal-body-container" class="p-4 font-mono text-[12px] leading-relaxed text-white bg-black/40 min-h-[165px] max-h-[210px] overflow-y-auto transition-all duration-300 relative z-10">
+<div id="terminal-output" class="space-y-1.5 break-words"></div>
+<div class="mt-1">
+<span id="terminal-active-line" class="terminal-cursor text-white"></span>
+</div>
+</div>
+</div>
+<div id="skills-ui-card" class="hidden mac-window-transition liquid-glass rounded-mac w-full overflow-hidden">
+<div class="mac-titlebar px-4 py-2.5 flex items-center justify-between relative z-10">
+<div class="flex items-center gap-2 traffic-group">
+<button onclick="runSkillsTerminalSequence(true)" title="Close UI & Reopen Terminal" class="w-3 h-3 rounded-full bg-[#FF5F56] border border-[#E0443E] flex items-center justify-center text-[8px] font-black text-black cursor-pointer">
+<span class="traffic-icon">&times;</span>
+</button>
+<button onclick="toggleMinimizeSkillsUI()" title="Minimize Skills Card" class="w-3 h-3 rounded-full bg-[#FFBD2E] border border-[#DEA123] flex items-center justify-center text-[8px] font-black text-black cursor-pointer">
+<span class="traffic-icon">&minus;</span>
+</button>
+<button onclick="expandSkillsUI()" title="Expand / Restore Skills Card" class="w-3 h-3 rounded-full bg-[#27C93F] border border-[#1AAB29] flex items-center justify-center text-[8px] font-black text-black cursor-pointer">
+<span class="traffic-icon">+</span>
+</button>
+<h3 id="skills-main-title" class="ml-1.5 text-white font-semibold text-xs tracking-tight">
+Technical Skills & Expertise
+</h3>
+</div>
+<div class="flex items-center gap-2">
+<button onclick="runSkillsTerminalSequence(true)" title="Replay Terminal Session" class="font-mono text-[10.5px] text-white hover:text-mac-silver glass-tag px-2.5 py-0.5 rounded-md flex items-center gap-1 transition-all">
+<span>&gt;_</span> Replay Terminal
+</button>
+</div>
+</div>
+<div id="skills-ui-body" class="p-4 sm:p-5 flex flex-col gap-4 transition-all duration-300 relative z-10">
+<div class="skill-group opacity-0 translate-y-2 transition-all duration-500">
+<h4 class="flex items-center gap-2 text-[11px] text-white font-bold tracking-wider uppercase mb-2">
+<span class="w-2 h-2 rounded-full bg-mac-blue shadow-[0_0_8px_#0A84FF]"></span>
+<span>Programming & Fundamentals</span>
+</h4>
+<div class="flex flex-wrap gap-1.5">
+<span class="glass-tag px-3 py-1 rounded-lg text-white text-[12px] font-semibold">Python</span>
+<span class="glass-tag px-3 py-1 rounded-lg text-white text-[12px] font-semibold">Java</span>
+<span class="glass-tag px-3 py-1 rounded-lg text-white text-[12px] font-semibold">C++</span>
+<span class="glass-tag px-3 py-1 rounded-lg text-white text-[12px] font-semibold">Computing Fundamentals</span>
+</div>
+</div>
+<div class="skill-group opacity-0 translate-y-2 transition-all duration-500">
+<h4 class="flex items-center gap-2 text-[11px] text-white font-bold tracking-wider uppercase mb-2">
+<span class="w-2 h-2 rounded-full bg-mac-amber shadow-[0_0_8px_#FFB340]"></span>
+<span>Theory & Logic</span>
+</h4>
+<div class="flex flex-wrap gap-1.5">
+<span class="glass-tag px-3 py-1 rounded-lg text-white text-[12px] font-semibold">Algorithmology</span>
+<span class="glass-tag px-3 py-1 rounded-lg text-white text-[12px] font-semibold">Data Structures & Algorithms</span>
+<span class="glass-tag px-3 py-1 rounded-lg text-white text-[12px] font-semibold">Mathematics & Research</span>
+</div>
+</div>
+<div class="skill-group opacity-0 translate-y-2 transition-all duration-500">
+<h4 class="flex items-center gap-2 text-[11px] text-white font-bold tracking-wider uppercase mb-2">
+<span class="w-2 h-2 rounded-full bg-mac-green shadow-[0_0_8px_#30D158]"></span>
+<span>Systems & Infrastructure</span>
+</h4>
+<div class="flex flex-wrap gap-1.5">
+<span class="glass-tag px-3 py-1 rounded-lg text-white text-[12px] font-semibold">Systems Analysis & Design</span>
+<span class="glass-tag px-3 py-1 rounded-lg text-white text-[12px] font-semibold">IT Security</span>
+<span class="glass-tag px-3 py-1 rounded-lg text-white text-[12px] font-semibold">SQL</span>
+<span class="glass-tag px-3 py-1 rounded-lg text-white text-[12px] font-semibold">Git</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="family" class="min-h-[calc(100dvh-4rem)] py-12 flex flex-col justify-center scroll-mt-12">
+<div class="reveal mb-12 text-center md:text-left">
+<p class="text-mac-amber font-bold text-xs uppercase tracking-[0.2em] mb-2">Family</p>
+<h2 class="text-3xl sm:text-4xl font-bold text-white mb-4 scroll-type min-h-[2.75rem] tracking-tight" data-text="My Foundation">My Foundation</h2>
+<p class="text-white text-base md:text-lg max-w-4xl leading-relaxed font-normal mx-auto md:mx-0">
+Behind every professional milestone is the unwavering support of my parents. They are the true anchors of my career and character. The strategic mindset I apply to enterprise systems and competitive chess was honed through my father's guidance, while the resilience to execute under pressure stems directly from my mother's boundless support.
+</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="reveal liquid-glass rounded-mac-lg overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-1.5 group">
+<div class="relative w-full h-[380px] md:h-[430px] overflow-hidden flex-shrink-0 bg-black/25 border-b border-white/25 z-10">
+<img src="https://placehold.co/800x600/12151E/F2F2F7?text=Shaking+Hand%0Awith+Father" alt="Shaking hand with father" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-85 group-hover:opacity-100">
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none"></div>
+</div>
+<div class="p-8 md:p-10 flex flex-col justify-start flex-grow relative z-10">
+<h3 class="text-2xl sm:text-3xl font-bold text-white mb-3 tracking-tight">Father's Guidance</h3>
+<p class="text-white text-base sm:text-lg leading-relaxed">
+Teaching strategy, discipline, and the value of foresight. His lessons laid the groundwork for my analytical approach, whether I'm architecting a new IT infrastructure or calculating my next move on the chessboard.
+</p>
+</div>
+</div>
+<div class="reveal liquid-glass rounded-mac-lg overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-1.5 group">
+<div class="relative w-full h-[380px] md:h-[430px] overflow-hidden flex-shrink-0 bg-black/25 border-b border-white/25 z-10">
+<img src="https://placehold.co/800x600/141822/F2F2F7?text=Hugging%0AMother" alt="Hugging mother" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-85 group-hover:opacity-100">
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none"></div>
+</div>
+<div class="p-8 md:p-10 flex flex-col justify-start flex-grow relative z-10">
+<h3 class="text-2xl sm:text-3xl font-bold text-white mb-3 tracking-tight">Mother's Support</h3>
+<p class="text-white text-base sm:text-lg leading-relaxed">
+Providing unwavering belief, strength, and emotional grounding. Her boundless support fuels my resilience to execute under pressure and reminds me of the core values that truly matter.
+</p>
+</div>
+</div>
+</div>
+</section>
+<section id="education" class="min-h-[calc(100dvh-4rem)] py-12 flex flex-col justify-center scroll-mt-12">
+<div class="reveal mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6 text-center md:text-left">
+<div>
+<p class="text-mac-amber font-bold text-xs uppercase tracking-[0.2em] mb-2">Academic Path</p>
+<h2 class="text-3xl sm:text-4xl font-bold text-white mb-2 scroll-type min-h-[2.75rem] tracking-tight" data-text="Education Journey">Education Journey</h2>
+<p class="text-white text-base sm:text-lg">My academic foundation and continuous growth.</p>
+</div>
+<div class="liquid-glass p-1.5 rounded-xl inline-flex items-center self-center md:self-auto gap-1 text-xs font-bold">
+<button onclick="filterEducation('all', this)" class="edu-tab relative z-10 px-4 py-2 rounded-lg bg-white text-black shadow-md transition-all">All</button>
+<button onclick="filterEducation('college', this)" class="edu-tab relative z-10 px-4 py-2 rounded-lg text-white hover:text-white transition-all">College</button>
+<button onclick="filterEducation('highschool', this)" class="edu-tab relative z-10 px-4 py-2 rounded-lg text-white hover:text-white transition-all">High School</button>
+<button onclick="filterEducation('elementary', this)" class="edu-tab relative z-10 px-4 py-2 rounded-lg text-white hover:text-white transition-all">Primary</button>
+</div>
+</div>
+<div class="relative border-l border-white/30 ml-4 md:ml-8 space-y-10 pb-4">
+<div data-edu-category="college" class="edu-item relative pl-8 md:pl-12 reveal">
+<div class="absolute -left-[7px] top-8 w-3.5 h-3.5 bg-mac-green border-2 border-[#07090E] rounded-full z-10 shadow-[0_0_10px_#30D158]"></div>
+<div class="liquid-glass rounded-ios p-6 md:p-8 relative group flex flex-col md:flex-row gap-6 items-start md:items-center hover:-translate-y-1">
+<div class="flex-1 w-full relative z-10">
+<div class="flex flex-wrap items-center gap-2 mb-3 w-full">
+<span class="glass-tag text-white text-[11.5px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">2025 - Present</span>
+<span class="glass-tag text-white text-[11.5px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">College</span>
+<span class="bg-mac-green/35 border border-mac-green text-white text-[11px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow-[0_0_12px_rgba(48,209,88,0.4)]">CURRENT</span>
+</div>
+<h3 class="text-2xl md:text-3xl font-bold text-white mb-1 tracking-tight">University of the Cordilleras</h3>
+<p class="text-white font-semibold mb-3 text-base">BS Information Technology (ERP)</p>
+<p class="text-white max-w-2xl text-sm md:text-base leading-relaxed font-normal">
+Specialized in Enterprise Resource Planning (ERP). Developed a robust foundation in systemic software solutions, business process integration, and database management, preparing for high-level enterprise IT challenges.
+</p>
+</div>
+</div>
+</div>
+<div data-edu-category="highschool" class="edu-item relative pl-8 md:pl-12 reveal">
+<div class="absolute -left-[7px] top-8 w-3.5 h-3.5 bg-white border-2 border-[#07090E] rounded-full"></div>
+<div class="liquid-glass rounded-ios p-6 md:p-8 relative group flex flex-col md:flex-row gap-6 items-start md:items-center hover:-translate-y-1">
+<div class="flex-1 w-full relative z-10">
+<div class="flex flex-wrap items-center gap-2 mb-3 w-full">
+<span class="glass-tag text-white text-[11.5px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">2023 - 2025</span>
+<span class="glass-tag text-white text-[11.5px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Senior High School</span>
+</div>
+<h3 class="text-2xl md:text-3xl font-bold text-white mb-1 tracking-tight">Baguio College of Technology</h3>
+<p class="text-white font-semibold mb-3 text-base">STEM Strand</p>
+<p class="text-white max-w-2xl text-sm md:text-base leading-relaxed font-normal">
+Completed the Science, Technology, Engineering, and Mathematics (STEM) strand. Developed advanced analytical skills, built strong technological foundations, and excelled in academic challenges.
+</p>
+</div>
+</div>
+</div>
+<div data-edu-category="highschool" class="edu-item relative pl-8 md:pl-12 reveal">
+<div class="absolute -left-[7px] top-8 w-3.5 h-3.5 bg-white border-2 border-[#07090E] rounded-full"></div>
+<div class="liquid-glass rounded-ios p-6 md:p-8 relative group flex flex-col md:flex-row gap-6 items-start md:items-center hover:-translate-y-1">
+<div class="flex-1 w-full relative z-10">
+<div class="flex flex-wrap items-center gap-2 mb-3 w-full">
+<span class="glass-tag text-white text-[11.5px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">2019 - 2023</span>
+<span class="glass-tag text-white text-[11.5px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Junior High School</span>
+</div>
+<h3 class="text-2xl md:text-3xl font-bold text-white mb-1 tracking-tight">Fort Del Pilar National High School</h3>
+<p class="text-white font-semibold mb-3 text-base">ICT Cookery</p>
+<p class="text-white max-w-2xl text-sm md:text-base leading-relaxed font-normal">
+Dual focus on Information and Communications Technology alongside Culinary Arts. Built early technical proficiencies while learning the value of precise, process-driven execution.
+</p>
+</div>
+</div>
+</div>
+<div data-edu-category="elementary" class="edu-item relative pl-8 md:pl-12 reveal">
+<div class="absolute -left-[7px] top-8 w-3.5 h-3.5 bg-white border-2 border-[#07090E] rounded-full"></div>
+<div class="liquid-glass rounded-ios p-6 md:p-8 relative group flex flex-col md:flex-row gap-6 items-start md:items-center hover:-translate-y-1">
+<div class="flex-1 w-full relative z-10">
+<div class="flex flex-wrap items-center gap-2 mb-3 w-full">
+<span class="glass-tag text-white text-[11.5px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">2013 - 2019</span>
+<span class="glass-tag text-white text-[11.5px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Elementary</span>
+</div>
+<h3 class="text-2xl md:text-3xl font-bold text-white mb-1 tracking-tight">Kias Elementary School</h3>
+<p class="text-white font-semibold mb-3 text-base">Primary Education</p>
+<p class="text-white max-w-2xl text-sm md:text-base leading-relaxed font-normal">
+Formative years dedicated to building a strong academic foundation. Developed a competitive edge and strategic mindset that would later translate into regional chess achievements.
+</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="achievements" class="min-h-[calc(100dvh-4rem)] py-12 flex flex-col justify-center scroll-mt-12">
+<div class="reveal mb-12 text-center md:text-left flex flex-col md:items-start items-center">
+<div class="inline-flex items-center space-x-2 glass-tag px-4 py-2 rounded-full mb-3">
+<i data-lucide="award" class="w-4 h-4 text-mac-amber"></i>
+<span class="text-white text-[11.5px] font-bold tracking-widest uppercase">Competitive Highlights</span>
+</div>
+<h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 scroll-type min-h-[3.25rem] tracking-tight" data-text="Achievements">Achievements</h2>
+<p class="text-white text-base sm:text-lg max-w-2xl font-normal">Translating analytical thinking and strategic foresight into measurable competitive success.</p>
+</div>
+<div class="grid grid-cols-1 gap-8">
+<div class="reveal liquid-glass rounded-mac-lg p-6 md:p-8 relative group flex flex-col md:flex-row gap-6 items-start justify-between hover:-translate-y-1.5 overflow-hidden">
+<div class="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-5 flex-1 relative z-10 w-full">
+<div class="p-4 dock-squircle rounded-2xl flex-shrink-0">
+<i data-lucide="trophy" class="w-8 h-8 text-mac-amber"></i>
+</div>
+<div class="w-full">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
+<h3 class="text-2xl lg:text-3xl font-bold text-white tracking-tight">Chess Champion</h3>
+<div class="flex items-center gap-2 mt-2 sm:mt-0">
+<span class="glass-tag text-white text-[11.5px] font-bold px-3 py-1 rounded-md uppercase tracking-wide">2025</span>
+<span class="glass-tag text-white text-[11.5px] font-bold px-3 py-1 rounded-md uppercase tracking-wide">Grade 12</span>
+</div>
+</div>
+<p class="text-white font-semibold text-sm md:text-base mb-3">BCT Intramurals - Men's Division</p>
+<p class="text-white text-sm md:text-base leading-relaxed max-w-2xl font-normal">
+Secured the championship title through rigorous tactical planning and composure under pressure. Demonstrated advanced foresight and adaptability against top-tier competitors, earning the "Master of Strategy and Skill" distinction.
+</p>
+</div>
+</div>
+<div class="flex flex-row gap-4 w-full md:w-auto overflow-x-auto pb-2 md:pb-0 z-10 snap-x">
+<div onclick="openModal(this.querySelector('img').src)" class="snap-start relative w-40 sm:w-48 h-56 flex-shrink-0 rounded-2xl overflow-hidden cursor-pointer group/thumb shadow-lg border border-white/30 bg-black/30 transition-transform duration-500 hover:-translate-y-1 flex items-center justify-center">
+<img src="Chess Champion trophy.webp" alt="BCT Intramurals 2025 Chess Champion Trophy" class="absolute inset-0 w-full h-full object-cover group-hover/thumb:scale-105 transition-transform duration-700 ease-spring z-10" onerror="this.onerror=null; this.src='https://placehold.co/400x500/12151E/FFB340?text=Chess+Trophy';">
+<div class="absolute inset-0 bg-black/45 opacity-0 group-hover/thumb:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none z-20">
+<i data-lucide="maximize-2" class="w-6 h-6 text-white"></i>
+</div>
+</div>
+<div onclick="openModal(this.querySelector('img').src)" class="snap-start relative w-60 sm:w-72 h-56 flex-shrink-0 rounded-2xl overflow-hidden cursor-pointer group/thumb shadow-lg border border-white/30 bg-black/30 transition-transform duration-500 hover:-translate-y-1 flex items-center justify-center">
+<img src="chess champion.webp" alt="BCT Intramurals 2025 Chess Champion Certificate" class="absolute inset-0 w-full h-full object-cover group-hover/thumb:scale-105 transition-transform duration-700 ease-spring z-10" onerror="this.onerror=null; this.src='https://placehold.co/600x450/12151E/F2F2F7?text=Champion+Certificate';">
+<div class="absolute inset-0 bg-black/45 opacity-0 group-hover/thumb:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none z-20">
+<i data-lucide="maximize-2" class="w-6 h-6 text-white"></i>
+</div>
+</div>
+</div>
+</div>
+<div class="reveal liquid-glass rounded-mac-lg p-6 md:p-8 relative group flex flex-col md:flex-row gap-6 items-start justify-between hover:-translate-y-1.5 overflow-hidden">
+<div class="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-5 flex-1 relative z-10 w-full">
+<div class="p-4 dock-squircle rounded-2xl flex-shrink-0">
+<i data-lucide="layout-grid" class="w-8 h-8 text-white"></i>
+</div>
+<div class="w-full">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
+<h3 class="text-2xl lg:text-3xl font-bold text-white tracking-tight">Scrabble 2nd Runner Up</h3>
+<div class="flex items-center gap-2 mt-2 sm:mt-0">
+<span class="glass-tag text-white text-[11.5px] font-bold px-3 py-1 rounded-md uppercase tracking-wide">2025</span>
+<span class="glass-tag text-white text-[11.5px] font-bold px-3 py-1 rounded-md uppercase tracking-wide">Grade 12</span>
+</div>
+</div>
+<p class="text-white font-semibold text-sm md:text-base mb-3">BCT Intramurals - Men's Division</p>
+<p class="text-white text-sm md:text-base leading-relaxed max-w-2xl font-normal">
+Demonstrated strong vocabulary breadth, spatial awareness, and offensive board strategy. Successfully secured a podium placement in the Scrabble men's bracket.
+</p>
+</div>
+</div>
+<div onclick="openModal(this.querySelector('img').src)" class="relative w-full md:w-72 h-56 flex-shrink-0 rounded-2xl overflow-hidden cursor-pointer group/thumb shadow-lg border border-white/30 bg-black/30 transition-transform duration-500 hover:-translate-y-1 z-10 flex items-center justify-center">
+<img src="scrabble 2nd runner up.webp" alt="BCT Intramurals 2025 Scrabble Certificate" class="absolute inset-0 w-full h-full object-cover group-hover/thumb:scale-105 transition-transform duration-700 ease-spring z-10" onerror="this.onerror=null; this.src='https://placehold.co/600x450/12151E/F2F2F7?text=Scrabble+Certificate';">
+<div class="absolute inset-0 bg-black/45 opacity-0 group-hover/thumb:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none z-20">
+<i data-lucide="maximize-2" class="w-6 h-6 text-white"></i>
+</div>
+</div>
+</div>
+<div class="reveal liquid-glass rounded-mac-lg p-6 md:p-8 relative group flex flex-col sm:flex-row gap-6 items-start sm:items-center justify-between hover:-translate-y-1.5 overflow-hidden">
+<div class="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-5 flex-1 relative z-10 w-full">
+<div class="p-4 dock-squircle rounded-2xl flex-shrink-0">
+<i data-lucide="medal" class="w-8 h-8 text-white"></i>
+</div>
+<div class="w-full">
+<div class="flex items-center justify-between mb-1">
+<h3 class="text-2xl font-bold text-white tracking-tight">1st Runner Up</h3>
+<div class="flex items-center gap-2">
+<span class="glass-tag text-white text-[11.5px] font-bold px-3 py-1 rounded-md uppercase tracking-wide">2024</span>
+<span class="glass-tag text-white text-[11.5px] font-bold px-3 py-1 rounded-md uppercase tracking-wide">Grade 11</span>
+</div>
+</div>
+<p class="text-white font-semibold text-sm mb-2">BCT Intrams Chess Men</p>
+<p class="text-white text-sm leading-relaxed max-w-xl font-normal">
+Achieved podium placement in a highly competitive bracket. Showcased strong analytical foresight, precise calculation, and strategic endurance.
+</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer class="pt-8 pb-12 border-t border-white/20 text-center sm:flex sm:items-center sm:justify-between text-xs text-white font-medium">
+<div class="flex items-center justify-center gap-2 mb-3 sm:mb-0">
+<i data-lucide="command" class="w-3.5 h-3.5 text-white"></i>
+<span>Benjamin P. Bucad • Crafted with macOS Liquid Glass</span>
+</div>
+<div class="flex items-center justify-center gap-6">
+<a href="#home" class="hover:text-white transition-colors">Overview</a>
+<a href="#about" class="hover:text-white transition-colors">About Myself</a>
+<a href="#family" class="hover:text-white transition-colors">Family</a>
+<a href="#education" class="hover:text-white transition-colors">Education</a>
+<a href="#achievements" class="hover:text-white transition-colors">Achievements</a>
+</div>
+</footer>
+</main>
+<div id="certModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/75 backdrop-blur-2xl opacity-0 transition-opacity duration-300 px-4">
+<div class="relative max-w-4xl w-full flex flex-col items-center liquid-glass-elevated rounded-2xl overflow-hidden">
+<div class="w-full mac-titlebar px-4 py-3 flex items-center justify-between relative z-10">
+<div class="flex items-center gap-2 traffic-group">
+<button onclick="closeModal()" title="Close Fullscreen" class="w-3.5 h-3.5 rounded-full bg-[#FF5F56] border border-[#E0443E] flex items-center justify-center text-[9px] font-black text-black cursor-pointer">
+<span class="traffic-icon">&times;</span>
+</button>
+<button onclick="closeModal()" title="Exit Fullscreen" class="w-3.5 h-3.5 rounded-full bg-[#FFBD2E] border border-[#DEA123] flex items-center justify-center text-[9px] font-black text-black cursor-pointer">
+<span class="traffic-icon">&minus;</span>
+</button>
+<button onclick="closeModal()" title="Restore Size" class="w-3.5 h-3.5 rounded-full bg-[#27C93F] border border-[#1AAB29] flex items-center justify-center text-[9px] font-black text-black cursor-pointer">
+<span class="traffic-icon">+</span>
+</button>
+<span class="ml-2 font-mono text-xs text-white font-semibold">Quick Look — Preview</span>
+</div>
+<button onclick="closeModal()" class="text-xs text-white hover:text-mac-silver font-mono font-bold">ESC</button>
+</div>
+<img id="modalImage" src="" alt="Full View" class="w-full max-h-[80vh] object-contain bg-black/40 p-4 relative z-10">
+</div>
+</div>
+<div id="contactSheet" class="fixed inset-0 z-[90] hidden items-center justify-center bg-black/60 backdrop-blur-md opacity-0 transition-opacity duration-300 p-4">
+<div class="liquid-glass-elevated rounded-mac-lg max-w-md w-full overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300" id="contactSheetCard">
+<div class="mac-titlebar px-4 py-3 flex items-center justify-between relative z-10">
+<div class="flex items-center gap-2 traffic-group">
+<button onclick="closeContactSheet()" class="w-3.5 h-3.5 rounded-full bg-[#FF5F56] border border-[#E0443E] flex items-center justify-center text-[9px] font-black text-black">
+<span class="traffic-icon">&times;</span>
+</button>
+<span class="ml-2 font-mono text-xs text-white font-semibold">Contact — Benjamin P. Bucad</span>
+</div>
+<button onclick="closeContactSheet()" class="text-xs text-white font-bold hover:text-mac-silver">Done</button>
+</div>
+<div class="p-6 space-y-4 relative z-10">
+<div class="flex items-center gap-3.5">
+<div class="w-12 h-12 rounded-2xl dock-squircle flex items-center justify-center text-white font-bold text-sm">
+BPB
+</div>
+<div>
+<h4 class="font-bold text-white text-base">Benjamin P. Bucad</h4>
+<p class="text-xs text-white font-medium">BS Information Technology (ERP) • Systems & Algorithms</p>
+<p class="text-xs text-mac-silver mt-1 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3 text-mac-silver"></i> Baguio, PH</p>
+</div>
+</div>
+<p class="text-xs text-white leading-relaxed font-normal mt-2">
+Available for software development, enterprise systems analysis, and technical research collaborations.
+</p>
+<div class="space-y-2.5 pt-1">
+<a href="mailto:benjamin.bucad@example.com" class="w-full flex items-center justify-between px-4 py-3 rounded-xl bg-white text-black font-bold text-xs hover:bg-mac-silver transition-colors focus:ring-2 focus:ring-white">
+<span class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4"></i> Send Direct Email</span>
+<i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+</a>
+<button onclick="closeContactSheet(); document.getElementById('achievements').scrollIntoView({behavior:'smooth'});" class="w-full flex items-center justify-between px-4 py-3 rounded-xl glass-tag text-white font-semibold text-xs transition-colors focus:ring-2 focus:ring-white">
+<span class="flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-white"></i> View Competitive Highlights</span>
+<i data-lucide="chevron-right" class="w-4 h-4 text-white"></i>
+</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+const minLoadingTime=new Promise(resolve=>setTimeout(resolve,1200));const windowLoaded=new Promise(resolve=>{if(document.readyState==='complete'){resolve();}else{window.addEventListener('load',resolve);}});Promise.all([minLoadingTime,windowLoaded]).then(()=>{const loader=document.getElementById('global-loader');loader.classList.add('opacity-0');setTimeout(()=>{loader.classList.add('hidden');document.body.classList.remove('locked-scroll');const portfolioWin=document.getElementById('portfolio-window-wrapper');const portraitWin=document.getElementById('portrait-window-wrapper');if(portfolioWin){portfolioWin.classList.remove('mac-dock-popup-init');portfolioWin.classList.add('mac-dock-popup-active');}setTimeout(()=>{if(portraitWin){portraitWin.classList.remove('mac-dock-popup-init');portraitWin.classList.add('mac-dock-popup-active');}},160);setTimeout(()=>{runMasterHeroSequence();},520);},700);});lucide.createIcons();document.querySelectorAll('.liquid-glass, .liquid-glass-elevated').forEach(card=>{card.addEventListener('pointermove',(e)=>{const rect=card.getBoundingClientRect();const x=((e.clientX-rect.left)/rect.width)*100;const y=((e.clientY-rect.top)/rect.height)*100;card.style.setProperty('--mouse-x',`${x}%`);card.style.setProperty('--mouse-y',`${y}%`);});});const billboardRig=document.getElementById('billboard-rig');if(billboardRig){let targetTiltY=-14;let targetTiltX=2;let currentTiltY=-14;let currentTiltX=2;let targetSpotX=68;let targetSpotY=28;let currentSpotX=68;let currentSpotY=28;const ease=0.04;window.addEventListener('pointermove',(e)=>{if(window.innerWidth<1024)return;const rect=billboardRig.getBoundingClientRect();const centerX=rect.left+rect.width/2;const centerY=rect.top+rect.height/2;const panX=(e.clientX-centerX)/(window.innerWidth/2);const panY=(e.clientY-centerY)/(window.innerHeight/2);const spotX=(e.clientX-rect.left)/rect.width;const spotY=(e.clientY-rect.top)/rect.height;targetSpotX=spotX*100;targetSpotY=spotY*100;targetTiltY=-14+(panX*7);targetTiltX=2-(panY*5);});document.addEventListener('mouseleave',()=>{targetSpotX=68;targetSpotY=28;targetTiltY=-14;targetTiltX=2;});function animateBillboard(){currentTiltY+=(targetTiltY-currentTiltY)*ease;currentTiltX+=(targetTiltX-currentTiltX)*ease;currentSpotX+=(targetSpotX-currentSpotX)*ease;currentSpotY+=(targetSpotY-currentSpotY)*ease;billboardRig.style.setProperty('--spot-x',`${currentSpotX.toFixed(2)}%`);billboardRig.style.setProperty('--spot-y',`${currentSpotY.toFixed(2)}%`);if(window.innerWidth>=1024){billboardRig.style.setProperty('--tilt-y',`${currentTiltY.toFixed(3)}deg`);billboardRig.style.setProperty('--tilt-x',`${currentTiltX.toFixed(3)}deg`);}else{billboardRig.style.setProperty('--tilt-y',`0deg`);billboardRig.style.setProperty('--tilt-x',`0deg`);}requestAnimationFrame(animateBillboard);}animateBillboard();}function updateMacClock(){const clockEl=document.getElementById('mac-menubar-clock');if(!clockEl)return;const now=new Date();clockEl.textContent=now.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});}updateMacClock();setInterval(updateMacClock,15000);function filterEducation(category,btn){document.querySelectorAll('.edu-tab').forEach(tab=>{tab.classList.remove('bg-white','text-black','shadow-md','font-bold');tab.classList.add('text-white','font-medium');});btn.classList.add('bg-white','text-black','shadow-md','font-bold');btn.classList.remove('text-white','font-medium');document.querySelectorAll('.edu-item').forEach(item=>{if(category==='all'||item.dataset.eduCategory===category){item.classList.remove('hidden');}else{item.classList.add('hidden');}});}function openContactSheet(){const sheet=document.getElementById('contactSheet');const card=document.getElementById('contactSheetCard');sheet.classList.remove('hidden');sheet.classList.add('flex');setTimeout(()=>{sheet.classList.remove('opacity-0');card.classList.remove('scale-95');},15);}function closeContactSheet(){const sheet=document.getElementById('contactSheet');const card=document.getElementById('contactSheetCard');sheet.classList.add('opacity-0');card.classList.add('scale-95');setTimeout(()=>{sheet.classList.remove('flex');sheet.classList.add('hidden');},250);}document.getElementById('contactSheet').addEventListener('click',function(e){if(e.target===this)closeContactSheet();});const sleep=(ms)=>new Promise(resolve=>setTimeout(resolve,ms));async function typeText(element,text,speed=45,keepCursor=false){if(!element)return;element.textContent='';element.classList.add('cursor');for(let i=0;i<text.length;i++){element.textContent+=text.charAt(i);await sleep(speed);}if(!keepCursor){element.classList.remove('cursor');}}async function hackTypeText(element,text,keepCursor=false){if(!element)return;const chars='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*<>';element.textContent='';element.classList.add('cursor');let currentString='';for(let i=0;i<text.length;i++){if(text[i]===' '){currentString+=' ';element.textContent=currentString;await sleep(20);continue;}for(let j=0;j<3;j++){const randomChar=chars[Math.floor(Math.random()*chars.length)];element.textContent=currentString+randomChar;await sleep(20);}currentString+=text[i];element.textContent=currentString;await sleep(15);}if(!keepCursor){element.classList.remove('cursor');}}async function runMasterHeroSequence(){const l1=document.getElementById('hero-line-1');const l2=document.getElementById('hero-line-2');const l3=document.getElementById('hero-line-3');const l4=document.getElementById('hero-line-4');const l5=document.getElementById('hero-line-5');const ctaContainer=document.getElementById('hero-cta-container');await sleep(100);await typeText(l1,'BENJAMIN P.',20);await sleep(40);await typeText(l2,'BUCAD /',20);await sleep(50);await typeText(l3,'BS INFORMATION',18);await sleep(30);await typeText(l4,'TECHNOLOGY (ERP)',18,false);const courseHeading=document.getElementById('course-heading');if(courseHeading){courseHeading.classList.add('idle-course-anim');}await sleep(40);await hackTypeText(l5,'ALGORITHMS & SYSTEMS EXPERT',true);await sleep(100);if(ctaContainer){ctaContainer.classList.remove('opacity-0','translate-y-3','pointer-events-none');ctaContainer.classList.add('opacity-100','translate-y-0');}}let terminalRunId=0;let hasAutoPlayedAbout=false;async function runSkillsTerminalSequence(isManualReplay=false){const currentRun=++terminalRunId;const terminalWindow=document.getElementById('terminal-popup-window');const terminalBody=document.getElementById('terminal-body-container');const terminalOutput=document.getElementById('terminal-output');const terminalActive=document.getElementById('terminal-active-line');const uiCard=document.getElementById('skills-ui-card');uiCard.classList.add('hidden');terminalWindow.classList.remove('hidden');terminalBody.classList.remove('hidden');terminalOutput.innerHTML='';terminalActive.textContent='';if(isManualReplay){await sleep(200);}const terminalScript=[{prompt:'bpb@macbook-pro ~ % ',cmd:'zsh load-skills.sh --all',speed:40},{log:'→ Programming: Python, Java, C++, Computing Fundamentals',color:'text-white font-semibold'},{log:'→ Theory & Logic: Algorithmology, DSA, Math & Research',color:'text-white font-semibold'},{log:'→ Systems: Systems Analysis, IT Security, SQL, Git',color:'text-white font-semibold'},{log:'✓ [OK] Launching interactive UI...',color:'text-mac-green font-bold'}];for(const step of terminalScript){if(currentRun!==terminalRunId)return;if(step.cmd){terminalActive.innerHTML=`<span class="text-mac-amber font-bold">${step.prompt}</span>`;const typedSpan=document.createElement('span');typedSpan.className='text-white font-semibold';terminalActive.appendChild(typedSpan);for(let i=0;i<step.cmd.length;i++){if(currentRun!==terminalRunId)return;typedSpan.textContent+=step.cmd.charAt(i);await sleep(step.speed);}const completedLine=document.createElement('div');completedLine.innerHTML=terminalActive.innerHTML;terminalOutput.appendChild(completedLine);terminalActive.innerHTML='';await sleep(320);}else if(step.log){const logLine=document.createElement('div');logLine.className=step.color||'text-white';logLine.textContent=step.log;terminalOutput.appendChild(logLine);await sleep(420);}}await sleep(600);if(currentRun!==terminalRunId)return;await revealSkillsUICard(currentRun);}async function revealSkillsUICard(runToken){const terminalWindow=document.getElementById('terminal-popup-window');const uiCard=document.getElementById('skills-ui-card');const mainTitle=document.getElementById('skills-main-title');const groups=uiCard.querySelectorAll('.skill-group');terminalWindow.classList.add('hidden');uiCard.classList.remove('hidden');groups.forEach(g=>{g.classList.add('opacity-0','translate-y-2');});await typeText(mainTitle,'Technical Skills & Expertise',30,false);if(runToken!==terminalRunId)return;for(const group of groups){if(runToken!==terminalRunId)return;group.classList.remove('opacity-0','translate-y-2');await sleep(200);}}function skipTerminalToUI(){++terminalRunId;const terminalWindow=document.getElementById('terminal-popup-window');const uiCard=document.getElementById('skills-ui-card');const uiBody=document.getElementById('skills-ui-body');terminalWindow.classList.add('hidden');uiCard.classList.remove('hidden');uiBody.classList.remove('hidden');document.getElementById('skills-main-title').textContent='Technical Skills & Expertise';document.getElementById('skills-main-title').classList.remove('cursor');uiCard.querySelectorAll('.skill-group').forEach(g=>{g.classList.remove('opacity-0','translate-y-2');});}function toggleMinimizeTerminal(){const terminalBody=document.getElementById('terminal-body-container');terminalBody.classList.toggle('hidden');}function toggleMinimizeSkillsUI(){const uiBody=document.getElementById('skills-ui-body');uiBody.classList.toggle('hidden');}function expandSkillsUI(){const uiBody=document.getElementById('skills-ui-body');uiBody.classList.remove('hidden');}const portraitWindow=document.getElementById('portrait-mac-window');const portraitBody=document.getElementById('portrait-window-body');const portraitMinBar=document.getElementById('portrait-minimized-bar');const portraitRestoreDock=document.getElementById('portrait-restore-dock');let isPortraitMinimized=false;function closePortraitWindow(){portraitWindow.classList.add('opacity-0','scale-90','pointer-events-none');setTimeout(()=>{portraitWindow.classList.add('hidden');portraitRestoreDock.classList.remove('hidden');},300);}function restorePortraitWindow(){portraitRestoreDock.classList.add('hidden');portraitWindow.classList.remove('hidden');requestAnimationFrame(()=>{portraitWindow.classList.remove('opacity-0','scale-90','pointer-events-none');});if(isPortraitMinimized){minimizePortraitWindow();}}function minimizePortraitWindow(){isPortraitMinimized=!isPortraitMinimized;if(isPortraitMinimized){portraitBody.classList.remove('max-h-[540px]','opacity-100');portraitBody.classList.add('max-h-0','opacity-0');portraitMinBar.classList.remove('hidden');portraitMinBar.classList.add('flex');}else{portraitBody.classList.remove('max-h-0','opacity-0');portraitBody.classList.add('max-h-[540px]','opacity-100');portraitMinBar.classList.add('hidden');portraitMinBar.classList.remove('flex');}}function maximizePortraitWindow(){if(isPortraitMinimized){minimizePortraitWindow();}const imgSrc=document.getElementById('heroProfileImage').src;openModal(imgSrc);}const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');const typeTargets=entry.target.querySelectorAll('.scroll-type');typeTargets.forEach(el=>{if(!el.dataset.typed){el.dataset.typed='true';typeText(el,el.dataset.text,45,false);}});}});},{threshold:0.18});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));const sectionObserver=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){const id=entry.target.getAttribute('id');if(id==='about'&&!hasAutoPlayedAbout){hasAutoPlayedAbout=true;const bio=document.getElementById('hero-bio');if(bio)bio.classList.remove('opacity-0','translate-y-2');runSkillsTerminalSequence(false);}document.querySelectorAll('nav .dock-item[data-section]').forEach(item=>{const dot=item.querySelector('.dock-dot');if(!dot)return;if(item.dataset.section===id){dot.classList.remove('opacity-0');dot.classList.add('opacity-100');}else{dot.classList.remove('opacity-100');dot.classList.add('opacity-0');}});}});},{threshold:0.35});['home','about','family','education','achievements'].forEach(id=>{const sec=document.getElementById(id);if(sec)sectionObserver.observe(sec);});function openModal(imgSrc){const modal=document.getElementById('certModal');const modalImg=document.getElementById('modalImage');modalImg.src=imgSrc;modal.classList.remove('hidden');modal.classList.add('flex');setTimeout(()=>{modal.classList.remove('opacity-0');},10);}function closeModal(){const modal=document.getElementById('certModal');modal.classList.add('opacity-0');setTimeout(()=>{modal.classList.remove('flex');modal.classList.add('hidden');document.getElementById('modalImage').src="";},300);}document.getElementById('certModal').addEventListener('click',function(e){if(e.target===this)closeModal();});document.addEventListener('keydown',function(e){if(e.key==='Escape'){if(!document.getElementById('certModal').classList.contains('hidden'))closeModal();if(!document.getElementById('contactSheet').classList.contains('hidden'))closeContactSheet();}});
+</script>
+</body>
+</html>
