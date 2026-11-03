@@ -52,7 +52,7 @@ h1,h2,h3,h4,p{text-shadow:0 2px 12px rgba(0,0,0,0.45);}
 @keyframes blink{50%{opacity:0;}}
 .mac-window-transition{transition:all 0.42s cubic-bezier(0.22, 1, 0.36, 1);}
 .traffic-group:hover .traffic-icon{opacity:1;}
-.traffic-icon{opacity:0;transition:opacity 0.15s ease;}
+.traffic-icon{opacity:0;transition:opacity 0.15s ease;pointer-events:none;}
 @media (prefers-reduced-motion: reduce){*,::before,::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important;}}
 </style>
 </head>
@@ -279,15 +279,15 @@ Reopen <span class="font-mono text-white">portrait.png</span>
 <div id="portrait-mac-window" class="portrait-overlap-window mac-window-transition relative z-30 w-full rounded-mac-lg overflow-hidden liquid-glass-elevated">
 <div class="mac-titlebar px-4 py-3 flex items-center justify-between select-none relative z-20">
 <div class="flex items-center gap-2 traffic-group">
-<button type="button" onclick="closePortraitWindow()" title="Close Window" class="w-3.5 h-3.5 rounded-full bg-[#FF5F56] border border-[#E0443E] flex items-center justify-center text-[9px] font-black text-black hover:brightness-110 active:scale-90 transition-all cursor-pointer">
+<span class="w-3.5 h-3.5 rounded-full bg-[#FF5F56] border border-[#E0443E] flex items-center justify-center text-[9px] font-black text-black">
 <span class="traffic-icon">&times;</span>
-</button>
-<button type="button" onclick="minimizePortraitWindow()" title="Minimize Window" class="w-3.5 h-3.5 rounded-full bg-[#FFBD2E] border border-[#DEA123] flex items-center justify-center text-[9px] font-black text-black hover:brightness-110 active:scale-90 transition-all cursor-pointer">
+</span>
+<span class="w-3.5 h-3.5 rounded-full bg-[#FFBD2E] border border-[#DEA123] flex items-center justify-center text-[9px] font-black text-black">
 <span class="traffic-icon">&minus;</span>
-</button>
-<button type="button" onclick="maximizePortraitWindow()" title="Full Screen Preview" class="w-3.5 h-3.5 rounded-full bg-[#27C93F] border border-[#1AAB29] flex items-center justify-center text-[9px] font-black text-black hover:brightness-110 active:scale-90 transition-all cursor-pointer">
+</span>
+<span class="w-3.5 h-3.5 rounded-full bg-[#27C93F] border border-[#1AAB29] flex items-center justify-center text-[9px] font-black text-black">
 <span class="traffic-icon">+</span>
-</button>
+</span>
 </div>
 <div onclick="minimizePortraitWindow()" class="flex items-center gap-1.5 cursor-pointer" title="Click to toggle minimize">
 <i data-lucide="image" class="w-3.5 h-3.5 text-white"></i>
@@ -337,15 +337,15 @@ Based in Baguio, PH, I build practical software solutions, analyze technical pro
 <div id="terminal-popup-window" class="mac-window-transition rounded-mac overflow-hidden liquid-glass-elevated">
 <div class="mac-titlebar px-3.5 py-2.5 flex items-center justify-between select-none relative z-10">
 <div class="flex items-center gap-2 traffic-group">
-<button onclick="skipTerminalToUI()" title="Close Terminal & View Skills Card" class="w-3 h-3 rounded-full bg-[#FF5F56] border border-[#E0443E] flex items-center justify-center text-[8px] font-black text-black hover:brightness-110 transition-all cursor-pointer">
+<span class="w-3 h-3 rounded-full bg-[#FF5F56] border border-[#E0443E] flex items-center justify-center text-[8px] font-black text-black">
 <span class="traffic-icon">&times;</span>
-</button>
-<button onclick="toggleMinimizeTerminal()" title="Minimize / Collapse Terminal" class="w-3 h-3 rounded-full bg-[#FFBD2E] border border-[#DEA123] flex items-center justify-center text-[8px] font-black text-black hover:brightness-110 transition-all cursor-pointer">
+</span>
+<span class="w-3 h-3 rounded-full bg-[#FFBD2E] border border-[#DEA123] flex items-center justify-center text-[8px] font-black text-black">
 <span class="traffic-icon">&minus;</span>
-</button>
-<button onclick="skipTerminalToUI()" title="Switch to Full UI View" class="w-3 h-3 rounded-full bg-[#27C93F] border border-[#1AAB29] flex items-center justify-center text-[8px] font-black text-black hover:brightness-110 transition-all cursor-pointer">
+</span>
+<span class="w-3 h-3 rounded-full bg-[#27C93F] border border-[#1AAB29] flex items-center justify-center text-[8px] font-black text-black">
 <span class="traffic-icon">+</span>
-</button>
+</span>
 <span class="ml-2 font-mono text-[11.5px] text-mac-silver tracking-tight">bpb@macbook-pro: ~/technical-skills — zsh</span>
 </div>
 <button onclick="skipTerminalToUI()" class="text-[10.5px] font-mono text-white hover:text-mac-silver glass-tag px-2.5 py-0.5 rounded-md transition-colors">
@@ -362,15 +362,15 @@ Skip &raquo;
 <div id="skills-ui-card" class="hidden mac-window-transition liquid-glass rounded-mac w-full overflow-hidden">
 <div class="mac-titlebar px-4 py-2.5 flex items-center justify-between relative z-10">
 <div class="flex items-center gap-2 traffic-group">
-<button onclick="runSkillsTerminalSequence(true)" title="Close UI & Reopen Terminal" class="w-3 h-3 rounded-full bg-[#FF5F56] border border-[#E0443E] flex items-center justify-center text-[8px] font-black text-black cursor-pointer">
+<span class="w-3 h-3 rounded-full bg-[#FF5F56] border border-[#E0443E] flex items-center justify-center text-[8px] font-black text-black">
 <span class="traffic-icon">&times;</span>
-</button>
-<button onclick="toggleMinimizeSkillsUI()" title="Minimize Skills Card" class="w-3 h-3 rounded-full bg-[#FFBD2E] border border-[#DEA123] flex items-center justify-center text-[8px] font-black text-black cursor-pointer">
+</span>
+<span class="w-3 h-3 rounded-full bg-[#FFBD2E] border border-[#DEA123] flex items-center justify-center text-[8px] font-black text-black">
 <span class="traffic-icon">&minus;</span>
-</button>
-<button onclick="expandSkillsUI()" title="Expand / Restore Skills Card" class="w-3 h-3 rounded-full bg-[#27C93F] border border-[#1AAB29] flex items-center justify-center text-[8px] font-black text-black cursor-pointer">
+</span>
+<span class="w-3 h-3 rounded-full bg-[#27C93F] border border-[#1AAB29] flex items-center justify-center text-[8px] font-black text-black">
 <span class="traffic-icon">+</span>
-</button>
+</span>
 <h3 id="skills-main-title" class="ml-1.5 text-white font-semibold text-xs tracking-tight">
 Technical Skills & Expertise
 </h3>
@@ -650,15 +650,15 @@ Achieved podium placement in a highly competitive bracket. Showcased strong anal
 <div class="relative max-w-4xl w-full flex flex-col items-center liquid-glass-elevated rounded-2xl overflow-hidden">
 <div class="w-full mac-titlebar px-4 py-3 flex items-center justify-between relative z-10">
 <div class="flex items-center gap-2 traffic-group">
-<button onclick="closeModal()" title="Close Fullscreen" class="w-3.5 h-3.5 rounded-full bg-[#FF5F56] border border-[#E0443E] flex items-center justify-center text-[9px] font-black text-black cursor-pointer">
+<span class="w-3.5 h-3.5 rounded-full bg-[#FF5F56] border border-[#E0443E] flex items-center justify-center text-[9px] font-black text-black">
 <span class="traffic-icon">&times;</span>
-</button>
-<button onclick="closeModal()" title="Exit Fullscreen" class="w-3.5 h-3.5 rounded-full bg-[#FFBD2E] border border-[#DEA123] flex items-center justify-center text-[9px] font-black text-black cursor-pointer">
+</span>
+<span class="w-3.5 h-3.5 rounded-full bg-[#FFBD2E] border border-[#DEA123] flex items-center justify-center text-[9px] font-black text-black">
 <span class="traffic-icon">&minus;</span>
-</button>
-<button onclick="closeModal()" title="Restore Size" class="w-3.5 h-3.5 rounded-full bg-[#27C93F] border border-[#1AAB29] flex items-center justify-center text-[9px] font-black text-black cursor-pointer">
+</span>
+<span class="w-3.5 h-3.5 rounded-full bg-[#27C93F] border border-[#1AAB29] flex items-center justify-center text-[9px] font-black text-black">
 <span class="traffic-icon">+</span>
-</button>
+</span>
 <span class="ml-2 font-mono text-xs text-white font-semibold">Quick Look — Preview</span>
 </div>
 <button onclick="closeModal()" class="text-xs text-white hover:text-mac-silver font-mono font-bold">ESC</button>
@@ -670,9 +670,9 @@ Achieved podium placement in a highly competitive bracket. Showcased strong anal
 <div class="liquid-glass-elevated rounded-mac-lg max-w-md w-full overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300" id="contactSheetCard">
 <div class="mac-titlebar px-4 py-3 flex items-center justify-between relative z-10">
 <div class="flex items-center gap-2 traffic-group">
-<button onclick="closeContactSheet()" class="w-3.5 h-3.5 rounded-full bg-[#FF5F56] border border-[#E0443E] flex items-center justify-center text-[9px] font-black text-black">
+<span class="w-3.5 h-3.5 rounded-full bg-[#FF5F56] border border-[#E0443E] flex items-center justify-center text-[9px] font-black text-black">
 <span class="traffic-icon">&times;</span>
-</button>
+</span>
 <span class="ml-2 font-mono text-xs text-white font-semibold">Contact — Benjamin P. Bucad</span>
 </div>
 <button onclick="closeContactSheet()" class="text-xs text-white font-bold hover:text-mac-silver">Done</button>
