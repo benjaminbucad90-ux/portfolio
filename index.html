@@ -47,8 +47,9 @@ h1,h2,h3,h4,p{text-shadow:0 2px 12px rgba(0,0,0,0.45);}
 .glass-tag:hover{background:linear-gradient(135deg,rgba(255,255,255,0.30) 0%,rgba(255,255,255,0.12) 100%);border-color:rgba(255,255,255,0.52);transform:translateY(-1px);}
 .reveal{opacity:0;transform:translateY(22px) scale(0.99);transition:opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);}
 .reveal.visible{opacity:1;transform:translateY(0) scale(1);}
+.page-section{animation:pageFadeIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;}
+@keyframes pageFadeIn{from{opacity:0;transform:translateY(14px) scale(0.99);}to{opacity:1;transform:translateY(0) scale(1);}}
 .cursor::after{content:'|';animation:blink 0.9s step-start infinite;color:#FFB340;margin-left:2px;font-weight:300;}
-.terminal-cursor::after{content:'▋';animation:blink 0.9s step-start infinite;color:#F2F2F7;margin-left:4px;font-size:0.85em;}
 @keyframes blink{50%{opacity:0;}}
 .mac-window-transition{transition:all 0.42s cubic-bezier(0.22, 1, 0.36, 1);}
 .traffic-group:hover .traffic-icon{opacity:1;}
@@ -70,18 +71,19 @@ h1,h2,h3,h4,p{text-shadow:0 2px 12px rgba(0,0,0,0.45);}
 </svg>
 <img id="bg-wallpaper-img" src="27-Golden-Gate-Dark.webp" alt="macOS Dark Wave Background" class="absolute inset-0 w-full h-full object-cover transform scale-[1.01]">
 </div>
+
 <header class="fixed top-0 inset-x-0 h-8 z-[45] mac-menubar px-4 sm:px-6 flex items-center justify-between text-[12px] font-medium select-none">
 <div class="flex items-center gap-5">
-<a href="#home" class="flex items-center gap-1.5 font-semibold text-white tracking-tight hover:text-mac-silver transition-colors focus:outline-none focus:ring-1 focus:ring-white rounded">
+<button type="button" onclick="switchPage('home')" class="flex items-center gap-1.5 font-semibold text-white tracking-tight hover:text-mac-silver transition-colors focus:outline-none focus:ring-1 focus:ring-white rounded">
 <i data-lucide="command" class="w-3.5 h-3.5 text-mac-silver"></i>
 <span>Benjamin P. Bucad</span>
-</a>
+</button>
 <div class="hidden sm:flex items-center gap-4 text-mac-silver text-[11.5px]">
-<a href="#home" class="hover:text-white transition-colors">Homepage</a>
-<a href="#about" class="hover:text-white transition-colors">About Myself</a>
-<a href="#family" class="hover:text-white transition-colors">Foundation</a>
-<a href="#education" class="hover:text-white transition-colors">Education</a>
-<a href="#achievements" class="hover:text-white transition-colors">Achievements</a>
+<button type="button" onclick="switchPage('home')" data-menu-link="home" class="menubar-link text-white font-semibold hover:text-white transition-colors">Homepage</button>
+<button type="button" onclick="switchPage('about')" data-menu-link="about" class="menubar-link hover:text-white transition-colors">Personal Information</button>
+<button type="button" onclick="switchPage('family')" data-menu-link="family" class="menubar-link hover:text-white transition-colors">Foundation</button>
+<button type="button" onclick="switchPage('education')" data-menu-link="education" class="menubar-link hover:text-white transition-colors">Education</button>
+<button type="button" onclick="switchPage('achievements')" data-menu-link="achievements" class="menubar-link hover:text-white transition-colors">Achievements</button>
 </div>
 </div>
 <div class="flex items-center gap-3.5 text-mac-silver text-[11.5px]">
@@ -93,26 +95,45 @@ Baguio, PH
 <span id="mac-menubar-clock" class="font-mono text-[11px] text-white"></span>
 </div>
 </header>
+
 <nav aria-label="macOS Dock Navigation" class="fixed bottom-4 sm:bottom-5 left-1/2 -translate-x-1/2 z-[60] max-w-[96vw]">
 <div class="mac-dock rounded-[24px] px-3 sm:px-4 py-2 flex items-center gap-2 sm:gap-2.5">
-<a href="#home" data-section="home" class="dock-item group flex flex-col items-center cursor-pointer focus:outline-none">
-<div class="dock-tooltip liquid-glass-elevated px-2.5 py-1 rounded-lg text-[11px] font-medium text-white shadow-lg">Page 1 Homepage</div>
-<div class="mac-app-icon w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center">
-<svg class="w-full h-full rounded-[14px]" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<button type="button" onclick="switchPage('home')" data-section="home" class="dock-item group flex flex-col items-center cursor-pointer focus:outline-none">
+<div class="dock-tooltip liquid-glass-elevated px-2.5 py-1 rounded-lg text-[11px] font-medium text-white shadow-lg">Page 1: Homepage</div>
+<div class="mac-app-icon w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center overflow-hidden bg-white">
+<img src="homepagelogo.jpg" alt="Homepage" class="w-full h-full object-cover transform scale-[1.22]" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+<svg style="display:none;" class="w-full h-full transform scale-[1.22]" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
 <defs>
-<linearGradient id="grad-home" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
-<stop stop-color="#0A84FF"/>
-<stop offset="1" stop-color="#30D158"/>
+<linearGradient id="mac-home-bg" x1="32" y1="0" x2="32" y2="64" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FFFFFF"/>
+<stop offset="1" stop-color="#ECECEC"/>
+</linearGradient>
+<linearGradient id="mac-home-outer" x1="32" y1="9" x2="32" y2="54" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FF7A33"/>
+<stop offset="1" stop-color="#F2561D"/>
+</linearGradient>
+<linearGradient id="mac-home-mid" x1="32" y1="18" x2="32" y2="50" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FFC247"/>
+<stop offset="1" stop-color="#FF9B19"/>
+</linearGradient>
+<linearGradient id="mac-home-inner" x1="32" y1="25" x2="32" y2="47" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FFE875"/>
+<stop offset="1" stop-color="#FFCC2E"/>
 </linearGradient>
 </defs>
-<rect width="64" height="64" rx="14" fill="url(#grad-home)"/>
-<text x="32" y="39" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="900" fill="white" text-anchor="middle" letter-spacing="-0.5">BPB</text>
+<rect width="64" height="64" fill="url(#mac-home-bg)"/>
+<path d="M43 14.5C43 13.6716 43.6716 13 44.5 13H48.5C49.3284 13 50 13.6716 50 14.5V25H43V14.5Z" fill="url(#mac-home-outer)"/>
+<path d="M30.4 10.2C31.337 9.43337 32.663 9.43337 33.6 10.2L55.2 27.8C56.25 28.66 55.64 30.35 54.28 30.35H51V50C51 52.2091 49.2091 54 47 54H17C14.7909 54 13 52.2091 13 50V30.35H9.72C8.36 30.35 7.75 28.66 8.8 27.8L30.4 10.2Z" fill="url(#mac-home-outer)"/>
+<path d="M30.8 18.4C31.5 17.82 32.5 17.82 33.2 18.4L45.4 28.5C45.78 28.82 46 29.29 46 29.78V47.5C46 48.8807 44.8807 50 43.5 50H20.5C19.1193 50 18 48.8807 18 47.5V29.78C18 29.29 18.22 28.82 18.6 28.5L30.8 18.4Z" fill="url(#mac-home-mid)"/>
+<path d="M31.05 25.3C31.6 24.84 32.4 24.84 32.95 25.3L40.3 31.4C40.74 31.77 41 32.31 41 32.89V44.8C41 45.9046 40.1046 46.8 39 46.8H25C23.8954 46.8 23 45.9046 23 44.8V32.89C23 32.31 23.26 31.77 23.7 31.4L31.05 25.3Z" fill="url(#mac-home-inner)"/>
+<path d="M31.3 31.2C31.71 30.86 32.29 30.86 32.7 31.2L36.5 34.35C36.82 34.61 37 35 37 35.42V42.5C37 43.3284 36.3284 44 35.5 44H28.5C27.6716 44 27 43.3284 27 42.5V35.42C27 35 27.18 34.61 27.5 34.35L31.3 31.2Z" fill="#FFFDF5"/>
 </svg>
 </div>
 <span class="dock-dot w-1 h-1 rounded-full bg-white mt-1 transition-all duration-300 opacity-100"></span>
-</a>
-<a href="#about" data-section="about" class="dock-item group flex flex-col items-center cursor-pointer focus:outline-none">
-<div class="dock-tooltip liquid-glass-elevated px-2.5 py-1 rounded-lg text-[11px] font-medium text-white shadow-lg">Page 2: About Myself</div>
+</button>
+
+<button type="button" onclick="switchPage('about')" data-section="about" class="dock-item group flex flex-col items-center cursor-pointer focus:outline-none">
+<div class="dock-tooltip liquid-glass-elevated px-2.5 py-1 rounded-lg text-[11px] font-medium text-white shadow-lg">Page 2: Personal Information</div>
 <div class="mac-app-icon w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center">
 <svg class="w-full h-full rounded-[14px]" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
 <defs>
@@ -127,8 +148,9 @@ Baguio, PH
 </svg>
 </div>
 <span class="dock-dot w-1 h-1 rounded-full bg-white mt-1 transition-all duration-300 opacity-0"></span>
-</a>
-<a href="#family" data-section="family" class="dock-item group flex flex-col items-center cursor-pointer focus:outline-none">
+</button>
+
+<button type="button" onclick="switchPage('family')" data-section="family" class="dock-item group flex flex-col items-center cursor-pointer focus:outline-none">
 <div class="dock-tooltip liquid-glass-elevated px-2.5 py-1 rounded-lg text-[11px] font-medium text-white shadow-lg">Page 3: Foundation</div>
 <div class="mac-app-icon w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center">
 <svg class="w-full h-full rounded-[14px]" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -141,8 +163,9 @@ Baguio, PH
 </svg>
 </div>
 <span class="dock-dot w-1 h-1 rounded-full bg-white mt-1 transition-all duration-300 opacity-0"></span>
-</a>
-<a href="#education" data-section="education" class="dock-item group flex flex-col items-center cursor-pointer focus:outline-none">
+</button>
+
+<button type="button" onclick="switchPage('education')" data-section="education" class="dock-item group flex flex-col items-center cursor-pointer focus:outline-none">
 <div class="dock-tooltip liquid-glass-elevated px-2.5 py-1 rounded-lg text-[11px] font-medium text-white shadow-lg">Page 4: Education Journey</div>
 <div class="mac-app-icon w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center">
 <svg class="w-full h-full rounded-[14px]" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -162,8 +185,9 @@ Baguio, PH
 </svg>
 </div>
 <span class="dock-dot w-1 h-1 rounded-full bg-white mt-1 transition-all duration-300 opacity-0"></span>
-</a>
-<a href="#achievements" data-section="achievements" class="dock-item group flex flex-col items-center cursor-pointer focus:outline-none">
+</button>
+
+<button type="button" onclick="switchPage('achievements')" data-section="achievements" class="dock-item group flex flex-col items-center cursor-pointer focus:outline-none">
 <div class="dock-tooltip liquid-glass-elevated px-2.5 py-1 rounded-lg text-[11px] font-medium text-white shadow-lg">Page 5: Achievements</div>
 <div class="mac-app-icon w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center">
 <svg class="w-full h-full rounded-[14px]" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -174,22 +198,10 @@ Baguio, PH
 </svg>
 </div>
 <span class="dock-dot w-1 h-1 rounded-full bg-white mt-1 transition-all duration-300 opacity-0"></span>
-</a>
-<div class="w-[1px] h-8 bg-white/25 mx-1 self-center"></div>
-<button type="button" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'}); runSkillsTerminalSequence(true);" class="dock-item group flex flex-col items-center cursor-pointer focus:outline-none">
-<div class="dock-tooltip liquid-glass-elevated px-2.5 py-1 rounded-lg text-[11px] font-medium text-white shadow-lg">Terminal</div>
-<div class="mac-app-icon w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center">
-<svg class="w-full h-full rounded-[14px]" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="64" height="64" rx="14" fill="#1E1E1E"/>
-<path d="M0 14C0 6.268 6.268 0 14 0H50C57.732 0 64 6.268 64 14V16H0V14Z" fill="#3A3A3C"/>
-<circle cx="10" cy="8" r="2.5" fill="#FF5F56"/>
-<circle cx="18" cy="8" r="2.5" fill="#FFBD2E"/>
-<circle cx="26" cy="8" r="2.5" fill="#27C93F"/>
-<text x="8" y="38" font-family="ui-monospace, SFMono-Regular, monospace" font-size="18" font-weight="bold" fill="#30D158">&gt;_</text>
-</svg>
-</div>
-<span class="w-1 h-1 rounded-full bg-white/60 mt-1"></span>
 </button>
+
+<div class="w-[1px] h-8 bg-white/25 mx-1 self-center"></div>
+
 <button type="button" onclick="openContactSheet()" class="dock-item group flex flex-col items-center cursor-pointer focus:outline-none">
 <div class="dock-tooltip liquid-glass-elevated px-2.5 py-1 rounded-lg text-[11px] font-medium text-white shadow-lg">Contact Me</div>
 <div class="mac-app-icon w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center">
@@ -209,8 +221,10 @@ Baguio, PH
 </button>
 </div>
 </nav>
-<main class="relative z-10 container mx-auto px-4 md:px-8 lg:px-16 pt-12 pb-20 space-y-24">
-<section id="home" class="relative min-h-[calc(100dvh-4rem)] py-10 lg:py-14 flex items-center justify-center w-full scroll-mt-12 overflow-visible">
+
+<main class="relative z-10 container mx-auto px-4 md:px-8 lg:px-16 pt-12 pb-16">
+<!-- PAGE 1: HOMEPAGE -->
+<section id="home" class="page-section relative min-h-[calc(100dvh-7rem)] py-10 lg:py-14 flex items-center justify-center w-full overflow-visible">
 <div class="billboard-stage relative w-full max-w-[82rem] mx-auto z-10 px-1 sm:px-4">
 <div id="billboard-rig" class="billboard-rig relative flex flex-col lg:flex-row items-center lg:items-start justify-center w-full">
 <div id="portfolio-window-wrapper" class="mac-dock-popup-init w-full lg:w-[68%] relative z-10">
@@ -229,8 +243,8 @@ Baguio, PH
 </span>
 </div>
 <div class="flex items-center gap-1.5">
-<i data-lucide="folder-kanban" class="w-3.5 h-3.5 text-mac-amber"></i>
-<span class="font-mono text-[12px] text-white font-semibold tracking-tight">Portfolio</span>
+<i data-lucide="home" class="w-3.5 h-3.5 text-mac-amber"></i>
+<span class="font-mono text-[12px] text-white font-semibold tracking-tight">Homepage — Portfolio</span>
 </div>
 <div class="w-12"></div>
 </div>
@@ -253,14 +267,14 @@ Baguio, PH
 </h3>
 </div>
 <div id="hero-cta-container" class="flex flex-wrap items-center gap-3 w-full opacity-0 translate-y-3 pointer-events-none transition-all duration-700 ease-out">
-<a href="#achievements" class="group flex items-center gap-2 bg-white hover:bg-mac-silver text-black px-5 py-2.5 rounded-full text-[13.5px] font-bold transition-all shadow-[0_8px_24px_rgba(255,255,255,0.25),inset_0_1px_1px_#fff] hover:-translate-y-0.5 active:scale-95 focus:outline-none focus:ring-2 focus:ring-white">
+<button type="button" onclick="switchPage('achievements')" class="group flex items-center gap-2 bg-white hover:bg-mac-silver text-black px-5 py-2.5 rounded-full text-[13.5px] font-bold transition-all shadow-[0_8px_24px_rgba(255,255,255,0.25),inset_0_1px_1px_#fff] hover:-translate-y-0.5 active:scale-95 focus:outline-none focus:ring-2 focus:ring-white">
 <span>View My Projects</span>
 <i data-lucide="arrow-up-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i>
-</a>
-<a href="#education" class="group flex items-center gap-2 liquid-glass text-white px-5 py-2.5 rounded-full text-[13.5px] font-semibold transition-all hover:-translate-y-0.5 active:scale-95 focus:outline-none focus:ring-2 focus:ring-white">
+</button>
+<button type="button" onclick="switchPage('education')" class="group flex items-center gap-2 liquid-glass text-white px-5 py-2.5 rounded-full text-[13.5px] font-semibold transition-all hover:-translate-y-0.5 active:scale-95 focus:outline-none focus:ring-2 focus:ring-white">
 <i data-lucide="download" class="w-4 h-4 text-white transition-transform group-hover:-translate-y-0.5 relative z-10"></i>
 <span class="relative z-10">Download Résumé</span>
-</a>
+</button>
 <button type="button" onclick="openContactSheet()" class="group flex items-center gap-1.5 px-3 py-2.5 text-[13.5px] font-semibold text-white hover:text-mac-silver transition-colors focus:outline-none focus:ring-1 focus:ring-white rounded">
 <i data-lucide="mail" class="w-4 h-4"></i>
 <span>Contact Me</span>
@@ -309,121 +323,143 @@ Reopen <span class="font-mono text-white">portrait.png</span>
 <div class="billboard-floor-shadow hidden lg:block"></div>
 </div>
 </section>
-<section id="about" class="min-h-[calc(100dvh-4rem)] py-12 flex flex-col justify-center scroll-mt-12">
-<div class="max-w-[80rem] mx-auto w-full px-2 sm:px-6">
+
+<!-- PAGE 2: PERSONAL INFORMATION -->
+<section id="about" class="page-section hidden min-h-[calc(100dvh-7rem)] py-12 flex flex-col justify-center">
+<div class="max-w-[76rem] mx-auto w-full px-2 sm:px-6">
 <div class="reveal mb-8 text-center md:text-left">
 <p class="text-mac-amber font-bold text-xs uppercase tracking-[0.2em] mb-2">Profile</p>
-<h2 class="text-3xl sm:text-4xl font-bold text-white mb-4 scroll-type min-h-[2.75rem] tracking-tight" data-text="About Myself">About Myself</h2>
-<p id="hero-bio" class="text-white text-[15px] sm:text-[16.5px] lg:text-[1.08rem] max-w-2xl leading-relaxed mb-8 opacity-0 translate-y-2 transition-all duration-700 font-normal mx-auto md:mx-0">
-Based in Baguio, PH, I build practical software solutions, analyze technical problems, and apply programming fundamentals to create reliable, user-focused systems.
+<h2 class="text-3xl sm:text-4xl font-bold text-white mb-4 scroll-type min-h-[2.75rem] tracking-tight" data-text="Personal Information">Personal Information</h2>
+<p id="hero-bio" class="text-white text-[15px] sm:text-[16.5px] lg:text-[1.08rem] max-w-2xl leading-relaxed font-normal mx-auto md:mx-0">
+A closer look at my personal background, roots, contact details, and core interests.
 </p>
 </div>
-<div class="reveal flex flex-col gap-6 max-w-2xl">
-<div class="grid grid-cols-3 gap-2 sm:gap-4 liquid-glass p-4 rounded-ios w-full max-w-md">
-<div class="flex flex-col items-center sm:items-start text-center sm:text-left relative z-10">
-<span class="text-lg sm:text-xl font-bold text-white tracking-tight">IT</span>
-<span class="text-[10.5px] text-mac-silver uppercase font-semibold tracking-wider">Systems Analysis</span>
-</div>
-<div class="flex flex-col items-center sm:items-start text-center sm:text-left border-l border-white/25 pl-3 sm:pl-4 relative z-10">
-<span class="text-lg sm:text-xl font-bold text-white tracking-tight">Math</span>
-<span class="text-[10.5px] text-mac-silver uppercase font-semibold tracking-wider">& Research Focus</span>
-</div>
-<div class="flex flex-col items-center sm:items-start text-center sm:text-left border-l border-white/25 pl-3 sm:pl-4 relative z-10">
-<span class="text-lg sm:text-xl font-bold text-white tracking-tight">100%</span>
-<span class="text-[10.5px] text-mac-silver uppercase font-semibold tracking-wider">Secure Design</span>
-</div>
-</div>
-<div id="skills-widget-wrapper" class="w-full max-w-xl relative">
-<div id="terminal-popup-window" class="mac-window-transition rounded-mac overflow-hidden liquid-glass-elevated">
-<div class="mac-titlebar px-3.5 py-2.5 flex items-center justify-between select-none relative z-10">
+
+<div class="reveal liquid-glass-elevated rounded-mac-lg overflow-hidden max-w-4xl">
+<div class="mac-titlebar px-5 py-3 flex items-center justify-between select-none relative z-10">
 <div class="flex items-center gap-2 traffic-group">
-<span class="w-3 h-3 rounded-full bg-[#FF5F56] border border-[#E0443E] flex items-center justify-center text-[8px] font-black text-black">
+<span class="w-3.5 h-3.5 rounded-full bg-[#FF5F56] border border-[#E0443E] flex items-center justify-center text-[9px] font-black text-black">
 <span class="traffic-icon">&times;</span>
 </span>
-<span class="w-3 h-3 rounded-full bg-[#FFBD2E] border border-[#DEA123] flex items-center justify-center text-[8px] font-black text-black">
+<span class="w-3.5 h-3.5 rounded-full bg-[#FFBD2E] border border-[#DEA123] flex items-center justify-center text-[9px] font-black text-black">
 <span class="traffic-icon">&minus;</span>
 </span>
-<span class="w-3 h-3 rounded-full bg-[#27C93F] border border-[#1AAB29] flex items-center justify-center text-[8px] font-black text-black">
+<span class="w-3.5 h-3.5 rounded-full bg-[#27C93F] border border-[#1AAB29] flex items-center justify-center text-[9px] font-black text-black">
 <span class="traffic-icon">+</span>
 </span>
-<span class="ml-2 font-mono text-[11.5px] text-mac-silver tracking-tight">bpb@macbook-pro: ~/technical-skills — zsh</span>
 </div>
-<button onclick="skipTerminalToUI()" class="text-[10.5px] font-mono text-white hover:text-mac-silver glass-tag px-2.5 py-0.5 rounded-md transition-colors">
-Skip &raquo;
-</button>
+<div class="flex items-center gap-1.5">
+<i data-lucide="user-check" class="w-3.5 h-3.5 text-mac-amber"></i>
+<span class="font-mono text-[12px] text-white font-semibold tracking-tight">Personal Information</span>
 </div>
-<div id="terminal-body-container" class="p-4 font-mono text-[12px] leading-relaxed text-white bg-black/40 min-h-[165px] max-h-[210px] overflow-y-auto transition-all duration-300 relative z-10">
-<div id="terminal-output" class="space-y-1.5 break-words"></div>
-<div class="mt-1">
-<span id="terminal-active-line" class="terminal-cursor text-white"></span>
+<div class="w-10"></div>
+</div>
+
+<div class="p-6 sm:p-8 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 relative z-10">
+<!-- Full Name -->
+<div class="liquid-glass rounded-ios p-5 flex items-start gap-4 sm:col-span-2">
+<div class="p-3.5 dock-squircle rounded-2xl flex-shrink-0">
+<i data-lucide="user" class="w-6 h-6 text-mac-blue"></i>
+</div>
+<div class="relative z-10">
+<p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1">Full Name</p>
+<h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight">Benjamin Pagosto Bucad</h3>
 </div>
 </div>
+
+<!-- Birthday -->
+<div class="liquid-glass rounded-ios p-5 flex items-start gap-4">
+<div class="p-3.5 dock-squircle rounded-2xl flex-shrink-0">
+<i data-lucide="calendar" class="w-6 h-6 text-mac-amber"></i>
 </div>
-<div id="skills-ui-card" class="hidden mac-window-transition liquid-glass rounded-mac w-full overflow-hidden">
-<div class="mac-titlebar px-4 py-2.5 flex items-center justify-between relative z-10">
-<div class="flex items-center gap-2 traffic-group">
-<span class="w-3 h-3 rounded-full bg-[#FF5F56] border border-[#E0443E] flex items-center justify-center text-[8px] font-black text-black">
-<span class="traffic-icon">&times;</span>
+<div class="relative z-10">
+<p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1">Birthday</p>
+<h3 class="text-lg sm:text-xl font-bold text-white tracking-tight">October 8, 2008</h3>
+<p class="text-xs text-mac-silver mt-0.5 font-mono">10 / 08 / 2008</p>
+</div>
+</div>
+
+<!-- Status -->
+<div class="liquid-glass rounded-ios p-5 flex items-start gap-4">
+<div class="p-3.5 dock-squircle rounded-2xl flex-shrink-0">
+<i data-lucide="contact" class="w-6 h-6 text-mac-amber"></i>
+</div>
+<div class="relative z-10">
+<p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1">Status</p>
+<h3 class="text-lg sm:text-xl font-bold text-white tracking-tight">Single</h3>
+</div>
+</div>
+
+<!-- Phone Number -->
+<div class="liquid-glass rounded-ios p-5 flex items-start gap-4">
+<div class="p-3.5 dock-squircle rounded-2xl flex-shrink-0">
+<i data-lucide="phone" class="w-6 h-6 text-mac-green"></i>
+</div>
+<div class="relative z-10">
+<p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1">Phone</p>
+<h3 class="text-lg sm:text-xl font-bold text-white tracking-tight">09993066711 <span class="text-sm sm:text-base text-mac-silver font-medium">(Smart)</span></h3>
+</div>
+</div>
+
+<!-- Email -->
+<div class="liquid-glass rounded-ios p-5 flex items-start gap-4">
+<div class="p-3.5 dock-squircle rounded-2xl flex-shrink-0">
+<i data-lucide="mail" class="w-6 h-6 text-mac-blue"></i>
+</div>
+<div class="relative z-10 w-full overflow-hidden">
+<p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1">Email</p>
+<h3 class="text-[15px] sm:text-[17px] md:text-lg font-bold text-white tracking-tight break-all">benjaminbucad90@gmail.com</h3>
+</div>
+</div>
+
+<!-- Born In -->
+<div class="liquid-glass rounded-ios p-5 flex items-start gap-4">
+<div class="p-3.5 dock-squircle rounded-2xl flex-shrink-0">
+<i data-lucide="building-2" class="w-6 h-6 text-mac-silver"></i>
+</div>
+<div class="relative z-10">
+<p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1">Born In</p>
+<h3 class="text-lg sm:text-xl font-bold text-white tracking-tight leading-tight">Benguet General Hospital</h3>
+<p class="text-xs text-mac-silver mt-0.5">La Trinidad, Benguet</p>
+</div>
+</div>
+
+<!-- Residence -->
+<div class="liquid-glass rounded-ios p-5 flex items-start gap-4">
+<div class="p-3.5 dock-squircle rounded-2xl flex-shrink-0">
+<i data-lucide="home" class="w-6 h-6 text-mac-amber"></i>
+</div>
+<div class="relative z-10">
+<p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1">Residence</p>
+<h3 class="text-lg sm:text-xl font-bold text-white tracking-tight">Kias, Baguio City</h3>
+</div>
+</div>
+
+<!-- Interests & Hobbies -->
+<div class="liquid-glass rounded-ios p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:col-span-2">
+<div class="p-3.5 dock-squircle rounded-2xl flex-shrink-0">
+<i data-lucide="gamepad-2" class="w-6 h-6 text-mac-ggred"></i>
+</div>
+<div class="relative z-10 flex-1">
+<p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-2.5">Interests & Hobbies</p>
+<div class="flex flex-wrap gap-2.5">
+<span class="glass-tag px-3.5 py-1.5 rounded-lg text-white text-[13px] font-semibold flex items-center gap-1.5">
+<i data-lucide="swords" class="w-4 h-4 text-white"></i> Competitive Chess
 </span>
-<span class="w-3 h-3 rounded-full bg-[#FFBD2E] border border-[#DEA123] flex items-center justify-center text-[8px] font-black text-black">
-<span class="traffic-icon">&minus;</span>
+<span class="glass-tag px-3.5 py-1.5 rounded-lg text-white text-[13px] font-semibold flex items-center gap-1.5">
+<i data-lucide="monitor-play" class="w-4 h-4 text-white"></i> Video Games
 </span>
-<span class="w-3 h-3 rounded-full bg-[#27C93F] border border-[#1AAB29] flex items-center justify-center text-[8px] font-black text-black">
-<span class="traffic-icon">+</span>
-</span>
-<h3 id="skills-main-title" class="ml-1.5 text-white font-semibold text-xs tracking-tight">
-Technical Skills & Expertise
-</h3>
-</div>
-<div class="flex items-center gap-2">
-<button onclick="runSkillsTerminalSequence(true)" title="Replay Terminal Session" class="font-mono text-[10.5px] text-white hover:text-mac-silver glass-tag px-2.5 py-0.5 rounded-md flex items-center gap-1 transition-all">
-<span>&gt;_</span> Replay Terminal
-</button>
-</div>
-</div>
-<div id="skills-ui-body" class="p-4 sm:p-5 flex flex-col gap-4 transition-all duration-300 relative z-10">
-<div class="skill-group opacity-0 translate-y-2 transition-all duration-500">
-<h4 class="flex items-center gap-2 text-[11px] text-white font-bold tracking-wider uppercase mb-2">
-<span class="w-2 h-2 rounded-full bg-mac-blue shadow-[0_0_8px_#0A84FF]"></span>
-<span>Programming & Fundamentals</span>
-</h4>
-<div class="flex flex-wrap gap-1.5">
-<span class="glass-tag px-3 py-1 rounded-lg text-white text-[12px] font-semibold">Python</span>
-<span class="glass-tag px-3 py-1 rounded-lg text-white text-[12px] font-semibold">Java</span>
-<span class="glass-tag px-3 py-1 rounded-lg text-white text-[12px] font-semibold">C++</span>
-<span class="glass-tag px-3 py-1 rounded-lg text-white text-[12px] font-semibold">Computing Fundamentals</span>
-</div>
-</div>
-<div class="skill-group opacity-0 translate-y-2 transition-all duration-500">
-<h4 class="flex items-center gap-2 text-[11px] text-white font-bold tracking-wider uppercase mb-2">
-<span class="w-2 h-2 rounded-full bg-mac-amber shadow-[0_0_8px_#FFB340]"></span>
-<span>Theory & Logic</span>
-</h4>
-<div class="flex flex-wrap gap-1.5">
-<span class="glass-tag px-3 py-1 rounded-lg text-white text-[12px] font-semibold">Algorithmology</span>
-<span class="glass-tag px-3 py-1 rounded-lg text-white text-[12px] font-semibold">Data Structures & Algorithms</span>
-<span class="glass-tag px-3 py-1 rounded-lg text-white text-[12px] font-semibold">Mathematics & Research</span>
-</div>
-</div>
-<div class="skill-group opacity-0 translate-y-2 transition-all duration-500">
-<h4 class="flex items-center gap-2 text-[11px] text-white font-bold tracking-wider uppercase mb-2">
-<span class="w-2 h-2 rounded-full bg-mac-green shadow-[0_0_8px_#30D158]"></span>
-<span>Systems & Infrastructure</span>
-</h4>
-<div class="flex flex-wrap gap-1.5">
-<span class="glass-tag px-3 py-1 rounded-lg text-white text-[12px] font-semibold">Systems Analysis & Design</span>
-<span class="glass-tag px-3 py-1 rounded-lg text-white text-[12px] font-semibold">IT Security</span>
-<span class="glass-tag px-3 py-1 rounded-lg text-white text-[12px] font-semibold">SQL</span>
-<span class="glass-tag px-3 py-1 rounded-lg text-white text-[12px] font-semibold">Git</span>
 </div>
 </div>
 </div>
-</div>
+
 </div>
 </div>
 </div>
 </section>
-<section id="family" class="min-h-[calc(100dvh-4rem)] py-12 flex flex-col justify-center scroll-mt-12">
+
+<!-- PAGE 3: FOUNDATION -->
+<section id="family" class="page-section hidden min-h-[calc(100dvh-7rem)] py-12 flex flex-col justify-center">
 <div class="reveal mb-12 text-center md:text-left">
 <p class="text-mac-amber font-bold text-xs uppercase tracking-[0.2em] mb-2">Family</p>
 <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4 scroll-type min-h-[2.75rem] tracking-tight" data-text="My Foundation">My Foundation</h2>
@@ -458,7 +494,9 @@ Providing unwavering belief, strength, and emotional grounding. Her boundless su
 </div>
 </div>
 </section>
-<section id="education" class="min-h-[calc(100dvh-4rem)] py-12 flex flex-col justify-center scroll-mt-12">
+
+<!-- PAGE 4: EDUCATION -->
+<section id="education" class="page-section hidden min-h-[calc(100dvh-7rem)] py-12 flex flex-col justify-center">
 <div class="reveal mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6 text-center md:text-left">
 <div>
 <p class="text-mac-amber font-bold text-xs uppercase tracking-[0.2em] mb-2">Academic Path</p>
@@ -540,7 +578,9 @@ Formative years dedicated to building a strong academic foundation. Developed a 
 </div>
 </div>
 </section>
-<section id="achievements" class="min-h-[calc(100dvh-4rem)] py-12 flex flex-col justify-center scroll-mt-12">
+
+<!-- PAGE 5: ACHIEVEMENTS -->
+<section id="achievements" class="page-section hidden min-h-[calc(100dvh-7rem)] py-12 flex flex-col justify-center">
 <div class="reveal mb-12 text-center md:text-left flex flex-col md:items-start items-center">
 <div class="inline-flex items-center space-x-2 glass-tag px-4 py-2 rounded-full mb-3">
 <i data-lucide="award" class="w-4 h-4 text-mac-amber"></i>
@@ -632,20 +672,22 @@ Achieved podium placement in a highly competitive bracket. Showcased strong anal
 </div>
 </div>
 </section>
-<footer class="pt-8 pb-12 border-t border-white/20 text-center sm:flex sm:items-center sm:justify-between text-xs text-white font-medium">
+
+<footer class="pt-8 pb-12 border-t border-white/20 text-center sm:flex sm:items-center sm:justify-between text-xs text-white font-medium mt-10">
 <div class="flex items-center justify-center gap-2 mb-3 sm:mb-0">
 <i data-lucide="command" class="w-3.5 h-3.5 text-white"></i>
 <span>Benjamin P. Bucad • Crafted with macOS Liquid Glass</span>
 </div>
-<div class="flex items-center justify-center gap-6">
-<a href="#home" class="hover:text-white transition-colors">Overview</a>
-<a href="#about" class="hover:text-white transition-colors">About Myself</a>
-<a href="#family" class="hover:text-white transition-colors">Family</a>
-<a href="#education" class="hover:text-white transition-colors">Education</a>
-<a href="#achievements" class="hover:text-white transition-colors">Achievements</a>
+<div class="flex flex-wrap items-center justify-center gap-6">
+<button type="button" onclick="switchPage('home')" class="hover:text-white transition-colors">Homepage</button>
+<button type="button" onclick="switchPage('about')" class="hover:text-white transition-colors">Personal Information</button>
+<button type="button" onclick="switchPage('family')" class="hover:text-white transition-colors">Foundation</button>
+<button type="button" onclick="switchPage('education')" class="hover:text-white transition-colors">Education</button>
+<button type="button" onclick="switchPage('achievements')" class="hover:text-white transition-colors">Achievements</button>
 </div>
 </footer>
 </main>
+
 <div id="certModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/75 backdrop-blur-2xl opacity-0 transition-opacity duration-300 px-4">
 <div class="relative max-w-4xl w-full flex flex-col items-center liquid-glass-elevated rounded-2xl overflow-hidden">
 <div class="w-full mac-titlebar px-4 py-3 flex items-center justify-between relative z-10">
@@ -666,6 +708,7 @@ Achieved podium placement in a highly competitive bracket. Showcased strong anal
 <img id="modalImage" src="" alt="Full View" class="w-full max-h-[80vh] object-contain bg-black/40 p-4 relative z-10">
 </div>
 </div>
+
 <div id="contactSheet" class="fixed inset-0 z-[90] hidden items-center justify-center bg-black/60 backdrop-blur-md opacity-0 transition-opacity duration-300 p-4">
 <div class="liquid-glass-elevated rounded-mac-lg max-w-md w-full overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300" id="contactSheetCard">
 <div class="mac-titlebar px-4 py-3 flex items-center justify-between relative z-10">
@@ -683,29 +726,364 @@ Achieved podium placement in a highly competitive bracket. Showcased strong anal
 BPB
 </div>
 <div>
-<h4 class="font-bold text-white text-base">Benjamin P. Bucad</h4>
-<p class="text-xs text-white font-medium">BS Information Technology (ERP) • Systems & Algorithms</p>
-<p class="text-xs text-mac-silver mt-1 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3 text-mac-silver"></i> Baguio, PH</p>
+<h4 class="font-bold text-white text-base">Benjamin Pagosto Bucad</h4>
+<p class="text-xs text-white font-medium">BS Information Technology (ERP)</p>
+<p class="text-xs text-mac-silver mt-1 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3 text-mac-silver"></i> Kias, Baguio City</p>
 </div>
 </div>
 <p class="text-xs text-white leading-relaxed font-normal mt-2">
 Available for software development, enterprise systems analysis, and technical research collaborations.
 </p>
 <div class="space-y-2.5 pt-1">
-<a href="mailto:benjamin.bucad@example.com" class="w-full flex items-center justify-between px-4 py-3 rounded-xl bg-white text-black font-bold text-xs hover:bg-mac-silver transition-colors focus:ring-2 focus:ring-white">
-<span class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4"></i> Send Direct Email</span>
+<a href="mailto:benjaminbucad90@gmail.com" class="w-full flex items-center justify-between px-4 py-3 rounded-xl bg-white text-black font-bold text-xs hover:bg-mac-silver transition-colors focus:ring-2 focus:ring-white">
+<span class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4"></i> benjaminbucad90@gmail.com</span>
 <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
 </a>
-<button onclick="closeContactSheet(); document.getElementById('achievements').scrollIntoView({behavior:'smooth'});" class="w-full flex items-center justify-between px-4 py-3 rounded-xl glass-tag text-white font-semibold text-xs transition-colors focus:ring-2 focus:ring-white">
-<span class="flex items-center gap-2"><i data-lucide="award" class="w-4 h-4 text-white"></i> View Competitive Highlights</span>
-<i data-lucide="chevron-right" class="w-4 h-4 text-white"></i>
-</button>
+<a href="tel:09993066711" class="w-full flex items-center justify-between px-4 py-3 rounded-xl glass-tag text-white font-semibold text-xs transition-colors focus:ring-2 focus:ring-white">
+<span class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4 text-white"></i> 09993066711 (Smart)</span>
+<i data-lucide="arrow-up-right" class="w-4 h-4 text-white"></i>
+</a>
 </div>
 </div>
 </div>
 </div>
+
 <script>
-const minLoadingTime=new Promise(resolve=>setTimeout(resolve,1200));const windowLoaded=new Promise(resolve=>{if(document.readyState==='complete'){resolve();}else{window.addEventListener('load',resolve);}});Promise.all([minLoadingTime,windowLoaded]).then(()=>{const loader=document.getElementById('global-loader');loader.classList.add('opacity-0');setTimeout(()=>{loader.classList.add('hidden');document.body.classList.remove('locked-scroll');const portfolioWin=document.getElementById('portfolio-window-wrapper');const portraitWin=document.getElementById('portrait-window-wrapper');if(portfolioWin){portfolioWin.classList.remove('mac-dock-popup-init');portfolioWin.classList.add('mac-dock-popup-active');}setTimeout(()=>{if(portraitWin){portraitWin.classList.remove('mac-dock-popup-init');portraitWin.classList.add('mac-dock-popup-active');}},160);setTimeout(()=>{runMasterHeroSequence();},520);},700);});lucide.createIcons();document.querySelectorAll('.liquid-glass, .liquid-glass-elevated').forEach(card=>{card.addEventListener('pointermove',(e)=>{const rect=card.getBoundingClientRect();const x=((e.clientX-rect.left)/rect.width)*100;const y=((e.clientY-rect.top)/rect.height)*100;card.style.setProperty('--mouse-x',`${x}%`);card.style.setProperty('--mouse-y',`${y}%`);});});const billboardRig=document.getElementById('billboard-rig');if(billboardRig){let targetTiltY=-14;let targetTiltX=2;let currentTiltY=-14;let currentTiltX=2;let targetSpotX=68;let targetSpotY=28;let currentSpotX=68;let currentSpotY=28;const ease=0.04;window.addEventListener('pointermove',(e)=>{if(window.innerWidth<1024)return;const rect=billboardRig.getBoundingClientRect();const centerX=rect.left+rect.width/2;const centerY=rect.top+rect.height/2;const panX=(e.clientX-centerX)/(window.innerWidth/2);const panY=(e.clientY-centerY)/(window.innerHeight/2);const spotX=(e.clientX-rect.left)/rect.width;const spotY=(e.clientY-rect.top)/rect.height;targetSpotX=spotX*100;targetSpotY=spotY*100;targetTiltY=-14+(panX*7);targetTiltX=2-(panY*5);});document.addEventListener('mouseleave',()=>{targetSpotX=68;targetSpotY=28;targetTiltY=-14;targetTiltX=2;});function animateBillboard(){currentTiltY+=(targetTiltY-currentTiltY)*ease;currentTiltX+=(targetTiltX-currentTiltX)*ease;currentSpotX+=(targetSpotX-currentSpotX)*ease;currentSpotY+=(targetSpotY-currentSpotY)*ease;billboardRig.style.setProperty('--spot-x',`${currentSpotX.toFixed(2)}%`);billboardRig.style.setProperty('--spot-y',`${currentSpotY.toFixed(2)}%`);if(window.innerWidth>=1024){billboardRig.style.setProperty('--tilt-y',`${currentTiltY.toFixed(3)}deg`);billboardRig.style.setProperty('--tilt-x',`${currentTiltX.toFixed(3)}deg`);}else{billboardRig.style.setProperty('--tilt-y',`0deg`);billboardRig.style.setProperty('--tilt-x',`0deg`);}requestAnimationFrame(animateBillboard);}animateBillboard();}function updateMacClock(){const clockEl=document.getElementById('mac-menubar-clock');if(!clockEl)return;const now=new Date();clockEl.textContent=now.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});}updateMacClock();setInterval(updateMacClock,15000);function filterEducation(category,btn){document.querySelectorAll('.edu-tab').forEach(tab=>{tab.classList.remove('bg-white','text-black','shadow-md','font-bold');tab.classList.add('text-white','font-medium');});btn.classList.add('bg-white','text-black','shadow-md','font-bold');btn.classList.remove('text-white','font-medium');document.querySelectorAll('.edu-item').forEach(item=>{if(category==='all'||item.dataset.eduCategory===category){item.classList.remove('hidden');}else{item.classList.add('hidden');}});}function openContactSheet(){const sheet=document.getElementById('contactSheet');const card=document.getElementById('contactSheetCard');sheet.classList.remove('hidden');sheet.classList.add('flex');setTimeout(()=>{sheet.classList.remove('opacity-0');card.classList.remove('scale-95');},15);}function closeContactSheet(){const sheet=document.getElementById('contactSheet');const card=document.getElementById('contactSheetCard');sheet.classList.add('opacity-0');card.classList.add('scale-95');setTimeout(()=>{sheet.classList.remove('flex');sheet.classList.add('hidden');},250);}document.getElementById('contactSheet').addEventListener('click',function(e){if(e.target===this)closeContactSheet();});const sleep=(ms)=>new Promise(resolve=>setTimeout(resolve,ms));async function typeText(element,text,speed=45,keepCursor=false){if(!element)return;element.textContent='';element.classList.add('cursor');for(let i=0;i<text.length;i++){element.textContent+=text.charAt(i);await sleep(speed);}if(!keepCursor){element.classList.remove('cursor');}}async function hackTypeText(element,text,keepCursor=false){if(!element)return;const chars='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*<>';element.textContent='';element.classList.add('cursor');let currentString='';for(let i=0;i<text.length;i++){if(text[i]===' '){currentString+=' ';element.textContent=currentString;await sleep(20);continue;}for(let j=0;j<3;j++){const randomChar=chars[Math.floor(Math.random()*chars.length)];element.textContent=currentString+randomChar;await sleep(20);}currentString+=text[i];element.textContent=currentString;await sleep(15);}if(!keepCursor){element.classList.remove('cursor');}}async function runMasterHeroSequence(){const l1=document.getElementById('hero-line-1');const l2=document.getElementById('hero-line-2');const l3=document.getElementById('hero-line-3');const l4=document.getElementById('hero-line-4');const l5=document.getElementById('hero-line-5');const ctaContainer=document.getElementById('hero-cta-container');await sleep(100);await typeText(l1,'BENJAMIN P.',20);await sleep(40);await typeText(l2,'BUCAD /',20);await sleep(50);await typeText(l3,'BS INFORMATION',18);await sleep(30);await typeText(l4,'TECHNOLOGY (ERP)',18,false);const courseHeading=document.getElementById('course-heading');if(courseHeading){courseHeading.classList.add('idle-course-anim');}await sleep(40);await hackTypeText(l5,'ALGORITHMS & SYSTEMS EXPERT',true);await sleep(100);if(ctaContainer){ctaContainer.classList.remove('opacity-0','translate-y-3','pointer-events-none');ctaContainer.classList.add('opacity-100','translate-y-0');}}let terminalRunId=0;let hasAutoPlayedAbout=false;async function runSkillsTerminalSequence(isManualReplay=false){const currentRun=++terminalRunId;const terminalWindow=document.getElementById('terminal-popup-window');const terminalBody=document.getElementById('terminal-body-container');const terminalOutput=document.getElementById('terminal-output');const terminalActive=document.getElementById('terminal-active-line');const uiCard=document.getElementById('skills-ui-card');uiCard.classList.add('hidden');terminalWindow.classList.remove('hidden');terminalBody.classList.remove('hidden');terminalOutput.innerHTML='';terminalActive.textContent='';if(isManualReplay){await sleep(200);}const terminalScript=[{prompt:'bpb@macbook-pro ~ % ',cmd:'zsh load-skills.sh --all',speed:40},{log:'→ Programming: Python, Java, C++, Computing Fundamentals',color:'text-white font-semibold'},{log:'→ Theory & Logic: Algorithmology, DSA, Math & Research',color:'text-white font-semibold'},{log:'→ Systems: Systems Analysis, IT Security, SQL, Git',color:'text-white font-semibold'},{log:'✓ [OK] Launching interactive UI...',color:'text-mac-green font-bold'}];for(const step of terminalScript){if(currentRun!==terminalRunId)return;if(step.cmd){terminalActive.innerHTML=`<span class="text-mac-amber font-bold">${step.prompt}</span>`;const typedSpan=document.createElement('span');typedSpan.className='text-white font-semibold';terminalActive.appendChild(typedSpan);for(let i=0;i<step.cmd.length;i++){if(currentRun!==terminalRunId)return;typedSpan.textContent+=step.cmd.charAt(i);await sleep(step.speed);}const completedLine=document.createElement('div');completedLine.innerHTML=terminalActive.innerHTML;terminalOutput.appendChild(completedLine);terminalActive.innerHTML='';await sleep(320);}else if(step.log){const logLine=document.createElement('div');logLine.className=step.color||'text-white';logLine.textContent=step.log;terminalOutput.appendChild(logLine);await sleep(420);}}await sleep(600);if(currentRun!==terminalRunId)return;await revealSkillsUICard(currentRun);}async function revealSkillsUICard(runToken){const terminalWindow=document.getElementById('terminal-popup-window');const uiCard=document.getElementById('skills-ui-card');const mainTitle=document.getElementById('skills-main-title');const groups=uiCard.querySelectorAll('.skill-group');terminalWindow.classList.add('hidden');uiCard.classList.remove('hidden');groups.forEach(g=>{g.classList.add('opacity-0','translate-y-2');});await typeText(mainTitle,'Technical Skills & Expertise',30,false);if(runToken!==terminalRunId)return;for(const group of groups){if(runToken!==terminalRunId)return;group.classList.remove('opacity-0','translate-y-2');await sleep(200);}}function skipTerminalToUI(){++terminalRunId;const terminalWindow=document.getElementById('terminal-popup-window');const uiCard=document.getElementById('skills-ui-card');const uiBody=document.getElementById('skills-ui-body');terminalWindow.classList.add('hidden');uiCard.classList.remove('hidden');uiBody.classList.remove('hidden');document.getElementById('skills-main-title').textContent='Technical Skills & Expertise';document.getElementById('skills-main-title').classList.remove('cursor');uiCard.querySelectorAll('.skill-group').forEach(g=>{g.classList.remove('opacity-0','translate-y-2');});}function toggleMinimizeTerminal(){const terminalBody=document.getElementById('terminal-body-container');terminalBody.classList.toggle('hidden');}function toggleMinimizeSkillsUI(){const uiBody=document.getElementById('skills-ui-body');uiBody.classList.toggle('hidden');}function expandSkillsUI(){const uiBody=document.getElementById('skills-ui-body');uiBody.classList.remove('hidden');}const portraitWindow=document.getElementById('portrait-mac-window');const portraitBody=document.getElementById('portrait-window-body');const portraitMinBar=document.getElementById('portrait-minimized-bar');const portraitRestoreDock=document.getElementById('portrait-restore-dock');let isPortraitMinimized=false;function closePortraitWindow(){portraitWindow.classList.add('opacity-0','scale-90','pointer-events-none');setTimeout(()=>{portraitWindow.classList.add('hidden');portraitRestoreDock.classList.remove('hidden');},300);}function restorePortraitWindow(){portraitRestoreDock.classList.add('hidden');portraitWindow.classList.remove('hidden');requestAnimationFrame(()=>{portraitWindow.classList.remove('opacity-0','scale-90','pointer-events-none');});if(isPortraitMinimized){minimizePortraitWindow();}}function minimizePortraitWindow(){isPortraitMinimized=!isPortraitMinimized;if(isPortraitMinimized){portraitBody.classList.remove('max-h-[540px]','opacity-100');portraitBody.classList.add('max-h-0','opacity-0');portraitMinBar.classList.remove('hidden');portraitMinBar.classList.add('flex');}else{portraitBody.classList.remove('max-h-0','opacity-0');portraitBody.classList.add('max-h-[540px]','opacity-100');portraitMinBar.classList.add('hidden');portraitMinBar.classList.remove('flex');}}function maximizePortraitWindow(){if(isPortraitMinimized){minimizePortraitWindow();}const imgSrc=document.getElementById('heroProfileImage').src;openModal(imgSrc);}const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');const typeTargets=entry.target.querySelectorAll('.scroll-type');typeTargets.forEach(el=>{if(!el.dataset.typed){el.dataset.typed='true';typeText(el,el.dataset.text,45,false);}});}});},{threshold:0.18});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));const sectionObserver=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){const id=entry.target.getAttribute('id');if(id==='about'&&!hasAutoPlayedAbout){hasAutoPlayedAbout=true;const bio=document.getElementById('hero-bio');if(bio)bio.classList.remove('opacity-0','translate-y-2');runSkillsTerminalSequence(false);}document.querySelectorAll('nav .dock-item[data-section]').forEach(item=>{const dot=item.querySelector('.dock-dot');if(!dot)return;if(item.dataset.section===id){dot.classList.remove('opacity-0');dot.classList.add('opacity-100');}else{dot.classList.remove('opacity-100');dot.classList.add('opacity-0');}});}});},{threshold:0.35});['home','about','family','education','achievements'].forEach(id=>{const sec=document.getElementById(id);if(sec)sectionObserver.observe(sec);});function openModal(imgSrc){const modal=document.getElementById('certModal');const modalImg=document.getElementById('modalImage');modalImg.src=imgSrc;modal.classList.remove('hidden');modal.classList.add('flex');setTimeout(()=>{modal.classList.remove('opacity-0');},10);}function closeModal(){const modal=document.getElementById('certModal');modal.classList.add('opacity-0');setTimeout(()=>{modal.classList.remove('flex');modal.classList.add('hidden');document.getElementById('modalImage').src="";},300);}document.getElementById('certModal').addEventListener('click',function(e){if(e.target===this)closeModal();});document.addEventListener('keydown',function(e){if(e.key==='Escape'){if(!document.getElementById('certModal').classList.contains('hidden'))closeModal();if(!document.getElementById('contactSheet').classList.contains('hidden'))closeContactSheet();}});
+const minLoadingTime=new Promise(resolve=>setTimeout(resolve,1200));
+const windowLoaded=new Promise(resolve=>{if(document.readyState==='complete'){resolve();}else{window.addEventListener('load',resolve);}});
+
+Promise.all([minLoadingTime,windowLoaded]).then(()=>{
+  const loader=document.getElementById('global-loader');
+  loader.classList.add('opacity-0');
+  setTimeout(()=>{
+    loader.classList.add('hidden');
+    document.body.classList.remove('locked-scroll');
+    const portfolioWin=document.getElementById('portfolio-window-wrapper');
+    const portraitWin=document.getElementById('portrait-window-wrapper');
+    if(portfolioWin){
+      portfolioWin.classList.remove('mac-dock-popup-init');
+      portfolioWin.classList.add('mac-dock-popup-active');
+    }
+    setTimeout(()=>{
+      if(portraitWin){
+        portraitWin.classList.remove('mac-dock-popup-init');
+        portraitWin.classList.add('mac-dock-popup-active');
+      }
+    },160);
+    setTimeout(()=>{
+      runMasterHeroSequence();
+    },520);
+  },700);
+});
+
+lucide.createIcons();
+
+document.querySelectorAll('.liquid-glass, .liquid-glass-elevated').forEach(card=>{
+  card.addEventListener('pointermove',(e)=>{
+    const rect=card.getBoundingClientRect();
+    const x=((e.clientX-rect.left)/rect.width)*100;
+    const y=((e.clientY-rect.top)/rect.height)*100;
+    card.style.setProperty('--mouse-x',`${x}%`);
+    card.style.setProperty('--mouse-y',`${y}%`);
+  });
+});
+
+const billboardRig=document.getElementById('billboard-rig');
+if(billboardRig){
+  let targetTiltY=-14;
+  let targetTiltX=2;
+  let currentTiltY=-14;
+  let currentTiltX=2;
+  let targetSpotX=68;
+  let targetSpotY=28;
+  let currentSpotX=68;
+  let currentSpotY=28;
+  const ease=0.04;
+  window.addEventListener('pointermove',(e)=>{
+    if(window.innerWidth<1024)return;
+    const rect=billboardRig.getBoundingClientRect();
+    const centerX=rect.left+rect.width/2;
+    const centerY=rect.top+rect.height/2;
+    const panX=(e.clientX-centerX)/(window.innerWidth/2);
+    const panY=(e.clientY-centerY)/(window.innerHeight/2);
+    const spotX=(e.clientX-rect.left)/rect.width;
+    const spotY=(e.clientY-rect.top)/rect.height;
+    targetSpotX=spotX*100;
+    targetSpotY=spotY*100;
+    targetTiltY=-14+(panX*7);
+    targetTiltX=2-(panY*5);
+  });
+  document.addEventListener('mouseleave',()=>{
+    targetSpotX=68;
+    targetSpotY=28;
+    targetTiltY=-14;
+    targetTiltX=2;
+  });
+  function animateBillboard(){
+    currentTiltY+=(targetTiltY-currentTiltY)*ease;
+    currentTiltX+=(targetTiltX-currentTiltX)*ease;
+    currentSpotX+=(targetSpotX-currentSpotX)*ease;
+    currentSpotY+=(targetSpotY-currentSpotY)*ease;
+    billboardRig.style.setProperty('--spot-x',`${currentSpotX.toFixed(2)}%`);
+    billboardRig.style.setProperty('--spot-y',`${currentSpotY.toFixed(2)}%`);
+    if(window.innerWidth>=1024){
+      billboardRig.style.setProperty('--tilt-y',`${currentTiltY.toFixed(3)}deg`);
+      billboardRig.style.setProperty('--tilt-x',`${currentTiltX.toFixed(3)}deg`);
+    }else{
+      billboardRig.style.setProperty('--tilt-y',`0deg`);
+      billboardRig.style.setProperty('--tilt-x',`0deg`);
+    }
+    requestAnimationFrame(animateBillboard);
+  }
+  animateBillboard();
+}
+
+function updateMacClock(){
+  const clockEl=document.getElementById('mac-menubar-clock');
+  if(!clockEl)return;
+  const now=new Date();
+  clockEl.textContent=now.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});
+}
+updateMacClock();
+setInterval(updateMacClock,15000);
+
+function switchPage(pageId){
+  const sections=document.querySelectorAll('.page-section');
+  sections.forEach(sec=>{
+    if(sec.id===pageId){
+      sec.classList.remove('hidden');
+      const reveals=sec.querySelectorAll('.reveal');
+      reveals.forEach((el,idx)=>{
+        setTimeout(()=>{
+          el.classList.add('visible');
+        },idx*80);
+      });
+      const typeTargets=sec.querySelectorAll('.scroll-type');
+      typeTargets.forEach(el=>{
+        if(!el.dataset.typed){
+          el.dataset.typed='true';
+          typeText(el,el.dataset.text,45,false);
+        }
+      });
+    }else{
+      sec.classList.add('hidden');
+    }
+  });
+
+  document.querySelectorAll('nav .dock-item[data-section]').forEach(item=>{
+    const dot=item.querySelector('.dock-dot');
+    if(!dot)return;
+    if(item.dataset.section===pageId){
+      dot.classList.remove('opacity-0');
+      dot.classList.add('opacity-100');
+    }else{
+      dot.classList.remove('opacity-100');
+      dot.classList.add('opacity-0');
+    }
+  });
+
+  document.querySelectorAll('.menubar-link').forEach(link=>{
+    if(link.dataset.menuLink===pageId){
+      link.classList.add('text-white','font-semibold');
+    }else{
+      link.classList.remove('text-white','font-semibold');
+    }
+  });
+
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function filterEducation(category,btn){
+  document.querySelectorAll('.edu-tab').forEach(tab=>{
+    tab.classList.remove('bg-white','text-black','shadow-md','font-bold');
+    tab.classList.add('text-white','font-medium');
+  });
+  btn.classList.add('bg-white','text-black','shadow-md','font-bold');
+  btn.classList.remove('text-white','font-medium');
+  document.querySelectorAll('.edu-item').forEach(item=>{
+    if(category==='all'||item.dataset.eduCategory===category){
+      item.classList.remove('hidden');
+    }else{
+      item.classList.add('hidden');
+    }
+  });
+}
+
+function openContactSheet(){
+  const sheet=document.getElementById('contactSheet');
+  const card=document.getElementById('contactSheetCard');
+  sheet.classList.remove('hidden');
+  sheet.classList.add('flex');
+  setTimeout(()=>{
+    sheet.classList.remove('opacity-0');
+    card.classList.remove('scale-95');
+  },15);
+}
+
+function closeContactSheet(){
+  const sheet=document.getElementById('contactSheet');
+  const card=document.getElementById('contactSheetCard');
+  sheet.classList.add('opacity-0');
+  card.classList.add('scale-95');
+  setTimeout(()=>{
+    sheet.classList.remove('flex');
+    sheet.classList.add('hidden');
+  },250);
+}
+
+document.getElementById('contactSheet').addEventListener('click',function(e){
+  if(e.target===this)closeContactSheet();
+});
+
+const sleep=(ms)=>new Promise(resolve=>setTimeout(resolve,ms));
+
+async function typeText(element,text,speed=45,keepCursor=false){
+  if(!element)return;
+  element.textContent='';
+  element.classList.add('cursor');
+  for(let i=0;i<text.length;i++){
+    element.textContent+=text.charAt(i);
+    await sleep(speed);
+  }
+  if(!keepCursor){
+    element.classList.remove('cursor');
+  }
+}
+
+async function hackTypeText(element,text,keepCursor=false){
+  if(!element)return;
+  const chars='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*<>';
+  element.textContent='';
+  element.classList.add('cursor');
+  let currentString='';
+  for(let i=0;i<text.length;i++){
+    if(text[i]===' '){
+      currentString+=' ';
+      element.textContent=currentString;
+      await sleep(20);
+      continue;
+    }
+    for(let j=0;j<3;j++){
+      const randomChar=chars[Math.floor(Math.random()*chars.length)];
+      element.textContent=currentString+randomChar;
+      await sleep(20);
+    }
+    currentString+=text[i];
+    element.textContent=currentString;
+    await sleep(15);
+  }
+  if(!keepCursor){
+    element.classList.remove('cursor');
+  }
+}
+
+async function runMasterHeroSequence(){
+  const l1=document.getElementById('hero-line-1');
+  const l2=document.getElementById('hero-line-2');
+  const l3=document.getElementById('hero-line-3');
+  const l4=document.getElementById('hero-line-4');
+  const l5=document.getElementById('hero-line-5');
+  const ctaContainer=document.getElementById('hero-cta-container');
+  await sleep(100);
+  await typeText(l1,'BENJAMIN P.',20);
+  await sleep(40);
+  await typeText(l2,'BUCAD /',20);
+  await sleep(50);
+  await typeText(l3,'BS INFORMATION',18);
+  await sleep(30);
+  await typeText(l4,'TECHNOLOGY (ERP)',18,false);
+  const courseHeading=document.getElementById('course-heading');
+  if(courseHeading){
+    courseHeading.classList.add('idle-course-anim');
+  }
+  await sleep(40);
+  await hackTypeText(l5,'ALGORITHMS & SYSTEMS EXPERT',true);
+  await sleep(100);
+  if(ctaContainer){
+    ctaContainer.classList.remove('opacity-0','translate-y-3','pointer-events-none');
+    ctaContainer.classList.add('opacity-100','translate-y-0');
+  }
+}
+
+const portraitWindow=document.getElementById('portrait-mac-window');
+const portraitBody=document.getElementById('portrait-window-body');
+const portraitMinBar=document.getElementById('portrait-minimized-bar');
+const portraitRestoreDock=document.getElementById('portrait-restore-dock');
+let isPortraitMinimized=false;
+
+function closePortraitWindow(){
+  portraitWindow.classList.add('opacity-0','scale-90','pointer-events-none');
+  setTimeout(()=>{
+    portraitWindow.classList.add('hidden');
+    portraitRestoreDock.classList.remove('hidden');
+  },300);
+}
+
+function restorePortraitWindow(){
+  portraitRestoreDock.classList.add('hidden');
+  portraitWindow.classList.remove('hidden');
+  requestAnimationFrame(()=>{
+    portraitWindow.classList.remove('opacity-0','scale-90','pointer-events-none');
+  });
+  if(isPortraitMinimized){
+    minimizePortraitWindow();
+  }
+}
+
+function minimizePortraitWindow(){
+  isPortraitMinimized=!isPortraitMinimized;
+  if(isPortraitMinimized){
+    portraitBody.classList.remove('max-h-[540px]','opacity-100');
+    portraitBody.classList.add('max-h-0','opacity-0');
+    portraitMinBar.classList.remove('hidden');
+    portraitMinBar.classList.add('flex');
+  }else{
+    portraitBody.classList.remove('max-h-0','opacity-0');
+    portraitBody.classList.add('max-h-[540px]','opacity-100');
+    portraitMinBar.classList.add('hidden');
+    portraitMinBar.classList.remove('flex');
+  }
+}
+
+function maximizePortraitWindow(){
+  if(isPortraitMinimized){
+    minimizePortraitWindow();
+  }
+  const imgSrc=document.getElementById('heroProfileImage').src;
+  openModal(imgSrc);
+}
+
+function openModal(imgSrc){
+  const modal=document.getElementById('certModal');
+  const modalImg=document.getElementById('modalImage');
+  modalImg.src=imgSrc;
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+  setTimeout(()=>{
+    modal.classList.remove('opacity-0');
+  },10);
+}
+
+function closeModal(){
+  const modal=document.getElementById('certModal');
+  modal.classList.add('opacity-0');
+  setTimeout(()=>{
+    modal.classList.remove('flex');
+    modal.classList.add('hidden');
+    document.getElementById('modalImage').src="";
+  },300);
+}
+
+document.getElementById('certModal').addEventListener('click',function(e){
+  if(e.target===this)closeModal();
+});
+
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){
+    if(!document.getElementById('certModal').classList.contains('hidden'))closeModal();
+    if(!document.getElementById('contactSheet').classList.contains('hidden'))closeContactSheet();
+  }
+});
 </script>
 </body>
 </html>
