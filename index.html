@@ -335,7 +335,7 @@ A closer look at my personal background, roots, contact details, and core intere
 </p>
 </div>
 
-<div class="reveal liquid-glass-elevated rounded-mac-lg overflow-hidden max-w-4xl">
+<div class="reveal liquid-glass-elevated rounded-mac-lg overflow-hidden max-w-4xl border border-white/20">
 <div class="mac-titlebar px-5 py-3 flex items-center justify-between select-none relative z-10">
 <div class="flex items-center gap-2 traffic-group">
 <span class="w-3.5 h-3.5 rounded-full bg-[#FF5F56] border border-[#E0443E] flex items-center justify-center text-[9px] font-black text-black">
@@ -355,22 +355,45 @@ A closer look at my personal background, roots, contact details, and core intere
 <div class="w-10"></div>
 </div>
 
-<div class="p-6 sm:p-8 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 relative z-10">
-<!-- Full Name -->
-<div class="liquid-glass rounded-ios p-5 flex items-start gap-4 sm:col-span-2">
-<div class="p-3.5 dock-squircle rounded-2xl flex-shrink-0">
+<!-- Unified Single Card Body -->
+<div class="p-8 md:p-10 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 relative z-10 bg-black/10">
+
+<!-- Full Name (Spans Full Width) -->
+<div class="flex items-start gap-4 md:col-span-2 pb-6 border-b border-white/10">
+<div class="p-4 dock-squircle rounded-2xl flex-shrink-0">
 <i data-lucide="user" class="w-6 h-6 text-mac-blue"></i>
 </div>
 <div class="relative z-10">
 <p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1">Full Name</p>
-<h3 class="text-xl sm:text-2xl font-bold text-white tracking-tight">Benjamin Pagosto Bucad</h3>
+<h3 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Benjamin Pagosto Bucad</h3>
 </div>
 </div>
 
-<!-- Birthday -->
-<div class="liquid-glass rounded-ios p-5 flex items-start gap-4">
+<!-- Contact (Email & Phone) -->
+<div class="flex items-start gap-4">
 <div class="p-3.5 dock-squircle rounded-2xl flex-shrink-0">
-<i data-lucide="calendar" class="w-6 h-6 text-mac-amber"></i>
+<i data-lucide="mail" class="w-5 h-5 text-mac-blue"></i>
+</div>
+<div class="relative z-10 w-full overflow-hidden">
+<p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1">Email</p>
+<h3 class="text-[15px] sm:text-[17px] md:text-lg font-bold text-white tracking-tight break-all">benjaminbucad90@gmail.com</h3>
+</div>
+</div>
+
+<div class="flex items-start gap-4">
+<div class="p-3.5 dock-squircle rounded-2xl flex-shrink-0">
+<i data-lucide="phone" class="w-5 h-5 text-mac-green"></i>
+</div>
+<div class="relative z-10">
+<p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1">Phone</p>
+<h3 class="text-lg sm:text-xl font-bold text-white tracking-tight">09993066711 <span class="text-sm sm:text-base text-mac-silver font-medium">(Smart)</span></h3>
+</div>
+</div>
+
+<!-- Demographics (Birthday & Status) -->
+<div class="flex items-start gap-4">
+<div class="p-3.5 dock-squircle rounded-2xl flex-shrink-0">
+<i data-lucide="calendar" class="w-5 h-5 text-mac-amber"></i>
 </div>
 <div class="relative z-10">
 <p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1">Birthday</p>
@@ -379,10 +402,9 @@ A closer look at my personal background, roots, contact details, and core intere
 </div>
 </div>
 
-<!-- Status -->
-<div class="liquid-glass rounded-ios p-5 flex items-start gap-4">
+<div class="flex items-start gap-4">
 <div class="p-3.5 dock-squircle rounded-2xl flex-shrink-0">
-<i data-lucide="contact" class="w-6 h-6 text-mac-amber"></i>
+<i data-lucide="contact" class="w-5 h-5 text-mac-amber"></i>
 </div>
 <div class="relative z-10">
 <p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1">Status</p>
@@ -390,32 +412,10 @@ A closer look at my personal background, roots, contact details, and core intere
 </div>
 </div>
 
-<!-- Phone Number -->
-<div class="liquid-glass rounded-ios p-5 flex items-start gap-4">
+<!-- Location (Born In & Residence) -->
+<div class="flex items-start gap-4">
 <div class="p-3.5 dock-squircle rounded-2xl flex-shrink-0">
-<i data-lucide="phone" class="w-6 h-6 text-mac-green"></i>
-</div>
-<div class="relative z-10">
-<p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1">Phone</p>
-<h3 class="text-lg sm:text-xl font-bold text-white tracking-tight">09993066711 <span class="text-sm sm:text-base text-mac-silver font-medium">(Smart)</span></h3>
-</div>
-</div>
-
-<!-- Email -->
-<div class="liquid-glass rounded-ios p-5 flex items-start gap-4">
-<div class="p-3.5 dock-squircle rounded-2xl flex-shrink-0">
-<i data-lucide="mail" class="w-6 h-6 text-mac-blue"></i>
-</div>
-<div class="relative z-10 w-full overflow-hidden">
-<p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1">Email</p>
-<h3 class="text-[15px] sm:text-[17px] md:text-lg font-bold text-white tracking-tight break-all">benjaminbucad90@gmail.com</h3>
-</div>
-</div>
-
-<!-- Born In -->
-<div class="liquid-glass rounded-ios p-5 flex items-start gap-4">
-<div class="p-3.5 dock-squircle rounded-2xl flex-shrink-0">
-<i data-lucide="building-2" class="w-6 h-6 text-mac-silver"></i>
+<i data-lucide="building-2" class="w-5 h-5 text-mac-silver"></i>
 </div>
 <div class="relative z-10">
 <p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1">Born In</p>
@@ -424,10 +424,9 @@ A closer look at my personal background, roots, contact details, and core intere
 </div>
 </div>
 
-<!-- Residence -->
-<div class="liquid-glass rounded-ios p-5 flex items-start gap-4">
+<div class="flex items-start gap-4">
 <div class="p-3.5 dock-squircle rounded-2xl flex-shrink-0">
-<i data-lucide="home" class="w-6 h-6 text-mac-amber"></i>
+<i data-lucide="home" class="w-5 h-5 text-mac-amber"></i>
 </div>
 <div class="relative z-10">
 <p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1">Residence</p>
@@ -435,10 +434,10 @@ A closer look at my personal background, roots, contact details, and core intere
 </div>
 </div>
 
-<!-- Interests & Hobbies -->
-<div class="liquid-glass rounded-ios p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:col-span-2">
+<!-- Interests (Spans Full Width) -->
+<div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 md:col-span-2 pt-6 border-t border-white/10">
 <div class="p-3.5 dock-squircle rounded-2xl flex-shrink-0">
-<i data-lucide="gamepad-2" class="w-6 h-6 text-mac-ggred"></i>
+<i data-lucide="gamepad-2" class="w-5 h-5 text-mac-ggred"></i>
 </div>
 <div class="relative z-10 flex-1">
 <p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-2.5">Interests & Hobbies</p>
