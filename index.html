@@ -40,9 +40,33 @@ h1,h2,h3,h4,p{text-shadow:0 2px 12px rgba(0,0,0,0.45);}
 @media (min-width: 768px){.dock-item:hover{transform:translateY(-9px) scale(1.2);margin-left:5px;margin-right:5px;z-index:20;}.dock-item:hover .dock-squircle{border-color:rgba(255,255,255,0.65);background:radial-gradient(circle at 30% 20%,rgba(255,255,255,0.45) 0%,transparent 60%),linear-gradient(145deg,rgba(255,255,255,0.28) 0%,rgba(30,38,54,0.48) 100%);box-shadow:0 14px 28px -4px rgba(0,0,0,0.7),inset 0 1.5px 1.5px 0 rgba(255,255,255,0.9);}.dock-item:hover + .dock-item,.dock-item:has(+ .dock-item:hover){transform:translateY(-4px) scale(1.08);}}
 .dock-tooltip{position:absolute;top:-42px;left:50%;transform:translateX(-50%) translateY(6px) scale(0.94);opacity:0;pointer-events:none;transition:all 0.2s cubic-bezier(0.22, 1, 0.36, 1);white-space:nowrap;}
 .dock-item:hover .dock-tooltip{opacity:1;transform:translateX(-50%) translateY(0) scale(1);}
-.mac-app-icon{position:relative;border-radius:14px;box-shadow:0 10px 22px -4px rgba(0,0,0,0.45);transition:all 0.25s cubic-bezier(0.22, 1, 0.36, 1);}
-.mac-app-icon::after{content:'';position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 1.5px 1px 0 rgba(255,255,255,0.4),inset 0 -1px 1px 0 rgba(255,255,255,0.1);pointer-events:none;transition:all 0.25s cubic-bezier(0.22, 1, 0.36, 1);}
-@media (min-width: 768px){.dock-item:hover .mac-app-icon{box-shadow:0 14px 28px -4px rgba(0,0,0,0.6);}.dock-item:hover .mac-app-icon::after{box-shadow:inset 0 1.5px 1.5px 0 rgba(255,255,255,0.7),inset 0 -1px 1px 0 rgba(255,255,255,0.2);}}
+
+/* Standard flat macOS App Icon Styling */
+.mac-app-icon{
+  position:relative;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 10px 22px -4px rgba(0,0,0,0.45);
+  transition:all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.mac-app-icon::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  box-shadow:inset 0 1px 1px 0 rgba(255,255,255,0.3),inset 0 -1px 1px 0 rgba(255,255,255,0.1);
+  pointer-events:none;
+  transition:all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@media (min-width: 768px){
+  .dock-item:hover .mac-app-icon{
+    box-shadow:0 14px 28px -4px rgba(0,0,0,0.6);
+  }
+  .dock-item:hover .mac-app-icon::after{
+    box-shadow:inset 0 1.5px 1.5px 0 rgba(255,255,255,0.5),inset 0 -1px 1px 0 rgba(255,255,255,0.2);
+  }
+}
+
 .glass-tag{background:linear-gradient(135deg,rgba(255,255,255,0.20) 0%,rgba(255,255,255,0.06) 100%);backdrop-filter:blur(12px) saturate(190%);-webkit-backdrop-filter:blur(12px) saturate(190%);border:1px solid rgba(255,255,255,0.28);box-shadow:0 4px 12px rgba(0,0,0,0.22),inset 0 1px 0.5px 0 rgba(255,255,255,0.65);transition:all 0.2s ease;}
 .glass-tag:hover{background:linear-gradient(135deg,rgba(255,255,255,0.30) 0%,rgba(255,255,255,0.12) 100%);border-color:rgba(255,255,255,0.52);transform:translateY(-1px);}
 .reveal{opacity:0;transform:translateY(22px) scale(0.99);transition:opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);}
@@ -98,100 +122,63 @@ Baguio, PH
 
 <nav aria-label="macOS Dock Navigation" class="fixed bottom-4 sm:bottom-5 left-1/2 -translate-x-1/2 z-[60] max-w-[96vw]">
 <div class="mac-dock rounded-[24px] px-3 sm:px-4 py-2 flex items-center gap-2 sm:gap-2.5">
+
+<!-- PAGE 1: HOMEPAGE ICON -->
 <button type="button" onclick="switchPage('home')" data-section="home" class="dock-item group flex flex-col items-center cursor-pointer focus:outline-none">
 <div class="dock-tooltip liquid-glass-elevated px-2.5 py-1 rounded-lg text-[11px] font-medium text-white shadow-lg">Page 1: Homepage</div>
-<div class="mac-app-icon w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center overflow-hidden bg-white">
-<img src="homepagelogo.jpg" alt="Homepage" class="w-full h-full object-cover transform scale-[1.22]" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-<svg style="display:none;" class="w-full h-full transform scale-[1.22]" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-<defs>
-<linearGradient id="mac-home-bg" x1="32" y1="0" x2="32" y2="64" gradientUnits="userSpaceOnUse">
-<stop stop-color="#FFFFFF"/>
-<stop offset="1" stop-color="#ECECEC"/>
-</linearGradient>
-<linearGradient id="mac-home-outer" x1="32" y1="9" x2="32" y2="54" gradientUnits="userSpaceOnUse">
-<stop stop-color="#FF7A33"/>
-<stop offset="1" stop-color="#F2561D"/>
-</linearGradient>
-<linearGradient id="mac-home-mid" x1="32" y1="18" x2="32" y2="50" gradientUnits="userSpaceOnUse">
-<stop stop-color="#FFC247"/>
-<stop offset="1" stop-color="#FF9B19"/>
-</linearGradient>
-<linearGradient id="mac-home-inner" x1="32" y1="25" x2="32" y2="47" gradientUnits="userSpaceOnUse">
-<stop stop-color="#FFE875"/>
-<stop offset="1" stop-color="#FFCC2E"/>
-</linearGradient>
-</defs>
-<rect width="64" height="64" fill="url(#mac-home-bg)"/>
-<path d="M43 14.5C43 13.6716 43.6716 13 44.5 13H48.5C49.3284 13 50 13.6716 50 14.5V25H43V14.5Z" fill="url(#mac-home-outer)"/>
-<path d="M30.4 10.2C31.337 9.43337 32.663 9.43337 33.6 10.2L55.2 27.8C56.25 28.66 55.64 30.35 54.28 30.35H51V50C51 52.2091 49.2091 54 47 54H17C14.7909 54 13 52.2091 13 50V30.35H9.72C8.36 30.35 7.75 28.66 8.8 27.8L30.4 10.2Z" fill="url(#mac-home-outer)"/>
-<path d="M30.8 18.4C31.5 17.82 32.5 17.82 33.2 18.4L45.4 28.5C45.78 28.82 46 29.29 46 29.78V47.5C46 48.8807 44.8807 50 43.5 50H20.5C19.1193 50 18 48.8807 18 47.5V29.78C18 29.29 18.22 28.82 18.6 28.5L30.8 18.4Z" fill="url(#mac-home-mid)"/>
-<path d="M31.05 25.3C31.6 24.84 32.4 24.84 32.95 25.3L40.3 31.4C40.74 31.77 41 32.31 41 32.89V44.8C41 45.9046 40.1046 46.8 39 46.8H25C23.8954 46.8 23 45.9046 23 44.8V32.89C23 32.31 23.26 31.77 23.7 31.4L31.05 25.3Z" fill="url(#mac-home-inner)"/>
-<path d="M31.3 31.2C31.71 30.86 32.29 30.86 32.7 31.2L36.5 34.35C36.82 34.61 37 35 37 35.42V42.5C37 43.3284 36.3284 44 35.5 44H28.5C27.6716 44 27 43.3284 27 42.5V35.42C27 35 27.18 34.61 27.5 34.35L31.3 31.2Z" fill="#FFFDF5"/>
-</svg>
+<div class="mac-app-icon w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center bg-transparent">
+<img src="homepagelogo.jpg" alt="Homepage" class="w-full h-full object-cover transform scale-[1.3] sm:scale-[1.35]">
 </div>
 <span class="dock-dot w-1 h-1 rounded-full bg-white mt-1 transition-all duration-300 opacity-100"></span>
 </button>
 
+<!-- PAGE 2: PERSONAL INFORMATION ICON -->
 <button type="button" onclick="switchPage('about')" data-section="about" class="dock-item group flex flex-col items-center cursor-pointer focus:outline-none">
 <div class="dock-tooltip liquid-glass-elevated px-2.5 py-1 rounded-lg text-[11px] font-medium text-white shadow-lg">Page 2: Personal Information</div>
-<div class="mac-app-icon w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center">
-<svg class="w-full h-full rounded-[14px]" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-<defs>
-<linearGradient id="grad-about" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
-<stop stop-color="#5E5CE6"/>
-<stop offset="1" stop-color="#0A84FF"/>
-</linearGradient>
-</defs>
-<rect width="64" height="64" rx="14" fill="url(#grad-about)"/>
-<circle cx="32" cy="24" r="9" fill="white"/>
-<path d="M16 50C16 41.7157 23.1634 35 32 35C40.8366 35 48 41.7157 48 50V52H16V50Z" fill="white"/>
-</svg>
+<div class="mac-app-icon w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center bg-transparent">
+<img src="personal information icon.webp" alt="Personal Information" class="w-full h-full object-cover transform scale-[1.3] sm:scale-[1.35]">
 </div>
 <span class="dock-dot w-1 h-1 rounded-full bg-white mt-1 transition-all duration-300 opacity-0"></span>
 </button>
 
+<!-- PAGE 3: FOUNDATION ICON -->
 <button type="button" onclick="switchPage('family')" data-section="family" class="dock-item group flex flex-col items-center cursor-pointer focus:outline-none">
 <div class="dock-tooltip liquid-glass-elevated px-2.5 py-1 rounded-lg text-[11px] font-medium text-white shadow-lg">Page 3: Foundation</div>
 <div class="mac-app-icon w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center">
-<svg class="w-full h-full rounded-[14px]" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="64" height="64" rx="14" fill="#98989D"/>
-<path d="M50 14H54V22H50V14Z" fill="#FF3B30"/>
-<path d="M50 28H54V36H50V28Z" fill="#FF9500"/>
-<path d="M50 42H54V50H50V42Z" fill="#0A84FF"/>
-<circle cx="27" cy="24" r="9" fill="white"/>
-<path d="M11 52C11 43.16 18.16 36 27 36C35.84 36 43 43.16 43 52V56H11V52Z" fill="white"/>
-</svg>
-</div>
-<span class="dock-dot w-1 h-1 rounded-full bg-white mt-1 transition-all duration-300 opacity-0"></span>
-</button>
-
-<button type="button" onclick="switchPage('education')" data-section="education" class="dock-item group flex flex-col items-center cursor-pointer focus:outline-none">
-<div class="dock-tooltip liquid-glass-elevated px-2.5 py-1 rounded-lg text-[11px] font-medium text-white shadow-lg">Page 4: Education Journey</div>
-<div class="mac-app-icon w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center">
-<svg class="w-full h-full rounded-[14px]" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg class="w-full h-full" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
 <defs>
-<linearGradient id="grad-books" x1="32" y1="0" x2="32" y2="64" gradientUnits="userSpaceOnUse">
-<stop stop-color="#FF9500"/>
-<stop offset="1" stop-color="#FF5E3A"/>
+<linearGradient id="grad-family" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FF2D55"/>
+<stop offset="1" stop-color="#FF9500"/>
 </linearGradient>
 </defs>
-<rect width="64" height="64" rx="14" fill="url(#grad-books)"/>
-<path d="M32 46L16 41V16L32 21V46Z" fill="#E5E5EA"/>
-<path d="M32 46L48 41V16L32 21V46Z" fill="#FFFFFF"/>
-<path d="M21 24L28 25.5" stroke="#C7C7CC" stroke-width="2" stroke-linecap="round"/>
-<path d="M21 30L28 31.5" stroke="#C7C7CC" stroke-width="2" stroke-linecap="round"/>
-<path d="M43 24L36 25.5" stroke="#E5E5EA" stroke-width="2" stroke-linecap="round"/>
-<path d="M43 30L36 31.5" stroke="#E5E5EA" stroke-width="2" stroke-linecap="round"/>
+<rect width="64" height="64" fill="url(#grad-family)"/>
+<circle cx="18" cy="22" r="6" fill="white"/>
+<path d="M18 31c-6 0-11 5-11 11v6h22v-6c0-6-5-11-11-11z" fill="white"/>
+<circle cx="46" cy="22" r="6" fill="white"/>
+<path d="M46 31c-6 0-11 5-11 11v6h22v-6c0-6-5-11-11-11z" fill="white"/>
+<circle cx="32" cy="35" r="5" fill="white"/>
+<path d="M32 42c-5 0-9 4-9 9v5h18v-5c0-5-4-9-9-9z" fill="white"/>
 </svg>
 </div>
 <span class="dock-dot w-1 h-1 rounded-full bg-white mt-1 transition-all duration-300 opacity-0"></span>
 </button>
 
+<!-- PAGE 4: EDUCATION ICON -->
+<button type="button" onclick="switchPage('education')" data-section="education" class="dock-item group flex flex-col items-center cursor-pointer focus:outline-none">
+<div class="dock-tooltip liquid-glass-elevated px-2.5 py-1 rounded-lg text-[11px] font-medium text-white shadow-lg">Page 4: Education Journey</div>
+<div class="mac-app-icon w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center bg-transparent">
+<img src="education logo.webp" alt="Education Journey" class="w-full h-full object-cover transform scale-[1.3] sm:scale-[1.35]">
+</div>
+<span class="dock-dot w-1 h-1 rounded-full bg-white mt-1 transition-all duration-300 opacity-0"></span>
+</button>
+
+<!-- PAGE 5: ACHIEVEMENTS ICON -->
 <button type="button" onclick="switchPage('achievements')" data-section="achievements" class="dock-item group flex flex-col items-center cursor-pointer focus:outline-none">
 <div class="dock-tooltip liquid-glass-elevated px-2.5 py-1 rounded-lg text-[11px] font-medium text-white shadow-lg">Page 5: Achievements</div>
-<div class="mac-app-icon w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center">
-<svg class="w-full h-full rounded-[14px]" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="64" height="64" rx="14" fill="#000000"/>
+<div class="mac-app-icon w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center bg-black">
+<svg class="w-full h-full" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="64" height="64" fill="#0B0D13"/>
 <circle cx="32" cy="32" r="17" stroke="#FF0055" stroke-width="5" stroke-linecap="round"/>
 <circle cx="32" cy="32" r="11" stroke="#4CFF00" stroke-width="5" stroke-linecap="round"/>
 <circle cx="32" cy="32" r="5" stroke="#00E5FF" stroke-width="5" stroke-linecap="round"/>
@@ -202,23 +189,15 @@ Baguio, PH
 
 <div class="w-[1px] h-8 bg-white/25 mx-1 self-center"></div>
 
+<!-- CONTACT ME ICON -->
 <button type="button" onclick="openContactSheet()" class="dock-item group flex flex-col items-center cursor-pointer focus:outline-none">
 <div class="dock-tooltip liquid-glass-elevated px-2.5 py-1 rounded-lg text-[11px] font-medium text-white shadow-lg">Contact Me</div>
-<div class="mac-app-icon w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center">
-<svg class="w-full h-full rounded-[14px]" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-<defs>
-<linearGradient id="grad-mail" x1="32" y1="0" x2="32" y2="64" gradientUnits="userSpaceOnUse">
-<stop stop-color="#4E9CFF"/>
-<stop offset="1" stop-color="#0062E0"/>
-</linearGradient>
-</defs>
-<rect width="64" height="64" rx="14" fill="url(#grad-mail)"/>
-<path d="M12 23 L32 37 L52 23 V43 C52 45.2 50.2 47 48 47 H16 C13.8 47 12 45.2 12 43 V23 Z" fill="#FFFFFF"/>
-<path d="M12 23 C12 20.8 13.8 19 16 19 H48 C50.2 19 52 20.8 52 23 L32 37 L12 23 Z" fill="#E5E5EA"/>
-</svg>
+<div class="mac-app-icon w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center bg-transparent">
+<img src="contacts icon.webp" alt="Contact Me" class="w-full h-full object-cover transform scale-[1.3] sm:scale-[1.35]">
 </div>
 <span class="w-1 h-1 rounded-full bg-transparent mt-1"></span>
 </button>
+
 </div>
 </nav>
 
@@ -672,19 +651,6 @@ Achieved podium placement in a highly competitive bracket. Showcased strong anal
 </div>
 </section>
 
-<footer class="pt-8 pb-12 border-t border-white/20 text-center sm:flex sm:items-center sm:justify-between text-xs text-white font-medium mt-10">
-<div class="flex items-center justify-center gap-2 mb-3 sm:mb-0">
-<i data-lucide="command" class="w-3.5 h-3.5 text-white"></i>
-<span>Benjamin P. Bucad • Crafted with macOS Liquid Glass</span>
-</div>
-<div class="flex flex-wrap items-center justify-center gap-6">
-<button type="button" onclick="switchPage('home')" class="hover:text-white transition-colors">Homepage</button>
-<button type="button" onclick="switchPage('about')" class="hover:text-white transition-colors">Personal Information</button>
-<button type="button" onclick="switchPage('family')" class="hover:text-white transition-colors">Foundation</button>
-<button type="button" onclick="switchPage('education')" class="hover:text-white transition-colors">Education</button>
-<button type="button" onclick="switchPage('achievements')" class="hover:text-white transition-colors">Achievements</button>
-</div>
-</footer>
 </main>
 
 <div id="certModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/75 backdrop-blur-2xl opacity-0 transition-opacity duration-300 px-4">
@@ -846,7 +812,13 @@ function updateMacClock(){
 updateMacClock();
 setInterval(updateMacClock,15000);
 
+const pageOrder = ['home', 'about', 'family', 'education', 'achievements'];
+let currentPageIndex = 0;
+
 function switchPage(pageId){
+  currentPageIndex = pageOrder.indexOf(pageId);
+  if(currentPageIndex === -1) currentPageIndex = 0;
+
   const sections=document.querySelectorAll('.page-section');
   sections.forEach(sec=>{
     if(sec.id===pageId){
@@ -1079,8 +1051,16 @@ document.getElementById('certModal').addEventListener('click',function(e){
 
 document.addEventListener('keydown',function(e){
   if(e.key==='Escape'){
-    if(!document.getElementById('certModal').classList.contains('hidden'))closeModal();
-    if(!document.getElementById('contactSheet').classList.contains('hidden'))closeContactSheet();
+    if(!document.getElementById('certModal').classList.contains('hidden')) closeModal();
+    if(!document.getElementById('contactSheet').classList.contains('hidden')) closeContactSheet();
+  } else if (e.key === 'ArrowRight') {
+    if (currentPageIndex < pageOrder.length - 1) {
+      switchPage(pageOrder[currentPageIndex + 1]);
+    }
+  } else if (e.key === 'ArrowLeft') {
+    if (currentPageIndex > 0) {
+      switchPage(pageOrder[currentPageIndex - 1]);
+    }
   }
 });
 </script>
