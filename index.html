@@ -41,7 +41,7 @@ h1,h2,h3,h4,p{text-shadow:0 2px 12px rgba(0,0,0,0.45);}
 .dock-tooltip{position:absolute;top:-46px;left:50%;transform:translateX(-50%) translateY(6px) scale(0.94);opacity:0;pointer-events:none;transition:all 0.2s cubic-bezier(0.22, 1, 0.36, 1);white-space:nowrap;z-index:30;}
 .dock-item:hover .dock-tooltip{opacity:1;transform:translateX(-50%) translateY(0) scale(1);}
 
-/* Updated macOS Squircle Wrapper - Tightly fitted */
+/* Updated macOS Squircle Wrapper - Reduced size relative to images */
 .mac-app-icon{
   position:relative;
   overflow:hidden;
@@ -111,39 +111,39 @@ Baguio, PH
 </div>
 </header>
 
-<!-- TIGHTLY WRAPPED DOCK -->
-<nav aria-label="macOS Dock Navigation" class="fixed bottom-3 sm:bottom-5 left-1/2 -translate-x-1/2 z-[60] max-w-[98vw]">
-<div class="mac-dock rounded-[24px] sm:rounded-[26px] px-[8px] sm:px-[10px] pt-[8px] sm:pt-[10px] pb-[12px] sm:pb-[14px] flex items-center gap-[8px] sm:gap-[12px]">
+<!-- SLIMMER DOCK CARD & BALANCED UNIFORM ICON WRAPPERS -->
+<nav aria-label="macOS Dock Navigation" class="fixed bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 z-[60] max-w-[98vw]">
+<div class="mac-dock rounded-[22px] sm:rounded-[24px] px-[8px] sm:px-[10px] pt-[6px] sm:pt-[8px] pb-[10px] sm:pb-[12px] flex items-center gap-[8px] sm:gap-[10px]">
 
-<!-- PAGE 1: HOMEPAGE ICON -->
-<button type="button" onclick="switchPage('home')" data-section="home" class="dock-item group relative flex flex-col items-center cursor-pointer focus:outline-none">
+<!-- PAGE 1: HOMEPAGE ICON (Shrunk internally) -->
+<button type="button" onclick="switchPage('home')" data-section="home" class="dock-item group relative flex flex-col items-center justify-center cursor-pointer focus:outline-none w-[52px] h-[52px] sm:w-[58px] sm:h-[58px]">
 <div class="dock-tooltip liquid-glass-elevated px-3 py-1.5 rounded-lg text-[12px] font-medium text-white shadow-lg">Page 1: Homepage</div>
-<div class="mac-app-icon w-[56px] h-[56px] sm:w-[64px] sm:h-[64px] flex items-center justify-center bg-white rounded-[13px] sm:rounded-[15px]">
+<div class="mac-app-icon absolute w-[46px] h-[46px] sm:w-[52px] sm:h-[52px] flex items-center justify-center bg-white rounded-[11px] sm:rounded-[13px]">
 <img src="homepagelogo.jpg" alt="Homepage" class="w-full h-full object-cover transform scale-[1.24]">
 </div>
-<span class="dock-dot absolute -bottom-[9px] sm:-bottom-[10px] left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-white transition-all duration-300 opacity-100"></span>
+<span class="dock-dot absolute -bottom-[7px] sm:-bottom-[8px] w-1 h-1 rounded-full bg-white transition-all duration-300 opacity-100"></span>
 </button>
 
 <!-- PAGE 2: PERSONAL INFORMATION ICON -->
-<button type="button" onclick="switchPage('about')" data-section="about" class="dock-item group relative flex flex-col items-center cursor-pointer focus:outline-none">
+<button type="button" onclick="switchPage('about')" data-section="about" class="dock-item group relative flex flex-col items-center justify-center cursor-pointer focus:outline-none w-[52px] h-[52px] sm:w-[58px] sm:h-[58px]">
 <div class="dock-tooltip liquid-glass-elevated px-3 py-1.5 rounded-lg text-[12px] font-medium text-white shadow-lg">Page 2: Personal Information</div>
-<img src="personal information icon.webp" alt="Personal Information" class="w-[56px] h-[56px] sm:w-[64px] sm:h-[64px] object-contain drop-shadow-[0_10px_22px_rgba(0,0,0,0.45)]">
-<span class="dock-dot absolute -bottom-[9px] sm:-bottom-[10px] left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-white transition-all duration-300 opacity-0"></span>
+<img src="personal information icon.webp" alt="Personal Information" class="absolute w-[50px] h-[50px] sm:w-[56px] sm:h-[56px] object-contain drop-shadow-[0_10px_22px_rgba(0,0,0,0.45)]">
+<span class="dock-dot absolute -bottom-[7px] sm:-bottom-[8px] w-1 h-1 rounded-full bg-white transition-all duration-300 opacity-0"></span>
 </button>
 
-<!-- PAGE 3: ACHIEVEMENTS ICON (Trophy) -->
-<button type="button" onclick="switchPage('achievements')" data-section="achievements" class="dock-item group relative flex flex-col items-center cursor-pointer focus:outline-none">
+<!-- PAGE 3: ACHIEVEMENTS ICON (Shrunk internally, Trophy) -->
+<button type="button" onclick="switchPage('achievements')" data-section="achievements" class="dock-item group relative flex flex-col items-center justify-center cursor-pointer focus:outline-none w-[52px] h-[52px] sm:w-[58px] sm:h-[58px]">
 <div class="dock-tooltip liquid-glass-elevated px-3 py-1.5 rounded-lg text-[12px] font-medium text-white shadow-lg">Page 3: Achievements</div>
-<div class="mac-app-icon w-[56px] h-[56px] sm:w-[64px] sm:h-[64px] flex items-center justify-center bg-gradient-to-br from-[#FFD54F] to-[#FF8F00] rounded-[13px] sm:rounded-[15px]">
-<i data-lucide="trophy" class="w-7 h-7 sm:w-8 sm:h-8 text-white drop-shadow-md"></i>
+<div class="mac-app-icon absolute w-[46px] h-[46px] sm:w-[52px] sm:h-[52px] flex items-center justify-center bg-gradient-to-br from-[#FFD54F] to-[#FF8F00] rounded-[11px] sm:rounded-[13px]">
+<i data-lucide="trophy" class="w-6 h-6 sm:w-7 sm:h-7 text-white drop-shadow-md"></i>
 </div>
-<span class="dock-dot absolute -bottom-[9px] sm:-bottom-[10px] left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-white transition-all duration-300 opacity-0"></span>
+<span class="dock-dot absolute -bottom-[7px] sm:-bottom-[8px] w-1 h-1 rounded-full bg-white transition-all duration-300 opacity-0"></span>
 </button>
 
-<!-- PAGE 4: FOUNDATION ICON -->
-<button type="button" onclick="switchPage('family')" data-section="family" class="dock-item group relative flex flex-col items-center cursor-pointer focus:outline-none">
+<!-- PAGE 4: FOUNDATION ICON (Shrunk internally) -->
+<button type="button" onclick="switchPage('family')" data-section="family" class="dock-item group relative flex flex-col items-center justify-center cursor-pointer focus:outline-none w-[52px] h-[52px] sm:w-[58px] sm:h-[58px]">
 <div class="dock-tooltip liquid-glass-elevated px-3 py-1.5 rounded-lg text-[12px] font-medium text-white shadow-lg">Page 4: Foundation</div>
-<div class="mac-app-icon w-[56px] h-[56px] sm:w-[64px] sm:h-[64px] flex items-center justify-center rounded-[13px] sm:rounded-[15px]">
+<div class="mac-app-icon absolute w-[46px] h-[46px] sm:w-[52px] sm:h-[52px] flex items-center justify-center rounded-[11px] sm:rounded-[13px]">
 <svg class="w-full h-full" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
 <defs>
 <linearGradient id="grad-family" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
@@ -160,23 +160,23 @@ Baguio, PH
 <path d="M32 42c-5 0-9 4-9 9v5h18v-5c0-5-4-9-9-9z" fill="white"/>
 </svg>
 </div>
-<span class="dock-dot absolute -bottom-[9px] sm:-bottom-[10px] left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-white transition-all duration-300 opacity-0"></span>
+<span class="dock-dot absolute -bottom-[7px] sm:-bottom-[8px] w-1 h-1 rounded-full bg-white transition-all duration-300 opacity-0"></span>
 </button>
 
 <!-- PAGE 5: EDUCATION ICON -->
-<button type="button" onclick="switchPage('education')" data-section="education" class="dock-item group relative flex flex-col items-center cursor-pointer focus:outline-none">
+<button type="button" onclick="switchPage('education')" data-section="education" class="dock-item group relative flex flex-col items-center justify-center cursor-pointer focus:outline-none w-[52px] h-[52px] sm:w-[58px] sm:h-[58px]">
 <div class="dock-tooltip liquid-glass-elevated px-3 py-1.5 rounded-lg text-[12px] font-medium text-white shadow-lg">Page 5: Education Journey</div>
-<img src="education logo.webp" alt="Education Journey" class="w-[56px] h-[56px] sm:w-[64px] sm:h-[64px] object-contain drop-shadow-[0_10px_22px_rgba(0,0,0,0.45)]">
-<span class="dock-dot absolute -bottom-[9px] sm:-bottom-[10px] left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-white transition-all duration-300 opacity-0"></span>
+<img src="education logo.webp" alt="Education Journey" class="absolute w-[50px] h-[50px] sm:w-[56px] sm:h-[56px] object-contain drop-shadow-[0_10px_22px_rgba(0,0,0,0.45)]">
+<span class="dock-dot absolute -bottom-[7px] sm:-bottom-[8px] w-1 h-1 rounded-full bg-white transition-all duration-300 opacity-0"></span>
 </button>
 
-<div class="w-[1px] h-[56px] sm:h-[64px] bg-white/20 mx-[2px] self-center rounded-full"></div>
+<div class="w-[1px] h-[46px] sm:h-[52px] bg-white/20 mx-[2px] self-center rounded-full"></div>
 
 <!-- CONTACT ME ICON -->
-<button type="button" onclick="openContactSheet()" class="dock-item group relative flex flex-col items-center cursor-pointer focus:outline-none">
+<button type="button" onclick="openContactSheet()" class="dock-item group relative flex flex-col items-center justify-center cursor-pointer focus:outline-none w-[52px] h-[52px] sm:w-[58px] sm:h-[58px]">
 <div class="dock-tooltip liquid-glass-elevated px-3 py-1.5 rounded-lg text-[12px] font-medium text-white shadow-lg">Contact Me</div>
-<img src="contacts icon.webp" alt="Contact Me" class="w-[56px] h-[56px] sm:w-[64px] sm:h-[64px] object-contain drop-shadow-[0_10px_22px_rgba(0,0,0,0.45)]">
-<span class="absolute -bottom-[9px] sm:-bottom-[10px] left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-transparent"></span>
+<img src="contacts icon.webp" alt="Contact Me" class="absolute w-[50px] h-[50px] sm:w-[56px] sm:h-[56px] object-contain drop-shadow-[0_10px_22px_rgba(0,0,0,0.45)]">
+<span class="absolute -bottom-[7px] sm:-bottom-[8px] w-1 h-1 rounded-full bg-transparent"></span>
 </button>
 
 </div>
