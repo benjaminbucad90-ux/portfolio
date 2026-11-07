@@ -69,6 +69,51 @@ h1,h2,h3,h4,p{text-shadow:0 2px 12px rgba(0,0,0,0.45);}
 .mac-window-transition{transition:all 0.42s cubic-bezier(0.22, 1, 0.36, 1);}
 .traffic-group:hover .traffic-icon{opacity:1;}
 .traffic-icon{opacity:0;transition:opacity 0.15s ease;pointer-events:none;}
+
+/* Floating Nav Buttons */
+.nav-btn {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  opacity: 0.2; /* Much less visible initially */
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-btn:hover:not(:disabled) {
+  opacity: 1; /* Full visibility on hover */
+  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.02) 100%);
+  border-color: rgba(255,255,255,0.25);
+  transform: scale(1.08);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.3);
+}
+.nav-btn:active:not(:disabled) {
+  transform: scale(0.95);
+}
+.nav-btn:disabled {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.9);
+}
+.nav-tooltip {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) scale(0.94);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  white-space: nowrap;
+}
+.nav-btn:hover .nav-tooltip.left {
+  opacity: 1;
+  transform: translateY(-50%) translateX(-100%) scale(1);
+  right: calc(100% + 12px);
+}
+.nav-btn:hover .nav-tooltip.right {
+  opacity: 1;
+  transform: translateY(-50%) translateX(100%) scale(1);
+  left: calc(100% + 12px);
+}
+
 @media (prefers-reduced-motion: reduce){*,::before,::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important;}}
 </style>
 </head>
@@ -110,6 +155,25 @@ Baguio, PH
 <span id="mac-menubar-clock" class="font-mono text-[12px] text-white"></span>
 </div>
 </header>
+
+<!-- NEXT/PREV FLOATING BUTTONS -->
+<div id="floating-nav" class="fixed inset-y-0 w-full max-w-[94rem] mx-auto left-1/2 -translate-x-1/2 pointer-events-none z-[80] hidden lg:flex items-center justify-between px-4 xl:px-8 2xl:px-0">
+  <button id="nav-prev-btn" onclick="navigatePage(-1)" class="nav-btn group relative pointer-events-auto flex items-center justify-center w-14 h-14 rounded-full text-white focus:outline-none" aria-label="Previous Page">
+    <div class="nav-tooltip right liquid-glass-elevated px-3 py-1.5 rounded-lg text-[12px] font-medium text-white shadow-lg border border-white/20">
+      <span class="opacity-70 text-[10px] uppercase tracking-wider block mb-0.5">Previous</span>
+      <span id="nav-prev-label" class="font-bold">Home</span>
+    </div>
+    <i data-lucide="chevron-left" class="w-7 h-7 drop-shadow-md"></i>
+  </button>
+  
+  <button id="nav-next-btn" onclick="navigatePage(1)" class="nav-btn group relative pointer-events-auto flex items-center justify-center w-14 h-14 rounded-full text-white focus:outline-none" aria-label="Next Page">
+    <div class="nav-tooltip left liquid-glass-elevated px-3 py-1.5 rounded-lg text-[12px] font-medium text-white shadow-lg border border-white/20 text-right">
+      <span class="opacity-70 text-[10px] uppercase tracking-wider block mb-0.5">Next</span>
+      <span id="nav-next-label" class="font-bold">About</span>
+    </div>
+    <i data-lucide="chevron-right" class="w-7 h-7 drop-shadow-md"></i>
+  </button>
+</div>
 
 <!-- SLIMMER DOCK CARD & BALANCED UNIFORM ICON WRAPPERS -->
 <nav aria-label="macOS Dock Navigation" class="fixed bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 z-[60] max-w-[98vw]">
@@ -729,6 +793,13 @@ Promise.all([minLoadingTime,windowLoaded]).then(()=>{
     },160);
     setTimeout(()=>{
       runMasterHeroSequence();
+      
+      // Initialize Floating Nav layout after loading
+      const floatingNav = document.getElementById('floating-nav');
+      if (floatingNav) {
+        floatingNav.classList.remove('hidden');
+        updateFloatingNav();
+      }
     },520);
   },700);
 });
@@ -805,6 +876,13 @@ updateMacClock();
 setInterval(updateMacClock,15000);
 
 const pageOrder = ['home', 'about', 'achievements', 'family', 'education'];
+const pageTitles = {
+  'home': 'Homepage',
+  'about': 'About Me',
+  'achievements': 'Achievements',
+  'family': 'Foundation',
+  'education': 'Education'
+};
 let currentPageIndex = 0;
 
 function switchPage(pageId){
@@ -854,6 +932,35 @@ function switchPage(pageId){
   });
 
   window.scrollTo({top:0,behavior:'smooth'});
+  updateFloatingNav();
+}
+
+function navigatePage(direction) {
+  const newIndex = currentPageIndex + direction;
+  if (newIndex >= 0 && newIndex < pageOrder.length) {
+    switchPage(pageOrder[newIndex]);
+  }
+}
+
+function updateFloatingNav() {
+  const prevBtn = document.getElementById('nav-prev-btn');
+  const nextBtn = document.getElementById('nav-next-btn');
+  const prevLabel = document.getElementById('nav-prev-label');
+  const nextLabel = document.getElementById('nav-next-label');
+
+  if (currentPageIndex === 0) {
+    prevBtn.disabled = true;
+  } else {
+    prevBtn.disabled = false;
+    prevLabel.textContent = pageTitles[pageOrder[currentPageIndex - 1]];
+  }
+
+  if (currentPageIndex === pageOrder.length - 1) {
+    nextBtn.disabled = true;
+  } else {
+    nextBtn.disabled = false;
+    nextLabel.textContent = pageTitles[pageOrder[currentPageIndex + 1]];
+  }
 }
 
 function filterEducation(category,btn){
@@ -1046,13 +1153,9 @@ document.addEventListener('keydown',function(e){
     if(!document.getElementById('certModal').classList.contains('hidden')) closeModal();
     if(!document.getElementById('contactSheet').classList.contains('hidden')) closeContactSheet();
   } else if (e.key === 'ArrowRight') {
-    if (currentPageIndex < pageOrder.length - 1) {
-      switchPage(pageOrder[currentPageIndex + 1]);
-    }
+    navigatePage(1);
   } else if (e.key === 'ArrowLeft') {
-    if (currentPageIndex > 0) {
-      switchPage(pageOrder[currentPageIndex - 1]);
-    }
+    navigatePage(-1);
   }
 });
 </script>
