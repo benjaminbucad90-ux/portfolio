@@ -500,31 +500,23 @@ Reopen <span class="font-mono text-white">portrait.png</span>
         <div class="w-10"></div>
       </div>
       
-      <div class="flex flex-col p-6 flex-grow">
-        <!-- Compact Filter -->
-        <div class="flex justify-end mb-5">
-          <div class="liquid-glass p-1 rounded-md hidden sm:flex items-center gap-1 text-[11px] font-bold">
-            <button onclick="filterEducation('all', this)" class="edu-tab px-2.5 py-1 rounded bg-white text-black transition-all">All</button>
-            <button onclick="filterEducation('college', this)" class="edu-tab px-2.5 py-1 rounded text-white transition-all">College</button>
-            <button onclick="filterEducation('highschool', this)" class="edu-tab px-2.5 py-1 rounded text-white transition-all">SHS/JHS</button>
-          </div>
-        </div>
+      <div class="flex flex-col p-6 pt-10 flex-grow relative">
 
         <!-- PERFECTLY ALIGNED TIMELINE (NO INNER CARDS) -->
-        <div class="relative flex-grow flex flex-col justify-between py-2 ml-4">
+        <div class="relative flex-grow flex flex-col justify-between ml-4 gap-4">
           
           <!-- The continuous absolute line (Perfectly centered on the dots below) -->
           <div class="absolute left-[5px] top-6 bottom-6 w-[2px] bg-white/10 rounded-full z-0"></div>
 
           <!-- College -->
-          <div data-edu-category="college" class="edu-item relative pl-8 flex flex-col justify-center group py-2.5">
+          <div class="relative pl-6 flex flex-col justify-center group py-1.5">
             <!-- The perfectly aligned dot (14px wide, placed at -1px so its center is exactly at 6px) -->
             <div class="absolute left-[-1px] top-1/2 -translate-y-1/2 w-[14px] h-[14px] bg-mac-green border-[3px] border-[#191F2C] rounded-full z-10 shadow-[0_0_8px_#30D158]"></div>
             
-            <div class="flex items-center gap-4 transition-transform group-hover:translate-x-1.5">
-               <!-- Image Placeholder -->
-               <div class="flex-shrink-0 w-[46px] h-[46px] rounded-lg border border-white/15 overflow-hidden bg-white/5 flex items-center justify-center">
-                 <img src="https://placehold.co/100x100/121620/F2F2F7?text=UC" alt="UC Logo" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+            <div class="flex items-center gap-3 transition-transform group-hover:translate-x-1.5">
+               <!-- PERFECTLY ROUNDED LOGO -->
+               <div class="flex-shrink-0 w-[56px] h-[56px] rounded-full border border-white/20 overflow-hidden bg-white flex items-center justify-center p-1 shadow-sm">
+                 <img src="uc logo.png" alt="UC Logo" class="w-full h-full object-contain transition-transform group-hover:scale-105">
                </div>
                <div class="flex flex-col justify-center">
                   <div class="flex flex-wrap items-center gap-1.5 mb-1">
@@ -538,54 +530,68 @@ Reopen <span class="font-mono text-white">portrait.png</span>
           </div>
           
           <!-- SHS -->
-          <div data-edu-category="highschool" class="edu-item relative pl-8 flex flex-col justify-center group py-2.5">
+          <div class="relative pl-6 flex flex-col justify-center group py-1.5">
             <!-- The perfectly aligned dot (10px wide, placed at 1px so its center is exactly at 6px) -->
             <div class="absolute left-[1px] top-1/2 -translate-y-1/2 w-[10px] h-[10px] bg-white/70 border-[2px] border-[#191F2C] rounded-full z-10"></div>
             
-            <div class="flex items-center gap-4 transition-transform group-hover:translate-x-1.5">
-               <!-- Image Placeholder -->
-               <div class="flex-shrink-0 w-[46px] h-[46px] rounded-lg border border-white/15 overflow-hidden bg-white/5 flex items-center justify-center">
-                 <img src="https://placehold.co/100x100/121620/F2F2F7?text=BCT" alt="BCT Logo" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+            <div class="flex items-center justify-between gap-3 transition-transform group-hover:translate-x-1.5 w-full pr-1">
+               <div class="flex items-center gap-3 flex-1">
+                 <!-- PERFECTLY ROUNDED LOGO -->
+                 <div class="flex-shrink-0 w-[56px] h-[56px] rounded-full border border-white/20 overflow-hidden bg-white flex items-center justify-center p-1 shadow-sm">
+                   <img src="bct logo.png" alt="BCT Logo" class="w-full h-full object-contain transition-transform group-hover:scale-105">
+                 </div>
+                 <div class="flex flex-col justify-center">
+                    <div class="flex flex-wrap items-center gap-1.5 mb-1">
+                      <span class="text-mac-silver text-[9px] font-bold uppercase tracking-wider">2023 - 2025</span>
+                    </div>
+                    <h3 class="text-[15px] sm:text-[16px] font-bold text-white tracking-tight leading-tight mb-0.5">Baguio College of Technology</h3>
+                    <p class="text-white/60 font-medium text-[12px] leading-tight">STEM Strand</p>
+                 </div>
                </div>
-               <div class="flex flex-col justify-center">
-                  <div class="flex flex-wrap items-center gap-1.5 mb-1">
-                    <span class="text-mac-silver text-[9px] font-bold uppercase tracking-wider">2023 - 2025</span>
-                  </div>
-                  <h3 class="text-[15px] sm:text-[16px] font-bold text-white tracking-tight leading-tight mb-0.5">Baguio College of Technology</h3>
-                  <p class="text-white/60 font-medium text-[12px] leading-tight">STEM Strand</p>
+               
+               <!-- ENLARGED SHS GRADUATION PICTURE THUMBNAIL -->
+               <div onclick="openModal(this.querySelector('img').src)" class="relative w-[72px] h-[72px] sm:w-[84px] sm:h-[84px] rounded-xl overflow-hidden cursor-pointer group/thumb border border-white/20 bg-black/30 flex-shrink-0 ml-1 shadow-lg" title="View Graduation Picture">
+                  <img src="shs graduation picture.png" alt="SHS Graduation" class="absolute inset-0 w-full h-full object-cover group-hover/thumb:scale-110 transition-transform duration-500">
                </div>
             </div>
           </div>
 
           <!-- JHS -->
-          <div data-edu-category="highschool" class="edu-item relative pl-8 flex flex-col justify-center group py-2.5">
+          <div class="relative pl-6 flex flex-col justify-center group py-1.5">
             <!-- The perfectly aligned dot -->
             <div class="absolute left-[1px] top-1/2 -translate-y-1/2 w-[10px] h-[10px] bg-white/70 border-[2px] border-[#191F2C] rounded-full z-10"></div>
             
-            <div class="flex items-center gap-4 transition-transform group-hover:translate-x-1.5">
-               <!-- Image Placeholder -->
-               <div class="flex-shrink-0 w-[46px] h-[46px] rounded-lg border border-white/15 overflow-hidden bg-white/5 flex items-center justify-center">
-                 <img src="https://placehold.co/100x100/121620/F2F2F7?text=FDP" alt="FDP Logo" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+            <div class="flex items-center justify-between gap-3 transition-transform group-hover:translate-x-1.5 w-full pr-1">
+               <div class="flex items-center gap-3 flex-1">
+                 <!-- PERFECTLY ROUNDED LOGO -->
+                 <div class="flex-shrink-0 w-[56px] h-[56px] rounded-full border border-white/20 overflow-hidden bg-white flex items-center justify-center p-1 shadow-sm">
+                   <img src="fdpnhs logo.jpg" alt="FDP Logo" class="w-full h-full object-contain transition-transform group-hover:scale-105">
+                 </div>
+                 <div class="flex flex-col justify-center">
+                    <div class="flex flex-wrap items-center gap-1.5 mb-1">
+                      <span class="text-mac-silver text-[9px] font-bold uppercase tracking-wider">2019 - 2023</span>
+                    </div>
+                    <h3 class="text-[15px] sm:text-[16px] font-bold text-white tracking-tight leading-tight mb-0.5">Fort Del Pilar National High School</h3>
+                    <p class="text-white/60 font-medium text-[12px] leading-tight">ICT Cookery</p>
+                 </div>
                </div>
-               <div class="flex flex-col justify-center">
-                  <div class="flex flex-wrap items-center gap-1.5 mb-1">
-                    <span class="text-mac-silver text-[9px] font-bold uppercase tracking-wider">2019 - 2023</span>
-                  </div>
-                  <h3 class="text-[15px] sm:text-[16px] font-bold text-white tracking-tight leading-tight mb-0.5">Fort Del Pilar National High School</h3>
-                  <p class="text-white/60 font-medium text-[12px] leading-tight">ICT Cookery</p>
+               
+               <!-- ENLARGED JHS GRADUATION PICTURE THUMBNAIL -->
+               <div onclick="openModal(this.querySelector('img').src)" class="relative w-[72px] h-[72px] sm:w-[84px] sm:h-[84px] rounded-xl overflow-hidden cursor-pointer group/thumb border border-white/20 bg-black/30 flex-shrink-0 ml-1 shadow-lg" title="View Graduation Picture">
+                  <img src="jhs gradaution.jpeg" alt="JHS Graduation" class="absolute inset-0 w-full h-full object-cover group-hover/thumb:scale-110 transition-transform duration-500">
                </div>
             </div>
           </div>
 
           <!-- Elem -->
-          <div data-edu-category="elementary" class="edu-item relative pl-8 flex flex-col justify-center group py-2.5">
+          <div class="relative pl-6 flex flex-col justify-center group py-1.5">
             <!-- The perfectly aligned dot -->
             <div class="absolute left-[1px] top-1/2 -translate-y-1/2 w-[10px] h-[10px] bg-white/70 border-[2px] border-[#191F2C] rounded-full z-10"></div>
             
-            <div class="flex items-center gap-4 transition-transform group-hover:translate-x-1.5">
-               <!-- Image Placeholder -->
-               <div class="flex-shrink-0 w-[46px] h-[46px] rounded-lg border border-white/15 overflow-hidden bg-white/5 flex items-center justify-center">
-                 <img src="https://placehold.co/100x100/121620/F2F2F7?text=KES" alt="KES Logo" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+            <div class="flex items-center gap-3 transition-transform group-hover:translate-x-1.5">
+               <!-- PERFECTLY ROUNDED LOGO -->
+               <div class="flex-shrink-0 w-[56px] h-[56px] rounded-full border border-white/20 overflow-hidden bg-white flex items-center justify-center p-1 shadow-sm">
+                 <img src="kes logo.webp" alt="KES Logo" class="w-full h-full object-contain transition-transform group-hover:scale-105">
                </div>
                <div class="flex flex-col justify-center">
                   <div class="flex flex-wrap items-center gap-1.5 mb-1">
@@ -630,12 +636,12 @@ Reopen <span class="font-mono text-white">portrait.png</span>
           </div>
         </div>
       </div>
-      <div class="flex gap-2 mt-auto">
-        <div onclick="openModal(this.querySelector('img').src)" class="relative w-16 h-16 rounded-lg overflow-hidden cursor-pointer group/thumb border border-white/20 bg-black/30">
-          <img src="Chess Champion trophy.webp" alt="Trophy" class="absolute inset-0 w-full h-full object-cover group-hover/thumb:scale-110 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/400x400/12151E/FFB340?text=Trophy';">
+      <div class="flex gap-3 mt-auto pt-2">
+        <div class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden border border-white/20 bg-black/30 shadow-sm">
+          <img src="Chess Champion trophy.webp" alt="Trophy" class="absolute inset-0 w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/400x400/12151E/FFB340?text=Trophy';">
         </div>
-        <div onclick="openModal(this.querySelector('img').src)" class="relative w-16 h-16 rounded-lg overflow-hidden cursor-pointer group/thumb border border-white/20 bg-black/30">
-          <img src="chess champion.webp" alt="Certificate" class="absolute inset-0 w-full h-full object-cover group-hover/thumb:scale-110 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/400x400/12151E/F2F2F7?text=Cert';">
+        <div class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden border border-white/20 bg-black/30 shadow-sm">
+          <img src="chess champion.webp" alt="Certificate" class="absolute inset-0 w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/400x400/12151E/F2F2F7?text=Cert';">
         </div>
       </div>
     </div>
@@ -655,9 +661,9 @@ Reopen <span class="font-mono text-white">portrait.png</span>
           </div>
         </div>
       </div>
-      <div class="flex gap-2 mt-auto">
-        <div onclick="openModal(this.querySelector('img').src)" class="relative w-16 h-16 rounded-lg overflow-hidden cursor-pointer group/thumb border border-white/20 bg-black/30">
-          <img src="scrabble 2nd runner up.webp" alt="Certificate" class="absolute inset-0 w-full h-full object-cover group-hover/thumb:scale-110 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/400x400/12151E/F2F2F7?text=Cert';">
+      <div class="flex gap-3 mt-auto pt-2">
+        <div class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden border border-white/20 bg-black/30 shadow-sm">
+          <img src="scrabble 2nd runner up.webp" alt="Certificate" class="absolute inset-0 w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/400x400/12151E/F2F2F7?text=Cert';">
         </div>
       </div>
     </div>
@@ -990,22 +996,6 @@ function updateFloatingNav() {
     nextBtn.disabled = false;
     nextLabel.textContent = pageTitles[pageOrder[currentPageIndex + 1]];
   }
-}
-
-function filterEducation(category,btn){
-  document.querySelectorAll('.edu-tab').forEach(tab=>{
-    tab.classList.remove('bg-white','text-black','shadow-md','font-bold');
-    tab.classList.add('text-white','font-medium');
-  });
-  btn.classList.add('bg-white','text-black','shadow-md','font-bold');
-  btn.classList.remove('text-white','font-medium');
-  document.querySelectorAll('.edu-item').forEach(item=>{
-    if(category==='all'||item.dataset.eduCategory===category){
-      item.classList.remove('hidden');
-    }else{
-      item.classList.add('hidden');
-    }
-  });
 }
 
 function openContactSheet(){
