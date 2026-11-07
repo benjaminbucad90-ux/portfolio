@@ -140,7 +140,7 @@ h1,h2,h3,h4,p{text-shadow:0 2px 12px rgba(0,0,0,0.45);}
 <div class="hidden sm:flex items-center gap-4 text-mac-silver text-[12.5px]">
 <button type="button" onclick="switchPage('home')" data-menu-link="home" class="menubar-link text-white font-semibold hover:text-white transition-colors">Homepage</button>
 <button type="button" onclick="switchPage('about')" data-menu-link="about" class="menubar-link hover:text-white transition-colors">Personal Information</button>
-<button type="button" onclick="switchPage('achievements')" data-menu-link="achievements" class="menubar-link hover:text-white transition-colors">Achievements</button>
+<button type="button" onclick="switchPage('achievements')" data-menu-link="achievements" class="menubar-link hover:text-white transition-colors">Education & Achievements</button>
 <button type="button" onclick="switchPage('family')" data-menu-link="family" class="menubar-link hover:text-white transition-colors">Foundation</button>
 </div>
 </div>
@@ -195,7 +195,7 @@ Baguio, PH
 
 <!-- PAGE 3: ACHIEVEMENTS ICON -->
 <button type="button" onclick="switchPage('achievements')" data-section="achievements" class="dock-item group relative flex flex-col items-center justify-center cursor-pointer focus:outline-none w-[52px] h-[52px] sm:w-[58px] sm:h-[58px]">
-<div class="dock-tooltip liquid-glass-elevated px-3 py-1.5 rounded-lg text-[12px] font-medium text-white shadow-lg">Page 3: Achievements</div>
+<div class="dock-tooltip liquid-glass-elevated px-3 py-1.5 rounded-lg text-[12px] font-medium text-white shadow-lg">Page 3: Education & Achievements</div>
 <div class="mac-app-icon absolute w-[46px] h-[46px] sm:w-[52px] sm:h-[52px] flex items-center justify-center bg-gradient-to-br from-[#FFD54F] to-[#FF8F00] rounded-[11px] sm:rounded-[13px]">
 <i data-lucide="trophy" class="w-6 h-6 sm:w-7 sm:h-7 text-white drop-shadow-md"></i>
 </div>
@@ -339,7 +339,7 @@ Reopen <span class="font-mono text-white">portrait.png</span>
 </div>
 </section>
 
-<!-- PAGE 2: COMPRESSED DASHBOARD (PERSONAL INFO & EDUCATION) -->
+<!-- PAGE 2: PERSONAL INFORMATION -->
 <section id="about" class="page-section hidden min-h-[calc(100dvh-7rem)] py-3 sm:py-5 flex flex-col justify-center">
 <div class="max-w-[84rem] mx-auto w-full px-2 sm:px-4 lg:px-6 flex flex-col gap-3">
   
@@ -350,11 +350,11 @@ Reopen <span class="font-mono text-white">portrait.png</span>
     </p>
   </div>
 
-  <!-- PROPORTIONAL 12-COLUMN GRID -->
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 lg:gap-5 relative z-10 items-stretch">
+  <!-- CENTERED LAYOUT -->
+  <div class="flex justify-center relative z-10 items-stretch w-full">
     
-    <!-- 2/3 COLUMN: COMBINED PERSONAL PROFILE & CONTACT (col-span-8) -->
-    <div class="reveal liquid-glass-elevated rounded-mac-lg overflow-hidden border border-white/20 flex flex-col h-full lg:col-span-8">
+    <!-- COMBINED PERSONAL PROFILE & CONTACT -->
+    <div class="reveal liquid-glass-elevated rounded-mac-lg overflow-hidden border border-white/20 flex flex-col h-full w-full max-w-5xl">
       
       <!-- Titlebar -->
       <div class="mac-titlebar px-4 py-2.5 flex items-center justify-between select-none relative z-20">
@@ -397,6 +397,10 @@ Reopen <span class="font-mono text-white">portrait.png</span>
             <div class="flex flex-col gap-1 col-span-2">
               <p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver flex items-center gap-1.5"><i data-lucide="home" class="w-4 h-4"></i> Residence</p>
               <h4 class="text-[15px] sm:text-[16px] font-bold text-white tracking-tight">Kias, Baguio City</h4>
+            </div>
+            <div class="flex flex-col gap-1 col-span-2">
+              <p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver flex items-center gap-1.5"><i data-lucide="map" class="w-4 h-4"></i> Hometown</p>
+              <h4 class="text-[15px] sm:text-[16px] font-bold text-white tracking-tight">Besao, Mountain Province</h4>
             </div>
             <div class="flex flex-col gap-1 col-span-2">
               <p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver flex items-center gap-1.5"><i data-lucide="globe" class="w-4 h-4"></i> Nationality</p>
@@ -484,7 +488,22 @@ Reopen <span class="font-mono text-white">portrait.png</span>
 
       </div>
     </div>
+    
+  </div>
+</div>
+</section>
 
+<!-- PAGE 3: EDUCATION & ACHIEVEMENTS -->
+<section id="achievements" class="page-section hidden min-h-[calc(100dvh-7rem)] py-12 flex flex-col justify-center">
+<div class="max-w-[84rem] mx-auto w-full px-4 sm:px-6">
+  
+  <div class="reveal mb-10 flex items-center justify-center gap-3">
+    <i data-lucide="award" class="w-7 h-7 text-mac-amber"></i>
+    <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight scroll-type min-h-[2.75rem]" data-text="Education & Achievements">Education & Achievements</h2>
+  </div>
+  
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+    
     <!-- 1/3 COLUMN: EDUCATION JOURNEY (col-span-4) -->
     <div class="reveal liquid-glass-elevated rounded-mac-lg overflow-hidden border border-white/20 flex flex-col h-full lg:col-span-4">
       <div class="mac-titlebar px-4 py-2.5 flex items-center justify-between select-none relative z-20">
@@ -607,101 +626,91 @@ Reopen <span class="font-mono text-white">portrait.png</span>
       </div>
     </div>
     
-  </div>
-</div>
-</section>
+    <!-- 2/3 COLUMN: ACHIEVEMENTS -->
+    <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+      
+      <!-- Item 1: Chess Champion -->
+      <div class="reveal liquid-glass rounded-xl p-5 flex flex-col justify-between gap-6 hover:-translate-y-1 transition-transform h-full">
+        <div class="flex items-start gap-4">
+          <div class="p-3 dock-squircle rounded-xl flex-shrink-0 bg-white/5 border border-white/10">
+            <i data-lucide="trophy" class="w-6 h-6 text-mac-amber drop-shadow-md"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white tracking-tight leading-tight mb-1">Chess Champion</h3>
+            <p class="text-white/80 font-semibold text-xs mb-2.5">BCT Intramurals - Men's Division</p>
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="glass-tag text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">2025</span>
+              <span class="glass-tag text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">Grade 12</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex gap-3 mt-auto pt-2">
+          <div class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden border border-white/20 bg-black/30 shadow-sm">
+            <img src="Chess Champion trophy.webp" alt="Trophy" class="absolute inset-0 w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/400x400/12151E/FFB340?text=Trophy';">
+          </div>
+          <div class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden border border-white/20 bg-black/30 shadow-sm">
+            <img src="chess champion.webp" alt="Certificate" class="absolute inset-0 w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/400x400/12151E/F2F2F7?text=Cert';">
+          </div>
+        </div>
+      </div>
 
-<!-- PAGE 3: ACHIEVEMENTS -->
-<section id="achievements" class="page-section hidden min-h-[calc(100dvh-7rem)] py-12 flex flex-col justify-center">
-<div class="max-w-[76rem] mx-auto w-full px-4 sm:px-6">
-  
-  <div class="reveal mb-10 flex items-center justify-center gap-3">
-    <i data-lucide="award" class="w-7 h-7 text-mac-amber"></i>
-    <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight scroll-type min-h-[2.75rem]" data-text="Achievements">Achievements</h2>
-  </div>
-  
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    <!-- Item 1: Chess Champion -->
-    <div class="reveal liquid-glass rounded-xl p-5 flex flex-col justify-between gap-6 hover:-translate-y-1 transition-transform h-full">
-      <div class="flex items-start gap-4">
-        <div class="p-3 dock-squircle rounded-xl flex-shrink-0 bg-white/5 border border-white/10">
-          <i data-lucide="trophy" class="w-6 h-6 text-mac-amber drop-shadow-md"></i>
+      <!-- Item 2: Scrabble -->
+      <div class="reveal liquid-glass rounded-xl p-5 flex flex-col justify-between gap-6 hover:-translate-y-1 transition-transform h-full">
+        <div class="flex items-start gap-4">
+          <div class="p-3 dock-squircle rounded-xl flex-shrink-0 bg-white/5 border border-white/10">
+            <i data-lucide="layout-grid" class="w-6 h-6 text-white drop-shadow-md"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white tracking-tight leading-tight mb-1">Scrabble 2nd Runner Up</h3>
+            <p class="text-white/80 font-semibold text-xs mb-2.5">BCT Intramurals - Men's Division</p>
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="glass-tag text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">2025</span>
+              <span class="glass-tag text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">Grade 12</span>
+            </div>
+          </div>
         </div>
-        <div>
-          <h3 class="text-xl font-bold text-white tracking-tight leading-tight mb-1">Chess Champion</h3>
-          <p class="text-white/80 font-semibold text-xs mb-2.5">BCT Intramurals - Men's Division</p>
-          <div class="flex flex-wrap items-center gap-2">
-            <span class="glass-tag text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">2025</span>
-            <span class="glass-tag text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">Grade 12</span>
+        <div class="flex gap-3 mt-auto pt-2">
+          <div class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden border border-white/20 bg-black/30 shadow-sm">
+            <img src="scrabble 2nd runner up.webp" alt="Certificate" class="absolute inset-0 w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/400x400/12151E/F2F2F7?text=Cert';">
           </div>
         </div>
       </div>
-      <div class="flex gap-3 mt-auto pt-2">
-        <div class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden border border-white/20 bg-black/30 shadow-sm">
-          <img src="Chess Champion trophy.webp" alt="Trophy" class="absolute inset-0 w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/400x400/12151E/FFB340?text=Trophy';">
-        </div>
-        <div class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden border border-white/20 bg-black/30 shadow-sm">
-          <img src="chess champion.webp" alt="Certificate" class="absolute inset-0 w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/400x400/12151E/F2F2F7?text=Cert';">
-        </div>
-      </div>
-    </div>
 
-    <!-- Item 2: Scrabble -->
-    <div class="reveal liquid-glass rounded-xl p-5 flex flex-col justify-between gap-6 hover:-translate-y-1 transition-transform h-full">
-      <div class="flex items-start gap-4">
-        <div class="p-3 dock-squircle rounded-xl flex-shrink-0 bg-white/5 border border-white/10">
-          <i data-lucide="layout-grid" class="w-6 h-6 text-white drop-shadow-md"></i>
-        </div>
-        <div>
-          <h3 class="text-xl font-bold text-white tracking-tight leading-tight mb-1">Scrabble 2nd Runner Up</h3>
-          <p class="text-white/80 font-semibold text-xs mb-2.5">BCT Intramurals - Men's Division</p>
-          <div class="flex flex-wrap items-center gap-2">
-            <span class="glass-tag text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">2025</span>
-            <span class="glass-tag text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">Grade 12</span>
+      <!-- Item 3: 1st Runner Up -->
+      <div class="reveal liquid-glass rounded-xl p-5 flex flex-col justify-between gap-6 hover:-translate-y-1 transition-transform h-full">
+        <div class="flex items-start gap-4">
+          <div class="p-3 dock-squircle rounded-xl flex-shrink-0 bg-white/5 border border-white/10">
+            <i data-lucide="medal" class="w-6 h-6 text-white drop-shadow-md"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white tracking-tight leading-tight mb-1">1st Runner Up</h3>
+            <p class="text-white/80 font-semibold text-xs mb-2.5">BCT Intrams Chess Men</p>
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="glass-tag text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">2024</span>
+              <span class="glass-tag text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">Grade 11</span>
+            </div>
           </div>
         </div>
       </div>
-      <div class="flex gap-3 mt-auto pt-2">
-        <div class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden border border-white/20 bg-black/30 shadow-sm">
-          <img src="scrabble 2nd runner up.webp" alt="Certificate" class="absolute inset-0 w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/400x400/12151E/F2F2F7?text=Cert';">
-        </div>
-      </div>
-    </div>
-
-    <!-- Item 3: 1st Runner Up -->
-    <div class="reveal liquid-glass rounded-xl p-5 flex flex-col justify-between gap-6 hover:-translate-y-1 transition-transform h-full">
-      <div class="flex items-start gap-4">
-        <div class="p-3 dock-squircle rounded-xl flex-shrink-0 bg-white/5 border border-white/10">
-          <i data-lucide="medal" class="w-6 h-6 text-white drop-shadow-md"></i>
-        </div>
-        <div>
-          <h3 class="text-xl font-bold text-white tracking-tight leading-tight mb-1">1st Runner Up</h3>
-          <p class="text-white/80 font-semibold text-xs mb-2.5">BCT Intrams Chess Men</p>
-          <div class="flex flex-wrap items-center gap-2">
-            <span class="glass-tag text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">2024</span>
-            <span class="glass-tag text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">Grade 11</span>
+      
+      <!-- Item 4: Best in Mascot -->
+      <div class="reveal liquid-glass rounded-xl p-5 flex flex-col justify-between gap-6 hover:-translate-y-1 transition-transform h-full">
+        <div class="flex items-start gap-4">
+          <div class="p-3 dock-squircle rounded-xl flex-shrink-0 bg-white/5 border border-white/10">
+            <i data-lucide="star" class="w-6 h-6 text-mac-amber drop-shadow-md"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white tracking-tight leading-tight mb-1">Best in Mascot</h3>
+            <p class="text-white/80 font-semibold text-xs mb-2.5">BCT Intramurals</p>
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="glass-tag text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">2025</span>
+              <span class="glass-tag text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">Grade 12</span>
+            </div>
           </div>
         </div>
       </div>
+      
     </div>
-    
-    <!-- Item 4: Best in Mascot -->
-    <div class="reveal liquid-glass rounded-xl p-5 flex flex-col justify-between gap-6 hover:-translate-y-1 transition-transform h-full">
-      <div class="flex items-start gap-4">
-        <div class="p-3 dock-squircle rounded-xl flex-shrink-0 bg-white/5 border border-white/10">
-          <i data-lucide="star" class="w-6 h-6 text-mac-amber drop-shadow-md"></i>
-        </div>
-        <div>
-          <h3 class="text-xl font-bold text-white tracking-tight leading-tight mb-1">Best in Mascot</h3>
-          <p class="text-white/80 font-semibold text-xs mb-2.5">BCT Intramurals</p>
-          <div class="flex flex-wrap items-center gap-2">
-            <span class="glass-tag text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">2025</span>
-            <span class="glass-tag text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">Grade 12</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    
   </div>
 
 </div>
@@ -915,7 +924,7 @@ const pageOrder = ['home', 'about', 'achievements', 'family'];
 const pageTitles = {
   'home': 'Homepage',
   'about': 'About Me',
-  'achievements': 'Achievements',
+  'achievements': 'Education & Achievements',
   'family': 'Foundation'
 };
 let currentPageIndex = 0;
