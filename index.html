@@ -143,7 +143,6 @@ h1,h2,h3,h4,p{text-shadow:0 2px 12px rgba(0,0,0,0.45);}
 <button type="button" onclick="switchPage('about')" data-menu-link="about" class="menubar-link hover:text-white transition-colors">Personal Information</button>
 <button type="button" onclick="switchPage('achievements')" data-menu-link="achievements" class="menubar-link hover:text-white transition-colors">Achievements</button>
 <button type="button" onclick="switchPage('family')" data-menu-link="family" class="menubar-link hover:text-white transition-colors">Foundation</button>
-<button type="button" onclick="switchPage('education')" data-menu-link="education" class="menubar-link hover:text-white transition-colors">Education</button>
 </div>
 </div>
 <div class="flex items-center gap-3.5 text-mac-silver text-[12.5px]">
@@ -179,7 +178,7 @@ Baguio, PH
 <nav aria-label="macOS Dock Navigation" class="fixed bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 z-[60] max-w-[98vw]">
 <div class="mac-dock rounded-[22px] sm:rounded-[24px] px-[8px] sm:px-[10px] pt-[6px] sm:pt-[8px] pb-[10px] sm:pb-[12px] flex items-center gap-[8px] sm:gap-[10px]">
 
-<!-- PAGE 1: HOMEPAGE ICON (Shrunk internally) -->
+<!-- PAGE 1: HOMEPAGE ICON -->
 <button type="button" onclick="switchPage('home')" data-section="home" class="dock-item group relative flex flex-col items-center justify-center cursor-pointer focus:outline-none w-[52px] h-[52px] sm:w-[58px] sm:h-[58px]">
 <div class="dock-tooltip liquid-glass-elevated px-3 py-1.5 rounded-lg text-[12px] font-medium text-white shadow-lg">Page 1: Homepage</div>
 <div class="mac-app-icon absolute w-[46px] h-[46px] sm:w-[52px] sm:h-[52px] flex items-center justify-center bg-white rounded-[11px] sm:rounded-[13px]">
@@ -195,7 +194,7 @@ Baguio, PH
 <span class="dock-dot absolute -bottom-[7px] sm:-bottom-[8px] w-1 h-1 rounded-full bg-white transition-all duration-300 opacity-0"></span>
 </button>
 
-<!-- PAGE 3: ACHIEVEMENTS ICON (Shrunk internally, Trophy) -->
+<!-- PAGE 3: ACHIEVEMENTS ICON -->
 <button type="button" onclick="switchPage('achievements')" data-section="achievements" class="dock-item group relative flex flex-col items-center justify-center cursor-pointer focus:outline-none w-[52px] h-[52px] sm:w-[58px] sm:h-[58px]">
 <div class="dock-tooltip liquid-glass-elevated px-3 py-1.5 rounded-lg text-[12px] font-medium text-white shadow-lg">Page 3: Achievements</div>
 <div class="mac-app-icon absolute w-[46px] h-[46px] sm:w-[52px] sm:h-[52px] flex items-center justify-center bg-gradient-to-br from-[#FFD54F] to-[#FF8F00] rounded-[11px] sm:rounded-[13px]">
@@ -204,7 +203,7 @@ Baguio, PH
 <span class="dock-dot absolute -bottom-[7px] sm:-bottom-[8px] w-1 h-1 rounded-full bg-white transition-all duration-300 opacity-0"></span>
 </button>
 
-<!-- PAGE 4: FOUNDATION ICON (Shrunk internally) -->
+<!-- PAGE 4: FOUNDATION ICON -->
 <button type="button" onclick="switchPage('family')" data-section="family" class="dock-item group relative flex flex-col items-center justify-center cursor-pointer focus:outline-none w-[52px] h-[52px] sm:w-[58px] sm:h-[58px]">
 <div class="dock-tooltip liquid-glass-elevated px-3 py-1.5 rounded-lg text-[12px] font-medium text-white shadow-lg">Page 4: Foundation</div>
 <div class="mac-app-icon absolute w-[46px] h-[46px] sm:w-[52px] sm:h-[52px] flex items-center justify-center rounded-[11px] sm:rounded-[13px]">
@@ -224,13 +223,6 @@ Baguio, PH
 <path d="M32 42c-5 0-9 4-9 9v5h18v-5c0-5-4-9-9-9z" fill="white"/>
 </svg>
 </div>
-<span class="dock-dot absolute -bottom-[7px] sm:-bottom-[8px] w-1 h-1 rounded-full bg-white transition-all duration-300 opacity-0"></span>
-</button>
-
-<!-- PAGE 5: EDUCATION ICON -->
-<button type="button" onclick="switchPage('education')" data-section="education" class="dock-item group relative flex flex-col items-center justify-center cursor-pointer focus:outline-none w-[52px] h-[52px] sm:w-[58px] sm:h-[58px]">
-<div class="dock-tooltip liquid-glass-elevated px-3 py-1.5 rounded-lg text-[12px] font-medium text-white shadow-lg">Page 5: Education Journey</div>
-<img src="education logo.webp" alt="Education Journey" class="absolute w-[50px] h-[50px] sm:w-[56px] sm:h-[56px] object-contain drop-shadow-[0_10px_22px_rgba(0,0,0,0.45)]">
 <span class="dock-dot absolute -bottom-[7px] sm:-bottom-[8px] w-1 h-1 rounded-full bg-white transition-all duration-300 opacity-0"></span>
 </button>
 
@@ -295,7 +287,7 @@ Baguio, PH
 <span>View My Projects</span>
 <i data-lucide="arrow-up-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i>
 </button>
-<button type="button" onclick="switchPage('education')" class="group flex items-center gap-2 liquid-glass text-white px-5 py-2.5 rounded-full text-[13.5px] font-semibold transition-all hover:-translate-y-0.5 active:scale-95 focus:outline-none focus:ring-2 focus:ring-white">
+<button type="button" onclick="switchPage('achievements')" class="group flex items-center gap-2 liquid-glass text-white px-5 py-2.5 rounded-full text-[13.5px] font-semibold transition-all hover:-translate-y-0.5 active:scale-95 focus:outline-none focus:ring-2 focus:ring-white">
 <i data-lucide="download" class="w-4 h-4 text-white transition-transform group-hover:-translate-y-0.5 relative z-10"></i>
 <span class="relative z-10">Download Résumé</span>
 </button>
@@ -354,8 +346,8 @@ Reopen <span class="font-mono text-white">portrait.png</span>
 <div class="reveal text-center md:text-left mb-2">
 <p class="text-mac-amber font-bold text-xs uppercase tracking-[0.2em] mb-2">Profile</p>
 <h2 class="text-3xl sm:text-4xl font-bold text-white mb-3 scroll-type min-h-[2.75rem] tracking-tight" data-text="Personal Information">Personal Information</h2>
-<p class="text-white text-[15px] sm:text-[16.5px] lg:text-[1.08rem] max-w-2xl leading-relaxed font-normal mx-auto md:mx-0 opacity-80">
-A closer look at my personal background, roots, contact details, and core interests.
+<p class="text-white text-[15px] sm:text-[16.5px] lg:text-[1.08rem] max-w-2xl leading-relaxed font-normal mx-auto md:mx-0 opacity-80 italic">
+Strategy in every move, logic in every process, and purpose in every system.
 </p>
 </div>
 
@@ -492,97 +484,155 @@ github.com/benjaminbucad90-ux
 </div>
 </section>
 
-<!-- PAGE 3: ACHIEVEMENTS -->
-<section id="achievements" class="page-section hidden min-h-[calc(100dvh-7rem)] py-12 flex flex-col justify-center">
-<div class="reveal mb-12 text-center md:text-left flex flex-col md:items-start items-center">
-<div class="inline-flex items-center space-x-2 glass-tag px-4 py-2 rounded-full mb-3">
-<i data-lucide="award" class="w-4 h-4 text-mac-amber"></i>
-<span class="text-white text-[11.5px] font-bold tracking-widest uppercase">Competitive Highlights</span>
-</div>
-<h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 scroll-type min-h-[3.25rem] tracking-tight" data-text="Achievements">Achievements</h2>
-<p class="text-white text-base sm:text-lg max-w-2xl font-normal">Translating analytical thinking and strategic foresight into measurable competitive success.</p>
-</div>
-<div class="grid grid-cols-1 gap-8">
-<div class="reveal liquid-glass rounded-mac-lg p-6 md:p-8 relative group flex flex-col md:flex-row gap-6 items-start justify-between hover:-translate-y-1.5 overflow-hidden">
-<div class="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-5 flex-1 relative z-10 w-full">
-<div class="p-4 dock-squircle rounded-2xl flex-shrink-0">
-<i data-lucide="trophy" class="w-8 h-8 text-mac-amber"></i>
-</div>
-<div class="w-full">
-<div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
-<h3 class="text-2xl lg:text-3xl font-bold text-white tracking-tight">Chess Champion</h3>
-<div class="flex items-center gap-2 mt-2 sm:mt-0">
-<span class="glass-tag text-white text-[11.5px] font-bold px-3 py-1 rounded-md uppercase tracking-wide">2025</span>
-<span class="glass-tag text-white text-[11.5px] font-bold px-3 py-1 rounded-md uppercase tracking-wide">Grade 12</span>
-</div>
-</div>
-<p class="text-white font-semibold text-sm md:text-base mb-3">BCT Intramurals - Men's Division</p>
-<p class="text-white text-sm md:text-base leading-relaxed max-w-2xl font-normal">
-Secured the championship title through rigorous tactical planning and composure under pressure. Demonstrated advanced foresight and adaptability against top-tier competitors, earning the "Master of Strategy and Skill" distinction.
-</p>
-</div>
-</div>
-<div class="flex flex-row gap-4 w-full md:w-auto overflow-x-auto pb-2 md:pb-0 z-10 snap-x">
-<div onclick="openModal(this.querySelector('img').src)" class="snap-start relative w-40 sm:w-48 h-56 flex-shrink-0 rounded-2xl overflow-hidden cursor-pointer group/thumb shadow-lg border border-white/30 bg-black/30 transition-transform duration-500 hover:-translate-y-1 flex items-center justify-center">
-<img src="Chess Champion trophy.webp" alt="BCT Intramurals 2025 Chess Champion Trophy" class="absolute inset-0 w-full h-full object-cover group-hover/thumb:scale-105 transition-transform duration-700 ease-spring z-10" onerror="this.onerror=null; this.src='https://placehold.co/400x500/12151E/FFB340?text=Chess+Trophy';">
-<div class="absolute inset-0 bg-black/45 opacity-0 group-hover/thumb:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none z-20">
-<i data-lucide="maximize-2" class="w-6 h-6 text-white"></i>
-</div>
-</div>
-<div onclick="openModal(this.querySelector('img').src)" class="snap-start relative w-60 sm:w-72 h-56 flex-shrink-0 rounded-2xl overflow-hidden cursor-pointer group/thumb shadow-lg border border-white/30 bg-black/30 transition-transform duration-500 hover:-translate-y-1 flex items-center justify-center">
-<img src="chess champion.webp" alt="BCT Intramurals 2025 Chess Champion Certificate" class="absolute inset-0 w-full h-full object-cover group-hover/thumb:scale-105 transition-transform duration-700 ease-spring z-10" onerror="this.onerror=null; this.src='https://placehold.co/600x450/12151E/F2F2F7?text=Champion+Certificate';">
-<div class="absolute inset-0 bg-black/45 opacity-0 group-hover/thumb:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none z-20">
-<i data-lucide="maximize-2" class="w-6 h-6 text-white"></i>
-</div>
-</div>
-</div>
-</div>
-<div class="reveal liquid-glass rounded-mac-lg p-6 md:p-8 relative group flex flex-col md:flex-row gap-6 items-start justify-between hover:-translate-y-1.5 overflow-hidden">
-<div class="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-5 flex-1 relative z-10 w-full">
-<div class="p-4 dock-squircle rounded-2xl flex-shrink-0">
-<i data-lucide="layout-grid" class="w-8 h-8 text-white"></i>
-</div>
-<div class="w-full">
-<div class="flex flex-col sm:flex-row sm:items-center justify-between mb-2">
-<h3 class="text-2xl lg:text-3xl font-bold text-white tracking-tight">Scrabble 2nd Runner Up</h3>
-<div class="flex items-center gap-2 mt-2 sm:mt-0">
-<span class="glass-tag text-white text-[11.5px] font-bold px-3 py-1 rounded-md uppercase tracking-wide">2025</span>
-<span class="glass-tag text-white text-[11.5px] font-bold px-3 py-1 rounded-md uppercase tracking-wide">Grade 12</span>
-</div>
-</div>
-<p class="text-white font-semibold text-sm md:text-base mb-3">BCT Intramurals - Men's Division</p>
-<p class="text-white text-sm md:text-base leading-relaxed max-w-2xl font-normal">
-Demonstrated strong vocabulary breadth, spatial awareness, and offensive board strategy. Successfully secured a podium placement in the Scrabble men's bracket.
-</p>
-</div>
-</div>
-<div onclick="openModal(this.querySelector('img').src)" class="relative w-full md:w-72 h-56 flex-shrink-0 rounded-2xl overflow-hidden cursor-pointer group/thumb shadow-lg border border-white/30 bg-black/30 transition-transform duration-500 hover:-translate-y-1 z-10 flex items-center justify-center">
-<img src="scrabble 2nd runner up.webp" alt="BCT Intramurals 2025 Scrabble Certificate" class="absolute inset-0 w-full h-full object-cover group-hover/thumb:scale-105 transition-transform duration-700 ease-spring z-10" onerror="this.onerror=null; this.src='https://placehold.co/600x450/12151E/F2F2F7?text=Scrabble+Certificate';">
-<div class="absolute inset-0 bg-black/45 opacity-0 group-hover/thumb:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none z-20">
-<i data-lucide="maximize-2" class="w-6 h-6 text-white"></i>
-</div>
-</div>
-</div>
-<div class="reveal liquid-glass rounded-mac-lg p-6 md:p-8 relative group flex flex-col sm:flex-row gap-6 items-start sm:items-center justify-between hover:-translate-y-1.5 overflow-hidden">
-<div class="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-5 flex-1 relative z-10 w-full">
-<div class="p-4 dock-squircle rounded-2xl flex-shrink-0">
-<i data-lucide="medal" class="w-8 h-8 text-white"></i>
-</div>
-<div class="w-full">
-<div class="flex items-center justify-between mb-1">
-<h3 class="text-2xl font-bold text-white tracking-tight">1st Runner Up</h3>
-<div class="flex items-center gap-2">
-<span class="glass-tag text-white text-[11.5px] font-bold px-3 py-1 rounded-md uppercase tracking-wide">2024</span>
-<span class="glass-tag text-white text-[11.5px] font-bold px-3 py-1 rounded-md uppercase tracking-wide">Grade 11</span>
-</div>
-</div>
-<p class="text-white font-semibold text-sm mb-2">BCT Intrams Chess Men</p>
-<p class="text-white text-sm leading-relaxed max-w-xl font-normal">
-Achieved podium placement in a highly competitive bracket. Showcased strong analytical foresight, precise calculation, and strategic endurance.
-</p>
-</div>
-</div>
-</div>
+<!-- PAGE 3: ACHIEVEMENTS & EDUCATION COMBINED -->
+<section id="achievements" class="page-section hidden min-h-[calc(100dvh-7rem)] py-6 flex flex-col justify-center">
+<div class="max-w-[84rem] mx-auto w-full px-4 sm:px-6">
+  
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10">
+    
+    <!-- LEFT: ACHIEVEMENTS -->
+    <div class="flex flex-col">
+      <div class="reveal mb-4 flex items-center gap-3">
+        <i data-lucide="award" class="w-5 h-5 text-mac-amber"></i>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight scroll-type min-h-[2rem]" data-text="Achievements">Achievements</h2>
+      </div>
+      
+      <div class="flex flex-col gap-4">
+        <!-- Item 1: Chess Champion -->
+        <div class="reveal liquid-glass rounded-xl p-4 md:p-5 flex items-center justify-between gap-4 hover:-translate-y-1 transition-transform">
+          <div class="flex items-center gap-4 flex-1">
+            <div class="p-3 dock-squircle rounded-xl flex-shrink-0 hidden sm:flex">
+              <i data-lucide="trophy" class="w-5 h-5 text-mac-amber"></i>
+            </div>
+            <div>
+              <h3 class="text-lg md:text-xl font-bold text-white tracking-tight">Chess Champion</h3>
+              <p class="text-white/80 font-semibold text-xs md:text-sm mb-1.5">BCT Intramurals - Men's Division</p>
+              <div class="flex items-center gap-2">
+                <span class="glass-tag text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">2025</span>
+                <span class="glass-tag text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">Grade 12</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex gap-2 flex-shrink-0 z-10">
+            <div onclick="openModal(this.querySelector('img').src)" class="relative w-14 h-14 sm:w-16 sm:h-16 rounded-lg overflow-hidden cursor-pointer group/thumb border border-white/20 bg-black/30">
+              <img src="Chess Champion trophy.webp" alt="Trophy" class="absolute inset-0 w-full h-full object-cover group-hover/thumb:scale-110 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/400x400/12151E/FFB340?text=Trophy';">
+            </div>
+            <div onclick="openModal(this.querySelector('img').src)" class="relative w-14 h-14 sm:w-16 sm:h-16 rounded-lg overflow-hidden cursor-pointer group/thumb border border-white/20 bg-black/30">
+              <img src="chess champion.webp" alt="Certificate" class="absolute inset-0 w-full h-full object-cover group-hover/thumb:scale-110 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/400x400/12151E/F2F2F7?text=Cert';">
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2: Scrabble -->
+        <div class="reveal liquid-glass rounded-xl p-4 md:p-5 flex items-center justify-between gap-4 hover:-translate-y-1 transition-transform">
+          <div class="flex items-center gap-4 flex-1">
+            <div class="p-3 dock-squircle rounded-xl flex-shrink-0 hidden sm:flex">
+              <i data-lucide="layout-grid" class="w-5 h-5 text-white"></i>
+            </div>
+            <div>
+              <h3 class="text-lg md:text-xl font-bold text-white tracking-tight">Scrabble 2nd Runner Up</h3>
+              <p class="text-white/80 font-semibold text-xs md:text-sm mb-1.5">BCT Intramurals - Men's Division</p>
+              <div class="flex items-center gap-2">
+                <span class="glass-tag text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">2025</span>
+                <span class="glass-tag text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">Grade 12</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex gap-2 flex-shrink-0 z-10">
+            <div onclick="openModal(this.querySelector('img').src)" class="relative w-14 h-14 sm:w-16 sm:h-16 rounded-lg overflow-hidden cursor-pointer group/thumb border border-white/20 bg-black/30">
+              <img src="scrabble 2nd runner up.webp" alt="Certificate" class="absolute inset-0 w-full h-full object-cover group-hover/thumb:scale-110 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/400x400/12151E/F2F2F7?text=Cert';">
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3: 1st Runner Up -->
+        <div class="reveal liquid-glass rounded-xl p-4 md:p-5 flex items-center justify-between gap-4 hover:-translate-y-1 transition-transform">
+          <div class="flex items-center gap-4 flex-1">
+            <div class="p-3 dock-squircle rounded-xl flex-shrink-0 hidden sm:flex">
+              <i data-lucide="medal" class="w-5 h-5 text-white"></i>
+            </div>
+            <div>
+              <h3 class="text-lg md:text-xl font-bold text-white tracking-tight">1st Runner Up</h3>
+              <p class="text-white/80 font-semibold text-xs md:text-sm mb-1.5">BCT Intrams Chess Men</p>
+              <div class="flex items-center gap-2">
+                <span class="glass-tag text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">2024</span>
+                <span class="glass-tag text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">Grade 11</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: EDUCATION -->
+    <div class="flex flex-col">
+      <div class="reveal mb-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <img src="education logo.webp" alt="Education" class="w-5 h-5 object-contain">
+          <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight scroll-type min-h-[2rem]" data-text="Education Journey">Education Journey</h2>
+        </div>
+        <!-- Compact Filter -->
+        <div class="liquid-glass p-1 rounded-lg hidden sm:flex items-center gap-0.5 text-[10px] font-bold">
+          <button onclick="filterEducation('all', this)" class="edu-tab px-2 py-1 rounded bg-white text-black transition-all">All</button>
+          <button onclick="filterEducation('college', this)" class="edu-tab px-2 py-1 rounded text-white transition-all">College</button>
+          <button onclick="filterEducation('highschool', this)" class="edu-tab px-2 py-1 rounded text-white transition-all">SHS/JHS</button>
+        </div>
+      </div>
+
+      <div class="relative border-l-2 border-white/20 ml-2 md:ml-4 space-y-5 pb-2">
+        <!-- College -->
+        <div data-edu-category="college" class="edu-item relative pl-5 md:pl-6 reveal">
+          <div class="absolute -left-[9px] top-3 w-4 h-4 bg-mac-green border-[3px] border-[#07090E] rounded-full z-10 shadow-[0_0_10px_#30D158]"></div>
+          <div class="liquid-glass rounded-xl p-4 hover:-translate-y-1 transition-transform">
+            <div class="flex flex-wrap items-center gap-2 mb-1">
+              <span class="glass-tag text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase">2025 - Present</span>
+              <span class="bg-mac-green/35 border border-mac-green text-white text-[8px] font-extrabold px-1.5 py-0.5 rounded uppercase">CURRENT</span>
+            </div>
+            <h3 class="text-lg font-bold text-white tracking-tight leading-tight">University of the Cordilleras</h3>
+            <p class="text-white/80 font-semibold text-xs md:text-sm mt-0.5">BS Information Technology (ERP)</p>
+          </div>
+        </div>
+        
+        <!-- SHS -->
+        <div data-edu-category="highschool" class="edu-item relative pl-5 md:pl-6 reveal">
+          <div class="absolute -left-[9px] top-3 w-4 h-4 bg-white/70 border-[3px] border-[#07090E] rounded-full z-10"></div>
+          <div class="liquid-glass rounded-xl p-4 hover:-translate-y-1 transition-transform">
+            <div class="flex flex-wrap items-center gap-2 mb-1">
+              <span class="glass-tag text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase">2023 - 2025</span>
+            </div>
+            <h3 class="text-lg font-bold text-white tracking-tight leading-tight">Baguio College of Technology</h3>
+            <p class="text-white/80 font-semibold text-xs md:text-sm mt-0.5">STEM Strand</p>
+          </div>
+        </div>
+
+        <!-- JHS -->
+        <div data-edu-category="highschool" class="edu-item relative pl-5 md:pl-6 reveal">
+          <div class="absolute -left-[9px] top-3 w-4 h-4 bg-white/70 border-[3px] border-[#07090E] rounded-full z-10"></div>
+          <div class="liquid-glass rounded-xl p-4 hover:-translate-y-1 transition-transform">
+            <div class="flex flex-wrap items-center gap-2 mb-1">
+              <span class="glass-tag text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase">2019 - 2023</span>
+            </div>
+            <h3 class="text-lg font-bold text-white tracking-tight leading-tight">Fort Del Pilar National High School</h3>
+            <p class="text-white/80 font-semibold text-xs md:text-sm mt-0.5">ICT Cookery</p>
+          </div>
+        </div>
+
+        <!-- Elem -->
+        <div data-edu-category="elementary" class="edu-item relative pl-5 md:pl-6 reveal">
+          <div class="absolute -left-[9px] top-3 w-4 h-4 bg-white/70 border-[3px] border-[#07090E] rounded-full z-10"></div>
+          <div class="liquid-glass rounded-xl p-4 hover:-translate-y-1 transition-transform">
+            <div class="flex flex-wrap items-center gap-2 mb-1">
+              <span class="glass-tag text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase">2013 - 2019</span>
+            </div>
+            <h3 class="text-lg font-bold text-white tracking-tight leading-tight">Kias Elementary School</h3>
+            <p class="text-white/80 font-semibold text-xs md:text-sm mt-0.5">Primary Education</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
 </div>
 </section>
 
@@ -618,90 +668,6 @@ Teaching strategy, discipline, and the value of foresight. His lessons laid the 
 <p class="text-white text-base sm:text-lg leading-relaxed">
 Providing unwavering belief, strength, and emotional grounding. Her boundless support fuels my resilience to execute under pressure and reminds me of the core values that truly matter.
 </p>
-</div>
-</div>
-</div>
-</section>
-
-<!-- PAGE 5: EDUCATION -->
-<section id="education" class="page-section hidden min-h-[calc(100dvh-7rem)] py-12 flex flex-col justify-center">
-<div class="reveal mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6 text-center md:text-left">
-<div>
-<p class="text-mac-amber font-bold text-xs uppercase tracking-[0.2em] mb-2">Academic Path</p>
-<h2 class="text-3xl sm:text-4xl font-bold text-white mb-2 scroll-type min-h-[2.75rem] tracking-tight" data-text="Education Journey">Education Journey</h2>
-<p class="text-white text-base sm:text-lg">My academic foundation and continuous growth.</p>
-</div>
-<div class="liquid-glass p-1.5 rounded-xl inline-flex items-center self-center md:self-auto gap-1 text-xs font-bold">
-<button onclick="filterEducation('all', this)" class="edu-tab relative z-10 px-4 py-2 rounded-lg bg-white text-black shadow-md transition-all">All</button>
-<button onclick="filterEducation('college', this)" class="edu-tab relative z-10 px-4 py-2 rounded-lg text-white hover:text-white transition-all">College</button>
-<button onclick="filterEducation('highschool', this)" class="edu-tab relative z-10 px-4 py-2 rounded-lg text-white hover:text-white transition-all">High School</button>
-<button onclick="filterEducation('elementary', this)" class="edu-tab relative z-10 px-4 py-2 rounded-lg text-white hover:text-white transition-all">Primary</button>
-</div>
-</div>
-<div class="relative border-l border-white/30 ml-4 md:ml-8 space-y-10 pb-4">
-<div data-edu-category="college" class="edu-item relative pl-8 md:pl-12 reveal">
-<div class="absolute -left-[7px] top-8 w-3.5 h-3.5 bg-mac-green border-2 border-[#07090E] rounded-full z-10 shadow-[0_0_10px_#30D158]"></div>
-<div class="liquid-glass rounded-ios p-6 md:p-8 relative group flex flex-col md:flex-row gap-6 items-start md:items-center hover:-translate-y-1">
-<div class="flex-1 w-full relative z-10">
-<div class="flex flex-wrap items-center gap-2 mb-3 w-full">
-<span class="glass-tag text-white text-[11.5px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">2025 - Present</span>
-<span class="glass-tag text-white text-[11.5px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">College</span>
-<span class="bg-mac-green/35 border border-mac-green text-white text-[11px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow-[0_0_12px_rgba(48,209,88,0.4)]">CURRENT</span>
-</div>
-<h3 class="text-2xl md:text-3xl font-bold text-white mb-1 tracking-tight">University of the Cordilleras</h3>
-<p class="text-white font-semibold mb-3 text-base">BS Information Technology (ERP)</p>
-<p class="text-white max-w-2xl text-sm md:text-base leading-relaxed font-normal">
-Specialized in Enterprise Resource Planning (ERP). Developed a robust foundation in systemic software solutions, business process integration, and database management, preparing for high-level enterprise IT challenges.
-</p>
-</div>
-</div>
-</div>
-<div data-edu-category="highschool" class="edu-item relative pl-8 md:pl-12 reveal">
-<div class="absolute -left-[7px] top-8 w-3.5 h-3.5 bg-white border-2 border-[#07090E] rounded-full"></div>
-<div class="liquid-glass rounded-ios p-6 md:p-8 relative group flex flex-col md:flex-row gap-6 items-start md:items-center hover:-translate-y-1">
-<div class="flex-1 w-full relative z-10">
-<div class="flex flex-wrap items-center gap-2 mb-3 w-full">
-<span class="glass-tag text-white text-[11.5px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">2023 - 2025</span>
-<span class="glass-tag text-white text-[11.5px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Senior High School</span>
-</div>
-<h3 class="text-2xl md:text-3xl font-bold text-white mb-1 tracking-tight">Baguio College of Technology</h3>
-<p class="text-white font-semibold mb-3 text-base">STEM Strand</p>
-<p class="text-white max-w-2xl text-sm md:text-base leading-relaxed font-normal">
-Completed the Science, Technology, Engineering, and Mathematics (STEM) strand. Developed advanced analytical skills, built strong technological foundations, and excelled in academic challenges.
-</p>
-</div>
-</div>
-</div>
-<div data-edu-category="highschool" class="edu-item relative pl-8 md:pl-12 reveal">
-<div class="absolute -left-[7px] top-8 w-3.5 h-3.5 bg-white border-2 border-[#07090E] rounded-full"></div>
-<div class="liquid-glass rounded-ios p-6 md:p-8 relative group flex flex-col md:flex-row gap-6 items-start md:items-center hover:-translate-y-1">
-<div class="flex-1 w-full relative z-10">
-<div class="flex flex-wrap items-center gap-2 mb-3 w-full">
-<span class="glass-tag text-white text-[11.5px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">2019 - 2023</span>
-<span class="glass-tag text-white text-[11.5px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Junior High School</span>
-</div>
-<h3 class="text-2xl md:text-3xl font-bold text-white mb-1 tracking-tight">Fort Del Pilar National High School</h3>
-<p class="text-white font-semibold mb-3 text-base">ICT Cookery</p>
-<p class="text-white max-w-2xl text-sm md:text-base leading-relaxed font-normal">
-Dual focus on Information and Communications Technology alongside Culinary Arts. Built early technical proficiencies while learning the value of precise, process-driven execution.
-</p>
-</div>
-</div>
-</div>
-<div data-edu-category="elementary" class="edu-item relative pl-8 md:pl-12 reveal">
-<div class="absolute -left-[7px] top-8 w-3.5 h-3.5 bg-white border-2 border-[#07090E] rounded-full"></div>
-<div class="liquid-glass rounded-ios p-6 md:p-8 relative group flex flex-col md:flex-row gap-6 items-start md:items-center hover:-translate-y-1">
-<div class="flex-1 w-full relative z-10">
-<div class="flex flex-wrap items-center gap-2 mb-3 w-full">
-<span class="glass-tag text-white text-[11.5px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">2013 - 2019</span>
-<span class="glass-tag text-white text-[11.5px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Elementary</span>
-</div>
-<h3 class="text-2xl md:text-3xl font-bold text-white mb-1 tracking-tight">Kias Elementary School</h3>
-<p class="text-white font-semibold mb-3 text-base">Primary Education</p>
-<p class="text-white max-w-2xl text-sm md:text-base leading-relaxed font-normal">
-Formative years dedicated to building a strong academic foundation. Developed a competitive edge and strategic mindset that would later translate into regional chess achievements.
-</p>
-</div>
 </div>
 </div>
 </div>
@@ -875,13 +841,12 @@ function updateMacClock(){
 updateMacClock();
 setInterval(updateMacClock,15000);
 
-const pageOrder = ['home', 'about', 'achievements', 'family', 'education'];
+const pageOrder = ['home', 'about', 'achievements', 'family'];
 const pageTitles = {
   'home': 'Homepage',
   'about': 'About Me',
   'achievements': 'Achievements',
-  'family': 'Foundation',
-  'education': 'Education'
+  'family': 'Foundation'
 };
 let currentPageIndex = 0;
 
