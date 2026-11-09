@@ -562,15 +562,16 @@ Reopen <span class="font-mono text-white">portrait.png</span>
                  <div class="flex flex-col justify-center">
                     <div class="flex flex-wrap items-center gap-1.5 mb-1">
                       <span class="text-mac-silver text-[9px] font-bold uppercase tracking-wider">2023 - 2025</span>
+                      <span class="bg-mac-amber/20 border border-mac-amber/40 text-mac-amber text-[8px] font-extrabold px-1.5 py-0.5 rounded uppercase">WITH HONORS</span>
                     </div>
                     <h3 class="text-[15px] sm:text-[16px] font-bold text-white tracking-tight leading-tight mb-0.5">Baguio College of Technology</h3>
                     <p class="text-white/60 font-medium text-[12px] leading-tight">STEM Strand</p>
                  </div>
                </div>
                
-               <!-- ENLARGED SHS GRADUATION PICTURE THUMBNAIL -->
-               <div onclick="openModal(this.querySelector('img').src)" class="relative w-[72px] h-[72px] sm:w-[84px] sm:h-[84px] rounded-xl overflow-hidden cursor-pointer group/thumb border border-white/20 bg-black/30 flex-shrink-0 ml-1 shadow-lg" title="View Graduation Picture">
-                  <img src="shs graduation picture.png" alt="SHS Graduation" class="absolute inset-0 w-full h-full object-cover group-hover/thumb:scale-110 transition-transform duration-500">
+               <!-- ENLARGED SHS GRADUATION PICTURE THUMBNAIL (Zoom removed) -->
+               <div class="relative w-[72px] h-[72px] sm:w-[84px] sm:h-[84px] rounded-xl overflow-hidden border border-white/20 bg-black/30 flex-shrink-0 ml-1 shadow-lg">
+                  <img src="shs graduation picture.png" alt="SHS Graduation" class="absolute inset-0 w-full h-full object-cover">
                </div>
             </div>
           </div>
@@ -595,9 +596,9 @@ Reopen <span class="font-mono text-white">portrait.png</span>
                  </div>
                </div>
                
-               <!-- ENLARGED JHS GRADUATION PICTURE THUMBNAIL -->
-               <div onclick="openModal(this.querySelector('img').src)" class="relative w-[72px] h-[72px] sm:w-[84px] sm:h-[84px] rounded-xl overflow-hidden cursor-pointer group/thumb border border-white/20 bg-black/30 flex-shrink-0 ml-1 shadow-lg" title="View Graduation Picture">
-                  <img src="jhs gradaution.jpeg" alt="JHS Graduation" class="absolute inset-0 w-full h-full object-cover group-hover/thumb:scale-110 transition-transform duration-500">
+               <!-- ENLARGED JHS GRADUATION PICTURE THUMBNAIL (Zoom removed) -->
+               <div class="relative w-[72px] h-[72px] sm:w-[84px] sm:h-[84px] rounded-xl overflow-hidden border border-white/20 bg-black/30 flex-shrink-0 ml-1 shadow-lg">
+                  <img src="jhs gradaution.jpeg" alt="JHS Graduation" class="absolute inset-0 w-full h-full object-cover">
                </div>
             </div>
           </div>
@@ -626,7 +627,7 @@ Reopen <span class="font-mono text-white">portrait.png</span>
       </div>
     </div>
     
-    <!-- 2/3 COLUMN: ACHIEVEMENTS -->
+    <!-- 2/3 COLUMN: ACHIEVEMENTS (Organized by Chess, then others) -->
     <div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
       
       <!-- Item 1: Chess Champion -->
@@ -646,15 +647,59 @@ Reopen <span class="font-mono text-white">portrait.png</span>
         </div>
         <div class="flex gap-3 mt-auto pt-2">
           <div class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden border border-white/20 bg-black/30 shadow-sm">
-            <img src="Chess Champion trophy.webp" alt="Trophy" class="absolute inset-0 w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/400x400/12151E/FFB340?text=Trophy';">
+            <img src="tophy pic.jpg" alt="Trophy" class="absolute inset-0 w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/400x400/12151E/FFB340?text=Trophy';">
           </div>
           <div class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden border border-white/20 bg-black/30 shadow-sm">
-            <img src="chess champion.webp" alt="Certificate" class="absolute inset-0 w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/400x400/12151E/F2F2F7?text=Cert';">
+            <img src="chess men champion certificate pic.jpg" alt="Certificate" class="absolute inset-0 w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/400x400/12151E/F2F2F7?text=Cert';">
           </div>
         </div>
       </div>
 
-      <!-- Item 2: Scrabble -->
+      <!-- Item 2: 1st Runner Up (Chess) -->
+      <div class="reveal liquid-glass rounded-xl p-5 flex flex-col justify-between gap-6 hover:-translate-y-1 transition-transform h-full">
+        <div class="flex items-start gap-4">
+          <div class="p-3 dock-squircle rounded-xl flex-shrink-0 bg-white/5 border border-white/10">
+            <i data-lucide="medal" class="w-6 h-6 text-white drop-shadow-md"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white tracking-tight leading-tight mb-1">1st Runner Up</h3>
+            <p class="text-white/80 font-semibold text-xs mb-2.5">BCT Intrams Chess Men</p>
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="glass-tag text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">2024</span>
+              <span class="glass-tag text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">Grade 11</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex gap-3 mt-auto pt-2">
+          <div class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden border border-white/20 bg-black/30 shadow-sm">
+            <img src="1st runner up chess men pic.jpg" alt="1st Runner Up" class="absolute inset-0 w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/400x400/12151E/F2F2F7?text=Cert';">
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 3: Anchorwheel Tournament (Chess) -->
+      <div class="reveal liquid-glass rounded-xl p-5 flex flex-col justify-between gap-6 hover:-translate-y-1 transition-transform h-full">
+        <div class="flex items-start gap-4">
+          <div class="p-3 dock-squircle rounded-xl flex-shrink-0 bg-white/5 border border-white/10">
+            <i data-lucide="flag" class="w-6 h-6 text-white drop-shadow-md"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-white tracking-tight leading-tight mb-1">Anchorwheel Tournament</h3>
+            <p class="text-white/80 font-semibold text-xs mb-2.5">Chess Participation</p>
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="glass-tag text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">Chess</span>
+              <span class="glass-tag text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">Participant</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex gap-3 mt-auto pt-2">
+          <div class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden border border-white/20 bg-black/30 shadow-sm">
+            <img src="achorwheel tournament participation.jpg" alt="Anchorwheel Tournament" class="absolute inset-0 w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/400x400/12151E/F2F2F7?text=Chess';">
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 4: Scrabble -->
       <div class="reveal liquid-glass rounded-xl p-5 flex flex-col justify-between gap-6 hover:-translate-y-1 transition-transform h-full">
         <div class="flex items-start gap-4">
           <div class="p-3 dock-squircle rounded-xl flex-shrink-0 bg-white/5 border border-white/10">
@@ -671,29 +716,12 @@ Reopen <span class="font-mono text-white">portrait.png</span>
         </div>
         <div class="flex gap-3 mt-auto pt-2">
           <div class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden border border-white/20 bg-black/30 shadow-sm">
-            <img src="scrabble 2nd runner up.webp" alt="Certificate" class="absolute inset-0 w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/400x400/12151E/F2F2F7?text=Cert';">
-          </div>
-        </div>
-      </div>
-
-      <!-- Item 3: 1st Runner Up -->
-      <div class="reveal liquid-glass rounded-xl p-5 flex flex-col justify-between gap-6 hover:-translate-y-1 transition-transform h-full">
-        <div class="flex items-start gap-4">
-          <div class="p-3 dock-squircle rounded-xl flex-shrink-0 bg-white/5 border border-white/10">
-            <i data-lucide="medal" class="w-6 h-6 text-white drop-shadow-md"></i>
-          </div>
-          <div>
-            <h3 class="text-xl font-bold text-white tracking-tight leading-tight mb-1">1st Runner Up</h3>
-            <p class="text-white/80 font-semibold text-xs mb-2.5">BCT Intrams Chess Men</p>
-            <div class="flex flex-wrap items-center gap-2">
-              <span class="glass-tag text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">2024</span>
-              <span class="glass-tag text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">Grade 11</span>
-            </div>
+            <img src="2nd runner up scrabble.jpg" alt="Certificate" class="absolute inset-0 w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/400x400/12151E/F2F2F7?text=Cert';">
           </div>
         </div>
       </div>
       
-      <!-- Item 4: Best in Mascot -->
+      <!-- Item 5: Best in Mascot -->
       <div class="reveal liquid-glass rounded-xl p-5 flex flex-col justify-between gap-6 hover:-translate-y-1 transition-transform h-full">
         <div class="flex items-start gap-4">
           <div class="p-3 dock-squircle rounded-xl flex-shrink-0 bg-white/5 border border-white/10">
@@ -706,6 +734,11 @@ Reopen <span class="font-mono text-white">portrait.png</span>
               <span class="glass-tag text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">2025</span>
               <span class="glass-tag text-white text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wide">Grade 12</span>
             </div>
+          </div>
+        </div>
+        <div class="flex gap-3 mt-auto pt-2">
+          <div class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-xl overflow-hidden border border-white/20 bg-black/30 shadow-sm">
+            <img src="best in robot mascot intrams.jpg" alt="Best in Mascot" class="absolute inset-0 w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/400x400/12151E/F2F2F7?text=Mascot';">
           </div>
         </div>
       </div>
