@@ -1,39 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Benjamin P. Bucad | Portfolio</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{mac:{bg:'#07090E',surface:'#121620',elevated:'#191F2C',graphite:'#283044',silver:'#F2F2F7',titanium:'#D1D1D6',muted:'#AEAEB2',blue:'#0A84FF',green:'#30D158',amber:'#FFB340',ggred:'#FF5A36',}},fontFamily:{sans:['-apple-system','BlinkMacSystemFont','"SF Pro Display"','"SF Pro Text"','"Helvetica Neue"','Helvetica','Arial','sans-serif'],mono:['"SF Mono"','ui-monospace','SFMono-Regular','Menlo','Monaco','Consolas','monospace'],},borderRadius:{'mac':'18px','mac-lg':'24px','ios':'20px',},transitionTimingFunction:{'spring':'cubic-bezier(0.22, 1, 0.36, 1)','dock':'cubic-bezier(0.175, 0.885, 0.32, 1.22)',}}}}
+</script>
+<style>
+body{background-color:#07090E;color:#F5F5F7;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden;}
+body.locked-scroll{overflow:hidden!important;}
+h1,h2,h3,h4,p{text-shadow:0 2px 12px rgba(0,0,0,0.45);}
+.hero-subtitle-bright{color:#FFF6E9;text-shadow:0 0 24px rgba(255,179,64,0.45),0 2px 10px rgba(0,0,0,0.65);}
+@keyframes course-idle-glow{0%,100%{text-shadow:0 0 24px rgba(255,179,64,0.45),0 2px 10px rgba(0,0,0,0.65);filter:brightness(1);}50%{text-shadow:0 0 45px rgba(255,179,64,0.95),0 2px 15px rgba(0,0,0,0.85);filter:brightness(1.15);}}
+.idle-course-anim{animation:course-idle-glow 3.5s ease-in-out infinite;transform-origin:left center;}
+.mac-dock-popup-init{opacity:0;transform:translateY(44vh) scaleX(0.32) scaleY(0.12);transform-origin:bottom center;filter:blur(14px);pointer-events:none;}
+.mac-dock-popup-active{opacity:1;transform:translateY(0) scaleX(1) scaleY(1);transform-origin:bottom center;filter:blur(0px);pointer-events:auto;transition:transform 0.78s cubic-bezier(0.18, 1.12, 0.32, 1),opacity 0.38s ease-out,filter 0.48s ease-out;}
+.billboard-stage{perspective:1400px;perspective-origin:56% 46%;}
+.billboard-rig{--tilt-y:-14deg;--tilt-x:2deg;--spot-x:68%;--spot-y:28%;position:relative;transform-style:preserve-3d;}
+@media (min-width: 1024px){.billboard-rig{transform:rotateY(var(--tilt-y)) rotateX(var(--tilt-x)) scale(0.97);}.portfolio-main-window{transform:translateZ(0px);transform-style:preserve-3d;box-shadow:-36px 34px 80px -16px rgba(0,0,0,0.88),0 0 0 1px rgba(255,255,255,0.20),inset 0 1.5px 1.5px 0 rgba(255,255,255,0.78);}.portrait-overlap-window{transform:translateZ(75px);transform-style:preserve-3d;box-shadow:-38px 36px 78px -8px rgba(0,0,0,0.95),22px 18px 60px -12px rgba(255,255,255,0.08),0 0 0 1px rgba(255,255,255,0.32),inset -2.5px 0 2px 0 rgba(255,255,255,0.4),inset 0 1.5px 1.5px 0 rgba(255,255,255,0.9);}.portrait-overlap-window::after{content:'';position:absolute;top:2px;bottom:2px;right:-5px;width:5px;border-radius:0 24px 24px 0;background:linear-gradient(180deg,rgba(255,255,255,0.8) 0%,rgba(255,255,255,0.3) 48%,rgba(10,132,255,0.3) 82%,rgba(255,255,255,0.7) 100%);transform:rotateY(90deg);transform-origin:left center;box-shadow:0 0 16px rgba(255,255,255,0.2);pointer-events:none;}}
+.billboard-surface-spotlight{position:absolute;inset:0;border-radius:inherit;background:radial-gradient(580px circle at var(--spot-x) var(--spot-y),rgba(255,255,255,0.12) 0%,rgba(255,255,255,0.03) 32%,transparent 68%),linear-gradient(105deg,rgba(0,0,0,0.32) 0%,rgba(255,255,255,0.02) 45%,rgba(255,255,255,0.08) 85%,rgba(255,255,255,0.12) 100%);pointer-events:none;z-index:3;}
+.billboard-floor-shadow{position:absolute;bottom:-38px;left:6%;right:2%;height:68px;background:radial-gradient(ellipse at 65% 50%,rgba(0,0,0,0.88) 0%,rgba(255,255,255,0.06) 38%,transparent 75%);filter:blur(22px);transform:rotateZ(-1.5deg);pointer-events:none;z-index:0;}
+#background-layer{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:#0B0B16;}
+#background-layer img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.01);}
+#background-layer::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 42%,rgba(8,11,18,0.08) 0%,rgba(4,6,10,0.48) 100%);pointer-events:none;}
+.mac-menubar{background:rgba(5,5,7,0.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.11);box-shadow:0 2px 12px rgba(0,0,0,0.65);}
+.liquid-glass{--mouse-x:25%;--mouse-y:15%;position:relative;isolation:isolate;background:radial-gradient(480px circle at var(--mouse-x) var(--mouse-y),rgba(255,255,255,0.10) 0%,rgba(255,255,255,0.03) 40%,transparent 75%),linear-gradient(135deg,rgba(255,255,255,0.12) 0%,rgba(255,255,255,0.04) 38%,rgba(14,18,28,0.34) 72%,rgba(255,255,255,0.05) 100%);backdrop-filter:url(#liquid-refraction) blur(22px) saturate(230%) brightness(1.08);-webkit-backdrop-filter:blur(22px) saturate(230%) brightness(1.08);border:1px solid rgba(255,255,255,0.16);box-shadow:0 28px 60px -12px rgba(0,0,0,0.7),0 6px 20px rgba(0,0,0,0.4),inset 0 1.5px 1px 0 rgba(255,255,255,0.7),inset 0 -1px 1px 0 rgba(255,255,255,0.15),inset 0 16px 32px -8px rgba(255,255,255,0.11),inset 0 -14px 28px -10px rgba(0,0,0,0.42);transition:border-color 0.35s ease,box-shadow 0.4s cubic-bezier(0.22,1,0.36,1),background 0.35s ease;}
+.liquid-glass::before,.liquid-glass-elevated::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1.35px;background:linear-gradient(135deg,rgba(255,255,255,0.88) 0%,rgba(255,255,255,0.25) 25%,rgba(255,255,255,0.04) 50%,rgba(255,255,255,0.20) 78%,rgba(255,255,255,0.65) 100%);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;z-index:2;}
+.liquid-glass::after{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(180deg,rgba(255,255,255,0.18) 0%,rgba(255,255,255,0.03) 26%,transparent 50%);pointer-events:none;z-index:1;}
+.liquid-glass:hover{border-color:rgba(255,255,255,0.32);box-shadow:0 34px 72px -12px rgba(0,0,0,0.8),0 10px 28px rgba(0,0,0,0.48),inset 0 1.5px 1.5px 0 rgba(255,255,255,0.88),inset 0 -1.5px 1px 0 rgba(255,255,255,0.25),inset 0 22px 40px -6px rgba(255,255,255,0.16),inset 0 -14px 28px -10px rgba(0,0,0,0.45);}
+.liquid-glass-elevated{--mouse-x:30%;--mouse-y:10%;position:relative;isolation:isolate;background:radial-gradient(520px circle at var(--mouse-x) var(--mouse-y),rgba(255,255,255,0.12) 0%,rgba(255,255,255,0.03) 45%,transparent 75%),linear-gradient(155deg,rgba(255,255,255,0.15) 0%,rgba(20,25,38,0.38) 48%,rgba(10,13,20,0.52) 100%);backdrop-filter:url(#liquid-refraction) blur(28px) saturate(240%) brightness(1.08);-webkit-backdrop-filter:blur(28px) saturate(240%) brightness(1.08);border:1px solid rgba(255,255,255,0.22);box-shadow:0 36px 80px -16px rgba(0,0,0,0.84),0 8px 24px rgba(0,0,0,0.48),inset 0 1.5px 1px 0 rgba(255,255,255,0.78),inset 0 -1px 1px 0 rgba(255,255,255,0.26),inset 0 18px 36px -10px rgba(255,255,255,0.14);}
+
+.mac-titlebar{background:linear-gradient(180deg,rgba(255,255,255,0.16) 0%,rgba(15,19,28,0.38) 100%);backdrop-filter:blur(24px) saturate(220%);-webkit-backdrop-filter:blur(24px) saturate(220%);border-bottom:1px solid rgba(255,255,255,0.18);box-shadow:inset 0 1px 0 0 rgba(255,255,255,0.45);}
+.mac-dock{position:relative;background:linear-gradient(180deg,rgba(255,255,255,0.20) 0%,rgba(22,27,40,0.36) 55%,rgba(10,13,20,0.48) 100%);backdrop-filter:url(#liquid-refraction) blur(32px) saturate(240%) brightness(1.08);-webkit-backdrop-filter:blur(32px) saturate(240%) brightness(1.08);border:1px solid rgba(255,255,255,0.25);box-shadow:0 28px 64px rgba(0,0,0,0.78),0 4px 16px rgba(0,0,0,0.48),inset 0 1.5px 1px 0 rgba(255,255,255,0.75),inset 0 -1px 1px 0 rgba(255,255,255,0.24);}
+
+.dock-item{position:relative;transition:transform 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.22),margin 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.22);transform-origin:bottom center;}
+@media (min-width: 768px){.dock-item:hover{transform:translateY(-12px) scale(1.18);margin-left:7px;margin-right:7px;z-index:20;}.dock-item:hover .mac-app-icon{box-shadow:0 14px 28px -4px rgba(0,0,0,0.7);}.dock-item:hover .mac-app-icon::after{box-shadow:inset 0 1.5px 1.5px 0 rgba(255,255,255,0.9),inset 0 -1px 1px 0 rgba(255,255,255,0.2);}.dock-item:hover + .dock-item,.dock-item:has(+ .dock-item:hover){transform:translateY(-5px) scale(1.08);}}
+.dock-tooltip{position:absolute;top:-46px;left:50%;transform:translateX(-50%) translateY(6px) scale(0.94);opacity:0;pointer-events:none;transition:all 0.2s cubic-bezier(0.22, 1, 0.36, 1);white-space:nowrap;z-index:30;}
+.dock-item:hover .dock-tooltip{opacity:1;transform:translateX(-50%) translateY(0) scale(1);}
+
+.mac-app-icon{
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 8px 18px -4px rgba(0,0,0,0.45);
+  transition:all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.mac-app-icon::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  box-shadow:inset 0 1px 1px 0 rgba(255,255,255,0.3),inset 0 -1px 1px 0 rgba(255,255,255,0.1);
+  pointer-events:none;
+  transition:all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.glass-tag{background:linear-gradient(135deg,rgba(255,255,255,0.20) 0%,rgba(255,255,255,0.06) 100%);backdrop-filter:blur(12px) saturate(190%);-webkit-backdrop-filter:blur(12px) saturate(190%);border:1px solid rgba(255,255,255,0.28);box-shadow:0 4px 12px rgba(0,0,0,0.22),inset 0 1px 0.5px 0 rgba(255,255,255,0.65);transition:all 0.2s ease;}
+.glass-tag:hover{background:linear-gradient(135deg,rgba(255,255,255,0.30) 0%,rgba(255,255,255,0.12) 100%);border-color:rgba(255,255,255,0.52);transform:translateY(-1px);}
+.reveal{opacity:0;transform:translateY(22px) scale(0.99);transition:opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);}
+.reveal.visible{opacity:1;transform:translateY(0) scale(1);}
+.page-section{animation:pageFadeIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;}
+@keyframes pageFadeIn{from{opacity:0;transform:translateY(14px) scale(0.99);}to{opacity:1;transform:translateY(0) scale(1);}}
+.cursor::after{content:'|';animation:blink 0.9s step-start infinite;color:#FFB340;margin-left:2px;font-weight:300;}
+@keyframes blink{50%{opacity:0;}}
+.mac-window-transition{transition:all 0.42s cubic-bezier(0.22, 1, 0.36, 1);}
+.traffic-group:hover .traffic-icon{opacity:1;}
+.traffic-icon{opacity:0;transition:opacity 0.15s ease;pointer-events:none;}
+
+/* Floating Nav Buttons */
+.nav-btn {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  opacity: 0.2; 
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-btn:hover:not(:disabled) {
+  opacity: 1; 
+  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.02) 100%);
+  border-color: rgba(255,255,255,0.25);
+  transform: scale(1.08);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.3);
+}
+.nav-btn:active:not(:disabled) {
+  transform: scale(0.95);
+}
+.nav-btn:disabled {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.9);
+}
+.nav-tooltip {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) scale(0.94);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  white-space: nowrap;
+}
+.nav-btn:hover .nav-tooltip.left {
+  opacity: 1;
+  transform: translateY(-50%) translateX(-100%) scale(1);
+  right: calc(100% + 12px);
+}
+.nav-btn:hover .nav-tooltip.right {
+  opacity: 1;
+  transform: translateY(-50%) translateX(100%) scale(1);
+  left: calc(100% + 12px);
+}
+
+@media (prefers-reduced-motion: reduce){*,::before,::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important;}}
+</style>
+</head>
+<body class="relative min-h-screen selection:bg-white/30 selection:text-white pb-32 locked-scroll">
+<div id="global-loader" class="fixed inset-0 z-[9999] bg-white transition-opacity duration-700 ease-in-out"></div>
+<div id="background-layer">
+<svg class="absolute w-0 h-0 pointer-events-none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<filter id="liquid-refraction" x="-10%" y="-10%" width="120%" height="120%" color-interpolation-filters="sRGB">
+<feTurbulence type="fractalNoise" baseFrequency="0.012 0.018" numOctaves="2" seed="7" result="noise" />
+<feGaussianBlur in="noise" stdDeviation="2.5" result="smoothNoise" />
+<feDisplacementMap in="SourceGraphic" in2="smoothNoise" scale="6" xChannelSelector="R" yChannelSelector="G" />
+</filter>
+</defs>
+</svg>
+<img id="bg-wallpaper-img" src="27-Golden-Gate-Dark.webp" alt="macOS Dark Wave Background" class="absolute inset-0 w-full h-full object-cover transform scale-[1.01]">
+</div>
+
+<header class="fixed top-0 inset-x-0 h-9 z-[45] mac-menubar px-4 sm:px-6 flex items-center justify-between text-[13px] font-medium select-none">
+<div class="flex items-center gap-5">
+<button type="button" onclick="switchPage('home')" class="flex items-center gap-1.5 font-semibold text-white tracking-tight hover:text-mac-silver transition-colors focus:outline-none focus:ring-1 focus:ring-white rounded">
+<i data-lucide="command" class="w-4 h-4 text-mac-silver"></i>
+<span>Benjamin P. Bucad</span>
+</button>
+<div class="hidden sm:flex items-center gap-4 text-mac-silver text-[12.5px]">
+<button type="button" onclick="switchPage('home')" data-menu-link="home" class="menubar-link text-white font-semibold hover:text-white transition-colors">Homepage</button>
+<button type="button" onclick="switchPage('about')" data-menu-link="about" class="menubar-link hover:text-white transition-colors">Personal Information</button>
+<button type="button" onclick="switchPage('achievements')" data-menu-link="achievements" class="menubar-link hover:text-white transition-colors">Achievements</button>
+<button type="button" onclick="switchPage('family')" data-menu-link="family" class="menubar-link hover:text-white transition-colors">Friends and Families</button>
+</div>
+</div>
+<div class="flex items-center gap-3.5 text-mac-silver text-[12.5px]">
+<span class="hidden lg:inline-flex items-center gap-1 text-white mr-2">
+<i data-lucide="map-pin" class="w-3.5 h-3.5 text-mac-silver"></i>
+Baguio, PH
+</span>
+<i data-lucide="wifi" class="w-4 h-4 hidden sm:block text-mac-silver"></i>
+<span id="mac-menubar-clock" class="font-mono text-[12px] text-white"></span>
+</div>
+</header>
+
+<!-- NEXT/PREV FLOATING BUTTONS -->
+<div id="floating-nav" class="fixed inset-y-0 w-full max-w-[94rem] mx-auto left-1/2 -translate-x-1/2 pointer-events-none z-[80] hidden lg:flex items-center justify-between px-4 xl:px-8 2xl:px-0">
+  <button id="nav-prev-btn" onclick="navigatePage(-1)" class="nav-btn group relative pointer-events-auto flex items-center justify-center w-14 h-14 rounded-full text-white focus:outline-none" aria-label="Previous Page">
+    <span class="absolute -top-6 text-[10px] font-bold text-white/90 uppercase tracking-widest whitespace-nowrap drop-shadow-lg pointer-events-none">Prev</span>
+    <div class="nav-tooltip right liquid-glass-elevated px-3 py-1.5 rounded-lg text-[12px] font-medium text-white shadow-lg border border-white/20">
+      <span class="opacity-70 text-[10px] uppercase tracking-wider block mb-0.5">Previous</span>
+      <span id="nav-prev-label" class="font-bold">Home</span>
+    </div>
+    <i data-lucide="chevron-left" class="w-7 h-7 drop-shadow-md"></i>
+  </button>
+  
+  <button id="nav-next-btn" onclick="navigatePage(1)" class="nav-btn group relative pointer-events-auto flex items-center justify-center w-14 h-14 rounded-full text-white focus:outline-none" aria-label="Next Page">
+    <span class="absolute -top-6 text-[10px] font-bold text-white/90 uppercase tracking-widest whitespace-nowrap drop-shadow-lg pointer-events-none">Next</span>
+    <div class="nav-tooltip left liquid-glass-elevated px-3 py-1.5 rounded-lg text-[12px] font-medium text-white shadow-lg border border-white/20 text-right">
+      <span class="opacity-70 text-[10px] uppercase tracking-wider block mb-0.5">Next</span>
+      <span id="nav-next-label" class="font-bold">About</span>
+    </div>
+    <i data-lucide="chevron-right" class="w-7 h-7 drop-shadow-md"></i>
+  </button>
+</div>
+
 <!-- DOCK NAVIGATION -->
 <nav aria-label="macOS Dock Navigation" class="fixed bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 z-[60] max-w-[98vw]">
 <div class="mac-dock rounded-[22px] sm:rounded-[24px] px-[8px] sm:px-[10px] pt-[6px] sm:pt-[8px] pb-[10px] sm:pb-[12px] flex items-center gap-[8px] sm:gap-[10px]">
 
 <!-- PAGE 1: HOMEPAGE ICON -->
-<button type="button" onclick="switchPage('home')" data-section="home" class="dock-item group relative flex flex-col items-center justify-start cursor-pointer focus:outline-none w-[56px] sm:w-[64px] pt-1 pb-2.5 gap-1.5">
+<button type="button" onclick="switchPage('home')" data-section="home" class="dock-item group relative flex flex-col items-center justify-center cursor-pointer focus:outline-none w-[52px] h-[52px] sm:w-[58px] sm:h-[58px]">
+<span class="absolute -top-6 sm:-top-7 text-[9px] sm:text-[10px] font-bold text-white/90 tracking-wide whitespace-nowrap drop-shadow-lg pointer-events-none">Home</span>
 <div class="dock-tooltip liquid-glass-elevated px-3 py-1.5 rounded-lg text-[12px] font-medium text-white shadow-lg">Page 1: Homepage</div>
-<div class="mac-app-icon relative w-[46px] h-[46px] sm:w-[52px] sm:h-[52px] shrink-0 flex items-center justify-center bg-white rounded-[11px] sm:rounded-[13px]">
+<div class="mac-app-icon absolute w-[46px] h-[46px] sm:w-[52px] sm:h-[52px] flex items-center justify-center bg-white rounded-[11px] sm:rounded-[13px]">
 <img src="homepagelogo.jpg" alt="Homepage" class="w-full h-full object-cover transform scale-[1.24]">
 </div>
-<span class="text-[9px] sm:text-[10px] text-white/90 font-medium tracking-tight drop-shadow-md leading-none truncate w-full text-center">Home</span>
-<span class="dock-dot absolute bottom-0 w-1 h-1 rounded-full bg-white transition-all duration-300 opacity-100"></span>
+<span class="dock-dot absolute -bottom-[7px] sm:-bottom-[8px] w-1 h-1 rounded-full bg-white transition-all duration-300 opacity-100"></span>
 </button>
 
 <!-- PAGE 2: PERSONAL INFORMATION ICON -->
-<button type="button" onclick="switchPage('about')" data-section="about" class="dock-item group relative flex flex-col items-center justify-start cursor-pointer focus:outline-none w-[56px] sm:w-[64px] pt-1 pb-2.5 gap-1.5">
+<button type="button" onclick="switchPage('about')" data-section="about" class="dock-item group relative flex flex-col items-center justify-center cursor-pointer focus:outline-none w-[52px] h-[52px] sm:w-[58px] sm:h-[58px]">
+<span class="absolute -top-6 sm:-top-7 text-[9px] sm:text-[10px] font-bold text-white/90 tracking-wide whitespace-nowrap drop-shadow-lg pointer-events-none">About</span>
 <div class="dock-tooltip liquid-glass-elevated px-3 py-1.5 rounded-lg text-[12px] font-medium text-white shadow-lg">Page 2: Personal Information</div>
-<img src="personal information icon.webp" alt="Personal Information" class="relative shrink-0 w-[50px] h-[50px] sm:w-[56px] sm:h-[56px] object-contain drop-shadow-[0_10px_22px_rgba(0,0,0,0.45)]">
-<span class="text-[9px] sm:text-[10px] text-white/90 font-medium tracking-tight drop-shadow-md leading-none truncate w-full text-center">Profile</span>
-<span class="dock-dot absolute bottom-0 w-1 h-1 rounded-full bg-white transition-all duration-300 opacity-0"></span>
+<img src="personal information icon.webp" alt="Personal Information" class="absolute w-[50px] h-[50px] sm:w-[56px] sm:h-[56px] object-contain drop-shadow-[0_10px_22px_rgba(0,0,0,0.45)]">
+<span class="dock-dot absolute -bottom-[7px] sm:-bottom-[8px] w-1 h-1 rounded-full bg-white transition-all duration-300 opacity-0"></span>
 </button>
 
 <!-- PAGE 3: ACHIEVEMENTS ICON -->
-<button type="button" onclick="switchPage('achievements')" data-section="achievements" class="dock-item group relative flex flex-col items-center justify-start cursor-pointer focus:outline-none w-[56px] sm:w-[64px] pt-1 pb-2.5 gap-1.5">
+<button type="button" onclick="switchPage('achievements')" data-section="achievements" class="dock-item group relative flex flex-col items-center justify-center cursor-pointer focus:outline-none w-[52px] h-[52px] sm:w-[58px] sm:h-[58px]">
+<span class="absolute -top-6 sm:-top-7 text-[9px] sm:text-[10px] font-bold text-white/90 tracking-wide whitespace-nowrap drop-shadow-lg pointer-events-none">Awards</span>
 <div class="dock-tooltip liquid-glass-elevated px-3 py-1.5 rounded-lg text-[12px] font-medium text-white shadow-lg">Page 3: Achievements</div>
-<div class="mac-app-icon relative w-[46px] h-[46px] sm:w-[52px] sm:h-[52px] shrink-0 flex items-center justify-center bg-gradient-to-br from-[#FFD54F] to-[#FF8F00] rounded-[11px] sm:rounded-[13px]">
+<div class="mac-app-icon absolute w-[46px] h-[46px] sm:w-[52px] sm:h-[52px] flex items-center justify-center bg-gradient-to-br from-[#FFD54F] to-[#FF8F00] rounded-[11px] sm:rounded-[13px]">
 <i data-lucide="trophy" class="w-6 h-6 sm:w-7 sm:h-7 text-white drop-shadow-md"></i>
 </div>
-<span class="text-[9px] sm:text-[10px] text-white/90 font-medium tracking-tight drop-shadow-md leading-none truncate w-full text-center">Achievements</span>
-<span class="dock-dot absolute bottom-0 w-1 h-1 rounded-full bg-white transition-all duration-300 opacity-0"></span>
+<span class="dock-dot absolute -bottom-[7px] sm:-bottom-[8px] w-1 h-1 rounded-full bg-white transition-all duration-300 opacity-0"></span>
 </button>
 
 <!-- PAGE 4: FRIENDS AND FAMILIES ICON -->
-<button type="button" onclick="switchPage('family')" data-section="family" class="dock-item group relative flex flex-col items-center justify-start cursor-pointer focus:outline-none w-[56px] sm:w-[64px] pt-1 pb-2.5 gap-1.5">
+<button type="button" onclick="switchPage('family')" data-section="family" class="dock-item group relative flex flex-col items-center justify-center cursor-pointer focus:outline-none w-[52px] h-[52px] sm:w-[58px] sm:h-[58px]">
+<span class="absolute -top-6 sm:-top-7 text-[9px] sm:text-[10px] font-bold text-white/90 tracking-wide whitespace-nowrap drop-shadow-lg pointer-events-none">Family</span>
 <div class="dock-tooltip liquid-glass-elevated px-3 py-1.5 rounded-lg text-[12px] font-medium text-white shadow-lg">Page 4: Friends and Families</div>
-<div class="mac-app-icon relative w-[46px] h-[46px] sm:w-[52px] sm:h-[52px] shrink-0 flex items-center justify-center rounded-[11px] sm:rounded-[13px]">
+<div class="mac-app-icon absolute w-[46px] h-[46px] sm:w-[52px] sm:h-[52px] flex items-center justify-center rounded-[11px] sm:rounded-[13px]">
 <svg class="w-full h-full" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
 <defs>
 <linearGradient id="grad-family" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
@@ -50,9 +228,1054 @@
 <path d="M32 42c-5 0-9 4-9 9v5h18v-5c0-5-4-9-9-9z" fill="white"/>
 </svg>
 </div>
-<span class="text-[9px] sm:text-[10px] text-white/90 font-medium tracking-tight drop-shadow-md leading-none truncate w-full text-center">Family</span>
-<span class="dock-dot absolute bottom-0 w-1 h-1 rounded-full bg-white transition-all duration-300 opacity-0"></span>
+<span class="dock-dot absolute -bottom-[7px] sm:-bottom-[8px] w-1 h-1 rounded-full bg-white transition-all duration-300 opacity-0"></span>
 </button>
 
 </div>
 </nav>
+
+<main class="relative z-10 container mx-auto px-4 md:px-8 lg:px-16 pt-16 pb-16">
+<!-- PAGE 1: HOMEPAGE -->
+<section id="home" class="page-section relative min-h-[calc(100dvh-7rem)] py-10 lg:py-14 flex items-center justify-center w-full overflow-visible">
+<div class="billboard-stage relative w-full max-w-[82rem] mx-auto z-10 px-1 sm:px-4">
+<div id="billboard-rig" class="billboard-rig relative flex flex-col lg:flex-row items-center lg:items-start justify-center w-full">
+<div id="portfolio-window-wrapper" class="mac-dock-popup-init w-full lg:w-[68%] relative z-10">
+<div id="main-hero-card" class="portfolio-main-window liquid-glass-elevated rounded-[24px] sm:rounded-[28px] w-full overflow-hidden">
+<div class="billboard-surface-spotlight"></div>
+<div class="mac-titlebar px-5 sm:px-6 py-3 flex items-center justify-between select-none relative z-20">
+<div class="flex items-center gap-2 traffic-group">
+<span class="w-3.5 h-3.5 rounded-full bg-[#FF5F56] border border-[#E0443E] flex items-center justify-center text-[9px] font-black text-black">
+<span class="traffic-icon">&times;</span>
+</span>
+<span class="w-3.5 h-3.5 rounded-full bg-[#FFBD2E] border border-[#DEA123] flex items-center justify-center text-[9px] font-black text-black">
+<span class="traffic-icon">&minus;</span>
+</span>
+<span class="w-3.5 h-3.5 rounded-full bg-[#27C93F] border border-[#1AAB29] flex items-center justify-center text-[9px] font-black text-black">
+<span class="traffic-icon">+</span>
+</span>
+</div>
+<div class="flex items-center gap-1.5">
+<i data-lucide="home" class="w-3.5 h-3.5 text-mac-amber"></i>
+<span class="font-mono text-[12px] text-white font-semibold tracking-tight">Homepage — Portfolio</span>
+</div>
+<div class="w-12"></div>
+</div>
+<div class="relative z-20 p-6 sm:p-10 lg:py-12 lg:pl-12 lg:pr-28 xl:pr-32 flex flex-col justify-center min-h-[380px] sm:min-h-[430px]">
+<div class="inline-flex items-center gap-2 glass-tag px-3.5 py-1.5 rounded-full w-fit mb-6">
+<i data-lucide="map-pin" class="w-3.5 h-3.5 text-mac-amber"></i>
+<span class="text-[11px] font-semibold tracking-widest uppercase text-white">Baguio, PH</span>
+</div>
+<div class="flex flex-col mb-7 sm:mb-9">
+<h1 class="text-[2.6rem] sm:text-[3.4rem] lg:text-[3.5rem] xl:text-[4.1rem] font-black text-white leading-[1.03] tracking-tighter">
+<span id="hero-line-1" class="block w-fit min-h-[1.1em]"></span>
+<span id="hero-line-2" class="block w-fit min-h-[1.1em]"></span>
+</h1>
+<h2 id="course-heading" class="hero-subtitle-bright text-[1.3rem] sm:text-[1.7rem] lg:text-[1.85rem] xl:text-[2.15rem] tracking-tight font-extrabold mt-4 sm:mt-5 leading-[1.12]">
+<span id="hero-line-3" class="block w-fit min-h-[1.1em]"></span>
+<span id="hero-line-4" class="block w-fit text-mac-amber min-h-[1.1em]"></span>
+</h2>
+<h3 class="mt-5 sm:mt-6">
+<span id="hero-line-5" class="inline-block text-[0.78rem] sm:text-[0.88rem] lg:text-[0.95rem] text-mac-silver font-bold tracking-[0.25em] uppercase w-fit min-h-[1.2em]"></span>
+</h3>
+</div>
+<div id="hero-cta-container" class="flex flex-wrap items-center gap-3 w-full opacity-0 translate-y-3 pointer-events-none transition-all duration-700 ease-out">
+<button type="button" onclick="switchPage('achievements')" class="group flex items-center gap-2 bg-white hover:bg-mac-silver text-black px-5 py-2.5 rounded-full text-[13.5px] font-bold transition-all shadow-[0_8px_24px_rgba(255,255,255,0.25),inset_0_1px_1px_#fff] hover:-translate-y-0.5 active:scale-95 focus:outline-none focus:ring-2 focus:ring-white">
+<span>View My Projects</span>
+<i data-lucide="arrow-up-right" class="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"></i>
+</button>
+<button type="button" onclick="switchPage('achievements')" class="group flex items-center gap-2 liquid-glass text-white px-5 py-2.5 rounded-full text-[13.5px] font-semibold transition-all hover:-translate-y-0.5 active:scale-95 focus:outline-none focus:ring-2 focus:ring-white">
+<i data-lucide="download" class="w-4 h-4 text-white transition-transform group-hover:-translate-y-0.5 relative z-10"></i>
+<span class="relative z-10">Download Résumé</span>
+</button>
+<button type="button" onclick="openContactSheet()" class="group flex items-center gap-1.5 px-3 py-2.5 text-[13.5px] font-semibold text-white hover:text-mac-silver transition-colors focus:outline-none focus:ring-1 focus:ring-white rounded">
+<i data-lucide="mail" class="w-4 h-4"></i>
+<span>Contact Me</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div id="portrait-window-wrapper" class="mac-dock-popup-init w-full max-w-[340px] sm:max-w-[390px] lg:max-w-none lg:w-[40%] -mt-6 sm:-mt-8 lg:mt-12 lg:-ml-20 xl:-ml-24 relative z-30 flex flex-col items-center">
+<div id="portrait-restore-dock" class="hidden z-30 my-16">
+<button onclick="restorePortraitWindow()" class="flex items-center gap-3 liquid-glass-elevated px-5 py-3 rounded-full text-xs font-semibold text-white hover:text-mac-silver transition-all hover:-translate-y-0.5 shadow-2xl">
+<span class="w-2 h-2 rounded-full bg-mac-green"></span>
+Reopen <span class="font-mono text-white">portrait.png</span>
+</button>
+</div>
+<div id="portrait-mac-window" class="portrait-overlap-window mac-window-transition relative z-30 w-full rounded-mac-lg overflow-hidden liquid-glass-elevated">
+<div class="mac-titlebar px-4 py-3 flex items-center justify-between select-none relative z-20">
+<div class="flex items-center gap-2 traffic-group">
+<span class="w-3.5 h-3.5 rounded-full bg-[#FF5F56] border border-[#E0443E] flex items-center justify-center text-[9px] font-black text-black">
+<span class="traffic-icon">&times;</span>
+</span>
+<span class="w-3.5 h-3.5 rounded-full bg-[#FFBD2E] border border-[#DEA123] flex items-center justify-center text-[9px] font-black text-black">
+<span class="traffic-icon">&minus;</span>
+</span>
+<span class="w-3.5 h-3.5 rounded-full bg-[#27C93F] border border-[#1AAB29] flex items-center justify-center text-[9px] font-black text-black">
+<span class="traffic-icon">+</span>
+</span>
+</div>
+<div onclick="minimizePortraitWindow()" class="flex items-center gap-1.5 cursor-pointer" title="Click to toggle minimize">
+<i data-lucide="image" class="w-3.5 h-3.5 text-white"></i>
+<span class="font-mono text-[11.5px] text-white font-semibold tracking-tight">portrait.png</span>
+</div>
+<div class="w-10"></div>
+</div>
+<div id="portrait-window-body" onclick="maximizePortraitWindow()" title="Click for Quick Look Preview" class="relative overflow-hidden transition-all duration-500 max-h-[540px] opacity-100 bg-black/35 z-10 cursor-pointer group">
+<div class="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white/20 to-transparent pointer-events-none z-20"></div>
+<img id="heroProfileImage" src="portrait.png" alt="Benjamin Profile Cutout" class="w-full h-[350px] sm:h-[400px] lg:h-[430px] xl:h-[460px] object-cover transition-transform duration-700 group-hover:scale-[1.03] relative z-10" onerror="this.onerror=null; this.src='https://placehold.co/1000x1200/10141d/F2F2F7?text=Benjamin+P.+Bucad';">
+</div>
+<div id="portrait-minimized-bar" onclick="restorePortraitWindow()" class="hidden px-4 py-2.5 bg-white/10 text-[11.5px] text-white hover:text-mac-silver cursor-pointer items-center justify-between transition-colors relative z-20">
+<span>Window minimized</span>
+<span class="text-white font-bold">Click to expand &darr;</span>
+</div>
+</div>
+</div>
+</div>
+<div class="billboard-floor-shadow hidden lg:block"></div>
+</div>
+</section>
+
+<!-- PAGE 2: PERSONAL INFORMATION -->
+<section id="about" class="page-section hidden min-h-[calc(100dvh-7rem)] py-6 sm:py-8 flex flex-col justify-center">
+<div class="max-w-[86rem] mx-auto w-full px-4 sm:px-6 flex flex-col gap-6">
+  
+  <!-- Header Title & Subtitle -->
+  <div class="reveal text-center md:text-left">
+    <h2 class="text-3xl sm:text-4xl font-bold text-white mb-2 scroll-type min-h-[2.5rem] tracking-tight" data-text="Personal information">Personal information</h2>
+    <p class="text-white text-[14px] sm:text-[15px] lg:text-[16px] max-w-2xl leading-snug font-normal mx-auto md:mx-0 opacity-80 italic">
+      Strategy in every move, logic in every process, and purpose in every system.
+    </p>
+  </div>
+
+  <!-- Two-Window macOS Layout -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch w-full">
+    
+    <!-- LEFT WINDOW: Profile (span 7) -->
+    <div class="reveal liquid-glass-elevated rounded-mac-lg overflow-hidden border border-white/20 flex flex-col lg:col-span-7">
+      <div class="mac-titlebar px-4 py-2.5 flex items-center justify-between select-none relative z-20">
+        <div class="flex items-center gap-2 traffic-group">
+          <span class="w-3 h-3 rounded-full bg-[#FF5F56] border border-[#E0443E]"></span>
+          <span class="w-3 h-3 rounded-full bg-[#FFBD2E] border border-[#DEA123]"></span>
+          <span class="w-3 h-3 rounded-full bg-[#27C93F] border border-[#1AAB29]"></span>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <i data-lucide="user" class="w-3.5 h-3.5 text-mac-amber"></i>
+          <span class="font-mono text-[12.5px] text-white font-semibold tracking-tight">Profile</span>
+        </div>
+        <div class="w-10"></div>
+      </div>
+
+      <div class="p-6 sm:p-10 flex flex-col justify-start flex-grow gap-8">
+        <div>
+          <p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1">Full name</p>
+          <h3 class="text-2xl sm:text-[2.2rem] font-black text-white tracking-tight leading-tight">Benjamin Pagosto Bucad</h3>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-6 pt-6 border-t border-white/10">
+          <div>
+            <p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1 flex items-center gap-1.5"><i data-lucide="calendar" class="w-3.5 h-3.5"></i> Birthday</p>
+            <h4 class="text-[15px] font-bold text-white">Oct 8, 2008</h4>
+          </div>
+          <div>
+            <p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1 flex items-center gap-1.5"><i data-lucide="user-check" class="w-3.5 h-3.5"></i> Status</p>
+            <h4 class="text-[15px] font-bold text-white">Single</h4>
+          </div>
+          <div class="sm:col-span-2">
+            <p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1 flex items-center gap-1.5"><i data-lucide="building" class="w-3.5 h-3.5"></i> Born in</p>
+            <h4 class="text-[15px] font-bold text-white">Benguet General Hospital</h4>
+            <span class="text-[13px] text-mac-silver font-medium block">in La Trinidad, Benguet</span>
+          </div>
+          <div class="col-start-1">
+            <p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1 flex items-center gap-1.5"><i data-lucide="home" class="w-3.5 h-3.5"></i> Residence</p>
+            <h4 class="text-[15px] font-bold text-white">Kias, Baguio City</h4>
+          </div>
+          <div class="col-start-2 -mt-[56px]">
+            <p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1 flex items-center gap-1.5"><i data-lucide="map" class="w-3.5 h-3.5"></i> Hometown</p>
+            <h4 class="text-[15px] font-bold text-white">Besao, Mountain Province</h4>
+          </div>
+          <div class="col-start-1">
+            <p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1 flex items-center gap-1.5"><i data-lucide="globe" class="w-3.5 h-3.5"></i> Nationality</p>
+            <h4 class="text-[15px] font-bold text-white">Filipino</h4>
+          </div>
+          <div class="col-start-2">
+            <p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1 flex items-center gap-1.5"><i data-lucide="languages" class="w-3.5 h-3.5"></i> Languages</p>
+            <h4 class="text-[15px] font-bold text-white">English, Ilocano, Tagalog</h4>
+          </div>
+
+          <!-- Grouped Physical Stats (Spans full width, 3 columns internal) -->
+          <div class="sm:col-span-2 grid grid-cols-3 gap-4 pt-3 border-t border-white/5 mt-1">
+            <div>
+              <p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1 flex items-center gap-1.5"><i data-lucide="ruler" class="w-3.5 h-3.5"></i> Height</p>
+              <h4 class="text-[15px] font-bold text-white">1.73 m</h4>
+            </div>
+            <div>
+              <p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1 flex items-center gap-1.5"><i data-lucide="weight" class="w-3.5 h-3.5"></i> Weight</p>
+              <h4 class="text-[15px] font-bold text-white">74 kg</h4>
+            </div>
+            <div>
+              <p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1 flex items-center gap-1.5"><i data-lucide="activity" class="w-3.5 h-3.5"></i> BMI</p>
+              <h4 class="text-[15px] font-bold text-white">24.7 <span class="text-[11.5px] font-normal text-mac-silver/80 block xl:inline">(Normal)</span></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN: Connect & Skills Windows (span 5) -->
+    <div class="flex flex-col gap-6 lg:col-span-5">
+      
+      <!-- Connect Window -->
+      <div class="reveal liquid-glass-elevated rounded-mac-lg overflow-hidden border border-white/20 flex flex-col">
+        <div class="mac-titlebar px-4 py-2.5 flex items-center justify-between select-none relative z-20">
+          <div class="flex items-center gap-2 traffic-group">
+            <span class="w-3 h-3 rounded-full bg-[#FF5F56] border border-[#E0443E]"></span>
+            <span class="w-3 h-3 rounded-full bg-[#FFBD2E] border border-[#DEA123]"></span>
+            <span class="w-3 h-3 rounded-full bg-[#27C93F] border border-[#1AAB29]"></span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <i data-lucide="mail" class="w-3.5 h-3.5 text-mac-amber"></i>
+            <span class="font-mono text-[12.5px] text-white font-semibold tracking-tight">Connect</span>
+          </div>
+          <div class="w-10"></div>
+        </div>
+
+        <div class="p-6 flex flex-col gap-5">
+          <!-- Gmail -->
+          <div class="flex items-center justify-between group/c">
+            <div class="flex items-center gap-3.5 min-w-0">
+              <img src="gmail.svg" alt="Gmail" class="w-10 h-10 object-contain flex-shrink-0">
+              <div class="min-w-0">
+                <p class="text-[10.5px] font-bold uppercase tracking-wider text-mac-muted mb-0.5">Email address</p>
+                <a href="mailto:benjaminbucad90@gmail.com" class="text-[14.5px] font-bold text-white hover:text-mac-blue transition-colors truncate block">benjaminbucad90@gmail.com</a>
+              </div>
+            </div>
+            <i data-lucide="arrow-up-right" class="w-4 h-4 text-white/50 group-hover/c:text-white transition-colors flex-shrink-0"></i>
+          </div>
+
+          <!-- Phone -->
+          <div class="flex items-center justify-between group/c border-t border-white/10 pt-4">
+            <div class="flex items-center gap-3.5 min-w-0">
+              <img src="phone.webp" alt="Phone" class="w-10 h-10 object-contain flex-shrink-0">
+              <div class="min-w-0">
+                <p class="text-[10.5px] font-bold uppercase tracking-wider text-mac-muted mb-0.5">Phone number</p>
+                <a href="tel:09993066711" class="text-[14.5px] font-bold text-white hover:text-mac-green transition-colors block">09993066711 <span class="text-xs font-medium text-mac-silver">(Smart)</span></a>
+              </div>
+            </div>
+            <i data-lucide="arrow-up-right" class="w-4 h-4 text-white/50 group-hover/c:text-white transition-colors flex-shrink-0"></i>
+          </div>
+
+          <!-- GitHub -->
+          <div class="flex items-center justify-between group/c border-t border-white/10 pt-4">
+            <div class="flex items-center gap-3.5 min-w-0">
+              <img src="github.svg" alt="GitHub" class="w-10 h-10 object-contain flex-shrink-0">
+              <div class="min-w-0">
+                <p class="text-[10.5px] font-bold uppercase tracking-wider text-mac-muted mb-0.5">Technical portfolio</p>
+                <a href="https://github.com/benjaminbucad90-ux" target="_blank" rel="noopener noreferrer" class="text-[14.5px] font-bold text-white hover:text-mac-blue transition-colors truncate block">github.com/benjaminbucad90-ux</a>
+              </div>
+            </div>
+            <i data-lucide="external-link" class="w-4 h-4 text-white/50 group-hover/c:text-white transition-colors flex-shrink-0"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skills & Interests Window -->
+      <div class="reveal liquid-glass-elevated rounded-mac-lg overflow-hidden border border-white/20 flex flex-col">
+        <div class="mac-titlebar px-4 py-2.5 flex items-center justify-between select-none relative z-20">
+          <div class="flex items-center gap-2 traffic-group">
+            <span class="w-3 h-3 rounded-full bg-[#FF5F56] border border-[#E0443E]"></span>
+            <span class="w-3 h-3 rounded-full bg-[#FFBD2E] border border-[#DEA123]"></span>
+            <span class="w-3 h-3 rounded-full bg-[#27C93F] border border-[#1AAB29]"></span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <i data-lucide="code" class="w-3.5 h-3.5 text-mac-amber"></i>
+            <span class="font-mono text-[12.5px] text-white font-semibold tracking-tight">Skills & interests</span>
+          </div>
+          <div class="w-10"></div>
+        </div>
+
+        <div class="p-6 flex flex-col gap-4">
+          <div>
+            <p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-2.5">Skills</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="glass-tag px-3.5 py-1.5 rounded-lg text-white text-[13px] font-medium flex items-center gap-1.5">
+                <i data-lucide="code-2" class="w-4 h-4 text-white/90"></i> HTML/CSS/JS
+              </span>
+              <span class="glass-tag px-3.5 py-1.5 rounded-lg text-white text-[13px] font-medium flex items-center gap-1.5">
+                <i data-lucide="coffee" class="w-4 h-4 text-white/90"></i> Java
+              </span>
+              <span class="glass-tag px-3.5 py-1.5 rounded-lg text-white text-[13px] font-medium flex items-center gap-1.5">
+                <i data-lucide="terminal" class="w-4 h-4 text-white/90"></i> Python
+              </span>
+              <span class="glass-tag px-3.5 py-1.5 rounded-lg text-white text-[13px] font-medium flex items-center gap-1.5">
+                <i data-lucide="layout-dashboard" class="w-4 h-4 text-white/90"></i> MS Office
+              </span>
+            </div>
+            <div class="mt-2">
+              <span class="glass-tag px-3.5 py-1.5 rounded-lg text-white text-[13px] font-medium inline-flex items-center gap-1.5">
+                <i data-lucide="wrench" class="w-4 h-4 text-white/90"></i> PC troubleshooting
+              </span>
+            </div>
+          </div>
+
+          <div class="pt-3 border-t border-white/10">
+            <p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-2.5">Interests</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="glass-tag pl-3 pr-4 py-1.5 rounded-lg text-white text-[13px] font-medium inline-flex items-center gap-2">
+                <img src="chess logo.webp" alt="Chess" class="w-4 h-4 rounded-[3px] object-contain" onerror="this.src='https://placehold.co/100/12151E/F2F2F7?text=Chess';"> Competitive chess
+              </span>
+              <span class="glass-tag px-3.5 py-1.5 rounded-lg text-white text-[13px] font-medium inline-flex items-center gap-1.5">
+                <i data-lucide="gamepad-2" class="w-4 h-4 text-white/90"></i> Games
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- PAGE 3: EDUCATION & ACHIEVEMENTS -->
+<section id="achievements" class="page-section hidden min-h-[calc(100dvh-7rem)] py-6 sm:py-8 flex flex-col justify-center">
+<div class="max-w-[92rem] mx-auto w-full px-4 sm:px-6 flex flex-col gap-4">
+  
+  <!-- Header Title -->
+  <div class="reveal text-center md:text-left">
+    <h2 class="text-3xl sm:text-4xl font-bold text-white scroll-type min-h-[2.5rem] tracking-tight" data-text="Achievements">Achievements</h2>
+  </div>
+
+  <!-- Two Windows: Education Journey (Left) & Achievements 3x3 Grid (Right) -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start w-full">
+    
+    <!-- LEFT WINDOW: Education Journey (span 4) -->
+    <div class="reveal liquid-glass-elevated rounded-mac-lg overflow-hidden border border-white/20 flex flex-col lg:col-span-4">
+      <div class="mac-titlebar px-4 py-2.5 flex items-center justify-between select-none relative z-20">
+        <div class="flex items-center gap-2 traffic-group">
+          <span class="w-3 h-3 rounded-full bg-[#FF5F56] border border-[#E0443E]"></span>
+          <span class="w-3 h-3 rounded-full bg-[#FFBD2E] border border-[#DEA123]"></span>
+          <span class="w-3 h-3 rounded-full bg-[#27C93F] border border-[#1AAB29]"></span>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <i data-lucide="graduation-cap" class="w-3.5 h-3.5 text-mac-amber fill-current"></i>
+          <span class="font-mono text-[12.5px] text-white font-semibold tracking-tight">Education journey</span>
+        </div>
+        <div class="w-10"></div>
+      </div>
+
+      <div class="p-6 flex flex-col justify-between">
+        <div class="relative flex flex-col ml-3 gap-6">
+          <div class="absolute left-[5px] top-4 bottom-4 w-[2px] bg-white/10 rounded-full z-0"></div>
+
+          <!-- College -->
+          <div class="relative pl-6 flex items-start gap-3 group">
+            <div class="absolute left-[-1px] top-2 w-[12px] h-[12px] bg-mac-green border-[2px] border-[#191F2C] rounded-full z-10 shadow-[0_0_8px_#30D158]"></div>
+            <div class="flex-shrink-0 w-11 h-11 rounded-full border border-white/20 overflow-hidden bg-white flex items-center justify-center p-1 shadow-sm">
+              <img src="uc logo.png" alt="UC Logo" class="w-full h-full object-contain">
+            </div>
+            <div>
+              <div class="flex items-center gap-1.5 mb-0.5">
+                <span class="text-mac-silver text-[9px] font-bold uppercase tracking-wider">2025 - Present</span>
+                <span class="bg-mac-green/20 border border-mac-green/40 text-mac-green text-[8px] font-extrabold px-1.5 py-0.5 rounded uppercase">CURRENT</span>
+              </div>
+              <h3 class="text-[14px] font-bold text-white leading-snug">University of the Cordilleras</h3>
+              <p class="text-white/60 text-[11.5px]">BS Information Technology (ERP)</p>
+            </div>
+          </div>
+
+          <!-- SHS -->
+          <div class="relative pl-6 flex items-start justify-between gap-2 group">
+            <div class="absolute left-[1px] top-2 w-[10px] h-[10px] bg-white/70 border-[2px] border-[#191F2C] rounded-full z-10"></div>
+            <div class="flex items-start gap-3 flex-1 min-w-0">
+              <div class="flex-shrink-0 w-11 h-11 rounded-full border border-white/20 overflow-hidden bg-white flex items-center justify-center p-1 shadow-sm">
+                <img src="bct logo.png" alt="BCT Logo" class="w-full h-full object-contain">
+              </div>
+              <div class="min-w-0">
+                <div class="flex items-center gap-1.5 mb-0.5">
+                  <span class="text-mac-silver text-[9px] font-bold uppercase tracking-wider">2023 - 2025</span>
+                  <span class="bg-mac-amber/20 border border-mac-amber/40 text-mac-amber text-[8px] font-extrabold px-1.5 py-0.5 rounded uppercase">WITH HONORS</span>
+                </div>
+                <h3 class="text-[14px] font-bold text-white leading-snug">Baguio College of Technology</h3>
+                <p class="text-white/60 text-[11.5px]">STEM Strand</p>
+              </div>
+            </div>
+            <div class="w-14 h-14 rounded-lg overflow-hidden border border-white/20 bg-black/30 flex-shrink-0">
+              <img src="shs graduation picture.png" alt="SHS" class="w-full h-full object-cover">
+            </div>
+          </div>
+
+          <!-- JHS -->
+          <div class="relative pl-6 flex items-start justify-between gap-2 group">
+            <div class="absolute left-[1px] top-2 w-[10px] h-[10px] bg-white/70 border-[2px] border-[#191F2C] rounded-full z-10"></div>
+            <div class="flex items-start gap-3 flex-1 min-w-0">
+              <div class="flex-shrink-0 w-11 h-11 rounded-full border border-white/20 overflow-hidden bg-white flex items-center justify-center p-1 shadow-sm">
+                <img src="fdpnhs logo.jpg" alt="FDP Logo" class="w-full h-full object-contain">
+              </div>
+              <div class="min-w-0">
+                <div class="flex items-center gap-1.5 mb-0.5">
+                  <span class="text-mac-silver text-[9px] font-bold uppercase tracking-wider">2019 - 2023</span>
+                </div>
+                <h3 class="text-[14px] font-bold text-white leading-snug">Fort Del Pilar National High School</h3>
+                <p class="text-white/60 text-[11.5px]">ICT Cookery</p>
+              </div>
+            </div>
+            <div class="w-14 h-14 rounded-lg overflow-hidden border border-white/20 bg-black/30 flex-shrink-0">
+              <img src="jhs gradaution.jpeg" alt="JHS" class="w-full h-full object-cover">
+            </div>
+          </div>
+
+          <!-- Elem -->
+          <div class="relative pl-6 flex items-start gap-3 group">
+            <div class="absolute left-[1px] top-2 w-[10px] h-[10px] bg-white/70 border-[2px] border-[#191F2C] rounded-full z-10"></div>
+            <div class="flex-shrink-0 w-11 h-11 rounded-full border border-white/20 overflow-hidden bg-white flex items-center justify-center p-1 shadow-sm">
+              <img src="kes logo.webp" alt="KES Logo" class="w-full h-full object-contain">
+            </div>
+            <div>
+              <div class="flex items-center gap-1.5 mb-0.5">
+                <span class="text-mac-silver text-[9px] font-bold uppercase tracking-wider">2013 - 2019</span>
+              </div>
+              <h3 class="text-[14px] font-bold text-white leading-snug">Kias Elementary School</h3>
+              <p class="text-white/60 text-[11.5px]">Primary Education</p>
+            </div>
+          </div>
+
+          <!-- Kinder -->
+          <div class="relative pl-6 flex items-start gap-3 group">
+            <div class="absolute left-[1px] top-2 w-[10px] h-[10px] bg-white/70 border-[2px] border-[#191F2C] rounded-full z-10"></div>
+            <div class="flex-shrink-0 w-11 h-11 rounded-full border border-white/20 overflow-hidden bg-white flex items-center justify-center p-1 shadow-sm">
+              <!-- Custom SVG Logo for Lifetren Academy -->
+              <svg viewBox="0 0 120 120" class="w-full h-full object-contain" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="60" r="56" fill="#ffffff" stroke="#e2e8f0" stroke-width="4"/>
+                <path d="M60 25 C 80 25 90 40 90 60 C 90 85 70 95 60 95 C 50 95 30 85 30 60 C 30 40 40 25 60 25 Z" fill="#fef08a" opacity="0.4"/>
+                <text x="60" y="74" font-family="Arial, sans-serif" font-size="44" font-weight="900" fill="#3b82f6" text-anchor="middle">LA</text>
+                <path d="M40 86 Q 60 96 80 86" stroke="#10b981" stroke-width="5" stroke-linecap="round" fill="none"/>
+                <circle cx="60" cy="34" r="7" fill="#f59e0b"/>
+              </svg>
+            </div>
+            <div>
+              <div class="flex items-center gap-1.5 mb-0.5">
+                <span class="text-mac-silver text-[9px] font-bold uppercase tracking-wider">2011 - 2013</span>
+              </div>
+              <h3 class="text-[14px] font-bold text-white leading-snug">Lifetrend Academy Inc School</h3>
+              <p class="text-white/60 text-[11.5px]">Kindergarten</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT WINDOW: Achievements in a 3x3 Grid (span 8) -->
+    <div class="reveal liquid-glass-elevated rounded-mac-lg overflow-hidden border border-white/20 flex flex-col lg:col-span-8">
+      <div class="mac-titlebar px-4 py-2.5 flex items-center justify-between select-none relative z-20">
+        <div class="flex items-center gap-2 traffic-group">
+          <span class="w-3 h-3 rounded-full bg-[#FF5F56] border border-[#E0443E]"></span>
+          <span class="w-3 h-3 rounded-full bg-[#FFBD2E] border border-[#DEA123]"></span>
+          <span class="w-3 h-3 rounded-full bg-[#27C93F] border border-[#1AAB29]"></span>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <i data-lucide="award" class="w-3.5 h-3.5 text-mac-amber fill-current"></i>
+          <span class="font-mono text-[12.5px] text-white font-semibold tracking-tight">Achievements</span>
+        </div>
+        <div class="w-10"></div>
+      </div>
+
+      <!-- 3x3 Grid Layout -->
+      <div class="p-5 grid grid-cols-1 md:grid-cols-3 gap-4">
+        
+        <!-- Achievement 1: Chess Champion -->
+        <div class="liquid-glass rounded-xl p-4 flex flex-col justify-between gap-3 h-full">
+          <div>
+            <div class="flex items-center gap-2 mb-1.5">
+              <i data-lucide="trophy" class="w-4 h-4 text-mac-amber fill-current flex-shrink-0"></i>
+              <h4 class="text-[13.5px] font-bold text-white leading-tight">Chess Champion</h4>
+            </div>
+            <p class="text-white/70 text-[11px] mb-2 leading-tight">BCT Intramurals - Men's Division</p>
+            <div class="flex gap-1.5">
+              <span class="glass-tag text-white text-[8.5px] font-bold px-1.5 py-0.5 rounded uppercase">2025</span>
+              <span class="glass-tag text-white text-[8.5px] font-bold px-1.5 py-0.5 rounded uppercase">Grade 12</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2 mt-2">
+            <div class="relative h-40 rounded-lg overflow-hidden border border-white/20 bg-black/30">
+              <img src="tophy pic.jpg" alt="Trophy" class="absolute inset-0 w-full h-full object-cover" onerror="this.src='https://placehold.co/200x200/12151E/FFB340?text=Trophy';">
+            </div>
+            <div class="relative h-40 rounded-lg overflow-hidden border border-white/20 bg-black/30">
+              <img src="chess men champion certificate pic.jpg" alt="Cert" class="absolute inset-0 w-full h-full object-cover" onerror="this.src='https://placehold.co/200x200/12151E/F2F2F7?text=Cert';">
+            </div>
+          </div>
+        </div>
+
+        <!-- Achievement 2: 1st Runner Up -->
+        <div class="liquid-glass rounded-xl p-4 flex flex-col justify-between gap-3 h-full">
+          <div>
+            <div class="flex items-center gap-2 mb-1.5">
+              <i data-lucide="medal" class="w-4 h-4 text-white fill-current flex-shrink-0"></i>
+              <h4 class="text-[13.5px] font-bold text-white leading-tight">1st Runner Up</h4>
+            </div>
+            <p class="text-white/70 text-[11px] mb-2 leading-tight">BCT Intrams Chess Men</p>
+            <div class="flex gap-1.5">
+              <span class="glass-tag text-white text-[8.5px] font-bold px-1.5 py-0.5 rounded uppercase">2024</span>
+              <span class="glass-tag text-white text-[8.5px] font-bold px-1.5 py-0.5 rounded uppercase">Grade 11</span>
+            </div>
+          </div>
+          <div class="relative h-40 rounded-lg overflow-hidden border border-white/20 bg-black/30 mt-2">
+            <img src="1st runner up chess men pic.jpg" alt="1st Runner Up" class="absolute inset-0 w-full h-full object-cover" onerror="this.src='https://placehold.co/200x200/12151E/F2F2F7?text=Cert';">
+          </div>
+        </div>
+
+        <!-- Achievement 3: Anchorwheel Tournament -->
+        <div class="liquid-glass rounded-xl p-4 flex flex-col justify-between gap-3 h-full">
+          <div>
+            <div class="flex items-center gap-2 mb-1.5">
+              <i data-lucide="flag" class="w-4 h-4 text-white fill-current flex-shrink-0"></i>
+              <h4 class="text-[13.5px] font-bold text-white leading-tight">Anchorwheel Tournament</h4>
+            </div>
+            <p class="text-white/70 text-[11px] mb-2 leading-tight">Chess participation</p>
+            <div class="flex gap-1.5">
+              <span class="glass-tag text-white text-[8.5px] font-bold px-1.5 py-0.5 rounded uppercase">Chess</span>
+              <span class="glass-tag text-white text-[8.5px] font-bold px-1.5 py-0.5 rounded uppercase">Participant</span>
+            </div>
+          </div>
+          <div class="relative h-40 rounded-lg overflow-hidden border border-white/20 bg-black/30 mt-2">
+            <img src="achorwheel tournament participation.jpg" alt="Tournament" class="absolute inset-0 w-full h-full object-cover" onerror="this.src='https://placehold.co/200x200/12151E/F2F2F7?text=Chess';">
+          </div>
+        </div>
+
+        <!-- Achievement 4: Scrabble 2nd Runner Up -->
+        <div class="liquid-glass rounded-xl p-4 flex flex-col justify-between gap-3 h-full">
+          <div>
+            <div class="flex items-center gap-2 mb-1.5">
+              <i data-lucide="layout-grid" class="w-4 h-4 text-white fill-current flex-shrink-0"></i>
+              <h4 class="text-[13.5px] font-bold text-white leading-tight">Scrabble 2nd Runner Up</h4>
+            </div>
+            <p class="text-white/70 text-[11px] mb-2 leading-tight">BCT Intramurals - Men's Division</p>
+            <div class="flex gap-1.5">
+              <span class="glass-tag text-white text-[8.5px] font-bold px-1.5 py-0.5 rounded uppercase">2025</span>
+              <span class="glass-tag text-white text-[8.5px] font-bold px-1.5 py-0.5 rounded uppercase">Grade 12</span>
+            </div>
+          </div>
+          <div class="relative h-40 rounded-lg overflow-hidden border border-white/20 bg-black/30 mt-2">
+            <img src="2nd runner up scrabble.jpg" alt="Scrabble" class="absolute inset-0 w-full h-full object-cover" onerror="this.src='https://placehold.co/200x200/12151E/F2F2F7?text=Cert';">
+          </div>
+        </div>
+
+        <!-- Achievement 5: Best in Mascot -->
+        <div class="liquid-glass rounded-xl p-4 flex flex-col justify-between gap-3 h-full">
+          <div>
+            <div class="flex items-center gap-2 mb-1.5">
+              <i data-lucide="star" class="w-4 h-4 text-mac-amber fill-current flex-shrink-0"></i>
+              <h4 class="text-[13.5px] font-bold text-white leading-tight">Best in Mascot</h4>
+            </div>
+            <p class="text-white/70 text-[11px] mb-2 leading-tight">BCT Intramurals</p>
+            <div class="flex gap-1.5">
+              <span class="glass-tag text-white text-[8.5px] font-bold px-1.5 py-0.5 rounded uppercase">2025</span>
+              <span class="glass-tag text-white text-[8.5px] font-bold px-1.5 py-0.5 rounded uppercase">Grade 12</span>
+            </div>
+          </div>
+          <div class="relative h-40 rounded-lg overflow-hidden border border-white/20 bg-black/30 mt-2">
+            <img src="best in robot mascot intrams.jpg" alt="Mascot" class="absolute inset-0 w-full h-full object-cover" onerror="this.src='https://placehold.co/200x200/12151E/F2F2F7?text=Mascot';">
+          </div>
+        </div>
+
+        <!-- Achievement 6: Office Productivity -->
+        <div class="liquid-glass rounded-xl p-4 flex flex-col justify-between gap-3 h-full">
+          <div>
+            <div class="flex items-center gap-2 mb-1.5">
+              <i data-lucide="file-badge" class="w-4 h-4 text-white fill-current flex-shrink-0"></i>
+              <h4 class="text-[13.5px] font-bold text-white leading-tight">Office Productivity</h4>
+            </div>
+            <p class="text-white/70 text-[11px] mb-2 leading-tight">Word, Excel, PowerPoint & HTML/Java</p>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="glass-tag text-white text-[8.5px] font-bold px-1.5 py-0.5 rounded uppercase">MS Office</span>
+              <span class="glass-tag text-white text-[8.5px] font-bold px-1.5 py-0.5 rounded uppercase">HTML</span>
+              <span class="glass-tag text-white text-[8.5px] font-bold px-1.5 py-0.5 rounded uppercase">Java</span>
+            </div>
+          </div>
+          <div class="relative h-40 rounded-lg overflow-hidden border border-white/20 bg-black/30 mt-2">
+            <img src="office productivity certification.jpg" alt="Office Productivity Certification" class="absolute inset-0 w-full h-full object-cover" onerror="this.src='https://placehold.co/200x200/12151E/F2F2F7?text=Certification';">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- PAGE 4: FRIENDS AND FAMILIES -->
+<section id="family" class="page-section hidden min-h-[calc(100dvh-7rem)] py-12 flex flex-col justify-center">
+<div class="reveal mb-12 text-center md:text-left max-w-[76rem] mx-auto w-full px-4 sm:px-6">
+<p class="text-mac-amber font-bold text-xs uppercase tracking-[0.2em] mb-2">Friends and Families</p>
+<h2 class="text-3xl sm:text-4xl font-bold text-white mb-4 scroll-type min-h-[2.75rem] tracking-tight" data-text="Friends and Families">Friends and Families</h2>
+<p class="text-white text-base md:text-lg max-w-4xl leading-relaxed font-normal mx-auto md:mx-0">
+Behind every professional milestone is the unwavering support of my parents. They are the true anchors of my career and character. The strategic mindset I apply to enterprise systems and competitive chess was honed through my father's guidance, while the resilience to execute under pressure stems directly from my mother's boundless support.
+</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[76rem] mx-auto w-full px-4 sm:px-6">
+<div class="reveal liquid-glass rounded-mac-lg overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-1.5 group">
+<div class="relative w-full h-[380px] md:h-[430px] overflow-hidden flex-shrink-0 bg-black/25 border-b border-white/25 z-10">
+<img src="https://placehold.co/800x600/12151E/F2F2F7?text=Shaking+Hand%0Awith+Father" alt="Shaking hand with father" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-85 group-hover:opacity-100">
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none"></div>
+</div>
+<div class="p-8 md:p-10 flex flex-col justify-start flex-grow relative z-10">
+<h3 class="text-2xl sm:text-3xl font-bold text-white mb-3 tracking-tight">Father's Guidance</h3>
+<p class="text-white text-base sm:text-lg leading-relaxed">
+Teaching strategy, discipline, and the value of foresight. His lessons laid the groundwork for my analytical approach, whether I'm architecting a new IT infrastructure or calculating my next move on the chessboard.
+</p>
+</div>
+</div>
+<div class="reveal liquid-glass rounded-mac-lg overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-1.5 group">
+<div class="relative w-full h-[380px] md:h-[430px] overflow-hidden flex-shrink-0 bg-black/25 border-b border-white/25 z-10">
+<img src="https://placehold.co/800x600/141822/F2F2F7?text=Hugging%0AMother" alt="Hugging mother" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-85 group-hover:opacity-100">
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none"></div>
+</div>
+<div class="p-8 md:p-10 flex flex-col justify-start flex-grow relative z-10">
+<h3 class="text-2xl sm:text-3xl font-bold text-white mb-3 tracking-tight">Mother's Support</h3>
+<p class="text-white text-base sm:text-lg leading-relaxed">
+Providing unwavering belief, strength, and emotional grounding. Her boundless support fuels my resilience to execute under pressure and reminds me of the core values that truly matter.
+</p>
+</div>
+</div>
+</div>
+</section>
+
+</main>
+
+<div id="certModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/75 backdrop-blur-2xl opacity-0 transition-opacity duration-300 px-4">
+<div class="relative max-w-4xl w-full flex flex-col items-center liquid-glass-elevated rounded-2xl overflow-hidden">
+<div class="w-full mac-titlebar px-4 py-3 flex items-center justify-between relative z-10">
+<div class="flex items-center gap-2 traffic-group">
+<span class="w-3.5 h-3.5 rounded-full bg-[#FF5F56] border border-[#E0443E] flex items-center justify-center text-[9px] font-black text-black">
+<span class="traffic-icon">&times;</span>
+</span>
+<span class="w-3.5 h-3.5 rounded-full bg-[#FFBD2E] border border-[#DEA123] flex items-center justify-center text-[9px] font-black text-black">
+<span class="traffic-icon">&minus;</span>
+</span>
+<span class="w-3.5 h-3.5 rounded-full bg-[#27C93F] border border-[#1AAB29] flex items-center justify-center text-[9px] font-black text-black">
+<span class="traffic-icon">+</span>
+</span>
+<span class="ml-2 font-mono text-xs text-white font-semibold">Quick Look — Preview</span>
+</div>
+<button onclick="closeModal()" class="text-xs text-white hover:text-mac-silver font-mono font-bold">ESC</button>
+</div>
+<img id="modalImage" src="" alt="Full View" class="w-full max-h-[80vh] object-contain bg-black/40 p-4 relative z-10">
+</div>
+</div>
+
+<div id="contactSheet" class="fixed inset-0 z-[90] hidden items-center justify-center bg-black/60 backdrop-blur-md opacity-0 transition-opacity duration-300 p-4">
+<div class="liquid-glass-elevated rounded-mac-lg max-w-md w-full overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300" id="contactSheetCard">
+<div class="mac-titlebar px-4 py-3 flex items-center justify-between relative z-10">
+<div class="flex items-center gap-2 traffic-group">
+<span class="w-3.5 h-3.5 rounded-full bg-[#FF5F56] border border-[#E0443E] flex items-center justify-center text-[9px] font-black text-black">
+<span class="traffic-icon">&times;</span>
+</span>
+<span class="ml-2 font-mono text-xs text-white font-semibold">Contact — Benjamin P. Bucad</span>
+</div>
+<button onclick="closeContactSheet()" class="text-xs text-white font-bold hover:text-mac-silver">Done</button>
+</div>
+<div class="p-6 space-y-4 relative z-10">
+<div class="flex items-center gap-3.5">
+<div class="w-12 h-12 rounded-2xl dock-squircle flex items-center justify-center text-white font-bold text-sm">
+BPB
+</div>
+<div>
+<h4 class="font-bold text-white text-base">Benjamin Pagosto Bucad</h4>
+<p class="text-xs text-white font-medium">BS Information Technology (ERP)</p>
+<p class="text-xs text-mac-silver mt-1 flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3 text-mac-silver"></i> Kias, Baguio City</p>
+</div>
+</div>
+<p class="text-xs text-white leading-relaxed font-normal mt-2">
+Available for software development, enterprise systems analysis, and technical research collaborations.
+</p>
+<div class="space-y-2.5 pt-1">
+<a href="mailto:benjaminbucad90@gmail.com" class="w-full flex items-center justify-between px-4 py-3 rounded-xl bg-white text-black font-bold text-xs hover:bg-mac-silver transition-colors focus:ring-2 focus:ring-white">
+<span class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4"></i> benjaminbucad90@gmail.com</span>
+<i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+</a>
+<a href="tel:09993066711" class="w-full flex items-center justify-between px-4 py-3 rounded-xl glass-tag text-white font-semibold text-xs transition-colors focus:ring-2 focus:ring-white">
+<span class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4 text-white"></i> 09993066711 (Smart)</span>
+<i data-lucide="arrow-up-right" class="w-4 h-4 text-white"></i>
+</a>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+const minLoadingTime=new Promise(resolve=>setTimeout(resolve,1200));
+const windowLoaded=new Promise(resolve=>{if(document.readyState==='complete'){resolve();}else{window.addEventListener('load',resolve);}});
+
+Promise.all([minLoadingTime,windowLoaded]).then(()=>{
+  const loader=document.getElementById('global-loader');
+  loader.classList.add('opacity-0');
+  setTimeout(()=>{
+    loader.classList.add('hidden');
+    document.body.classList.remove('locked-scroll');
+    const portfolioWin=document.getElementById('portfolio-window-wrapper');
+    const portraitWin=document.getElementById('portrait-window-wrapper');
+    if(portfolioWin){
+      portfolioWin.classList.remove('mac-dock-popup-init');
+      portfolioWin.classList.add('mac-dock-popup-active');
+    }
+    setTimeout(()=>{
+      if(portraitWin){
+        portraitWin.classList.remove('mac-dock-popup-init');
+        portraitWin.classList.add('mac-dock-popup-active');
+      }
+    },160);
+    setTimeout(()=>{
+      runMasterHeroSequence();
+      
+      const floatingNav = document.getElementById('floating-nav');
+      if (floatingNav) {
+        floatingNav.classList.remove('hidden');
+        updateFloatingNav();
+      }
+    },520);
+  },700);
+});
+
+lucide.createIcons();
+
+document.querySelectorAll('.liquid-glass, .liquid-glass-elevated').forEach(card=>{
+  card.addEventListener('pointermove',(e)=>{
+    const rect=card.getBoundingClientRect();
+    const x=((e.clientX-rect.left)/rect.width)*100;
+    const y=((e.clientY-rect.top)/rect.height)*100;
+    card.style.setProperty('--mouse-x',`${x}%`);
+    card.style.setProperty('--mouse-y',`${y}%`);
+  });
+});
+
+const billboardRig=document.getElementById('billboard-rig');
+if(billboardRig){
+  let targetTiltY=-14;
+  let targetTiltX=2;
+  let currentTiltY=-14;
+  let currentTiltX=2;
+  let targetSpotX=68;
+  let targetSpotY=28;
+  let currentSpotX=68;
+  let currentSpotY=28;
+  let ease=0.04;
+  window.addEventListener('pointermove',(e)=>{
+    if(window.innerWidth<1024)return;
+    const rect=billboardRig.getBoundingClientRect();
+    const centerX=rect.left+rect.width/2;
+    const centerY=rect.top+rect.height/2;
+    const panX=(e.clientX-centerX)/(window.innerWidth/2);
+    const panY=(e.clientY-centerY)/(window.innerHeight/2);
+    const spotX=(e.clientX-rect.left)/rect.width;
+    const spotY=(e.clientY-rect.top)/rect.height;
+    targetSpotX=spotX*100;
+    targetSpotY=spotY*100;
+    targetTiltY=-14+(panX*7);
+    targetTiltX=2-(panY*5);
+  });
+  document.addEventListener('mouseleave',()=>{
+    targetSpotX=68;
+    targetSpotY=28;
+    targetTiltY=-14;
+    targetTiltX=2;
+  });
+  function animateBillboard(){
+    currentTiltY+=(targetTiltY-currentTiltY)*ease;
+    currentTiltX+=(targetTiltX-currentTiltX)*ease;
+    currentSpotX+=(targetSpotX-currentSpotX)*ease;
+    currentSpotY+=(targetSpotY-currentSpotY)*ease;
+    billboardRig.style.setProperty('--spot-x',`${currentSpotX.toFixed(2)}%`);
+    billboardRig.style.setProperty('--spot-y',`${currentSpotY.toFixed(2)}%`);
+    if(window.innerWidth>=1024){
+      billboardRig.style.setProperty('--tilt-y',`${currentTiltY.toFixed(3)}deg`);
+      billboardRig.style.setProperty('--tilt-x',`${currentTiltX.toFixed(3)}deg`);
+    }else{
+      billboardRig.style.setProperty('--tilt-y',`0deg`);
+      billboardRig.style.setProperty('--tilt-x',`0deg`);
+    }
+    requestAnimationFrame(animateBillboard);
+  }
+  animateBillboard();
+}
+
+function updateMacClock(){
+  const clockEl=document.getElementById('mac-menubar-clock');
+  if(!clockEl)return;
+  const now=new Date();
+  clockEl.textContent=now.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});
+}
+updateMacClock();
+setInterval(updateMacClock,15000);
+
+const pageOrder = ['home', 'about', 'achievements', 'family'];
+const pageTitles = {
+  'home': 'Homepage',
+  'about': 'About Me',
+  'achievements': 'Achievements',
+  'family': 'Friends and Families'
+};
+let currentPageIndex = 0;
+
+function switchPage(pageId){
+  currentPageIndex = pageOrder.indexOf(pageId);
+  if(currentPageIndex === -1) currentPageIndex = 0;
+
+  const sections=document.querySelectorAll('.page-section');
+  sections.forEach(sec=>{
+    if(sec.id===pageId){
+      sec.classList.remove('hidden');
+      const reveals=sec.querySelectorAll('.reveal');
+      reveals.forEach((el,idx)=>{
+        setTimeout(()=>{
+          el.classList.add('visible');
+        },idx*80);
+      });
+      const typeTargets=sec.querySelectorAll('.scroll-type');
+      typeTargets.forEach(el=>{
+        if(!el.dataset.typed){
+          el.dataset.typed='true';
+          typeText(el,el.dataset.text,45,false);
+        }
+      });
+    }else{
+      sec.classList.add('hidden');
+    }
+  });
+
+  document.querySelectorAll('nav .dock-item[data-section]').forEach(item=>{
+    const dot=item.querySelector('.dock-dot');
+    if(!dot)return;
+    if(item.dataset.section===pageId){
+      dot.classList.remove('opacity-0');
+      dot.classList.add('opacity-100');
+    }else{
+      dot.classList.remove('opacity-100');
+      dot.classList.add('opacity-0');
+    }
+  });
+
+  document.querySelectorAll('.menubar-link').forEach(link=>{
+    if(link.dataset.menuLink===pageId){
+      link.classList.add('text-white','font-semibold');
+    }else{
+      link.classList.remove('text-white','font-semibold');
+    }
+  });
+
+  window.scrollTo({top:0,behavior:'smooth'});
+  updateFloatingNav();
+}
+
+function navigatePage(direction) {
+  const newIndex = currentPageIndex + direction;
+  if (newIndex >= 0 && newIndex < pageOrder.length) {
+    switchPage(pageOrder[newIndex]);
+  }
+}
+
+function updateFloatingNav() {
+  const prevBtn = document.getElementById('nav-prev-btn');
+  const nextBtn = document.getElementById('nav-next-btn');
+  const prevLabel = document.getElementById('nav-prev-label');
+  const nextLabel = document.getElementById('nav-next-label');
+
+  if (currentPageIndex === 0) {
+    prevBtn.disabled = true;
+  } else {
+    prevBtn.disabled = false;
+    prevLabel.textContent = pageTitles[pageOrder[currentPageIndex - 1]];
+  }
+
+  if (currentPageIndex === pageOrder.length - 1) {
+    nextBtn.disabled = true;
+  } else {
+    nextBtn.disabled = false;
+    nextLabel.textContent = pageTitles[pageOrder[currentPageIndex + 1]];
+  }
+}
+
+function openContactSheet(){
+  const sheet=document.getElementById('contactSheet');
+  const card=document.getElementById('contactSheetCard');
+  sheet.classList.remove('hidden');
+  sheet.classList.add('flex');
+  setTimeout(()=>{
+    sheet.classList.remove('opacity-0');
+    card.classList.remove('scale-95');
+  },15);
+}
+
+function closeContactSheet(){
+  const sheet=document.getElementById('contactSheet');
+  const card=document.getElementById('contactSheetCard');
+  sheet.classList.add('opacity-0');
+  card.classList.add('scale-95');
+  setTimeout(()=>{
+    sheet.classList.remove('flex');
+    sheet.classList.add('hidden');
+  },250);
+}
+
+document.getElementById('contactSheet').addEventListener('click',function(e){
+  if(e.target===this)closeContactSheet();
+});
+
+const sleep=(ms)=>new Promise(resolve=>setTimeout(resolve,ms));
+
+async function typeText(element,text,speed=45,keepCursor=false){
+  if(!element)return;
+  element.textContent='';
+  element.classList.add('cursor');
+  for(let i=0;i<text.length;i++){
+    element.textContent+=text.charAt(i);
+    await sleep(speed);
+  }
+  if(!keepCursor){
+    element.classList.remove('cursor');
+  }
+}
+
+async function hackTypeText(element,text,keepCursor=false){
+  if(!element)return;
+  const chars='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*<>';
+  element.textContent='';
+  element.classList.add('cursor');
+  let currentString='';
+  for(let i=0;i<text.length;i++){
+    if(text[i]===' '){
+      currentString+=' ';
+      element.textContent=currentString;
+      await sleep(20);
+      continue;
+    }
+    for(let j=0;j<3;j++){
+      const randomChar=chars[Math.floor(Math.random()*chars.length)];
+      element.textContent=currentString+randomChar;
+      await sleep(20);
+    }
+    currentString+=text[i];
+    element.textContent=currentString;
+    await sleep(15);
+  }
+  if(!keepCursor){
+    element.classList.remove('cursor');
+  }
+}
+
+async function runMasterHeroSequence(){
+  const l1=document.getElementById('hero-line-1');
+  const l2=document.getElementById('hero-line-2');
+  const l3=document.getElementById('hero-line-3');
+  const l4=document.getElementById('hero-line-4');
+  const l5=document.getElementById('hero-line-5');
+  const ctaContainer=document.getElementById('hero-cta-container');
+  await sleep(100);
+  await typeText(l1,'BENJAMIN P.',20);
+  await sleep(40);
+  await typeText(l2,'BUCAD /',20);
+  await sleep(50);
+  await typeText(l3,'BS INFORMATION',18);
+  await sleep(30);
+  await typeText(l4,'TECHNOLOGY (ERP)',18,false);
+  const courseHeading=document.getElementById('course-heading');
+  if(courseHeading){
+    courseHeading.classList.add('idle-course-anim');
+  }
+  await sleep(40);
+  await hackTypeText(l5,'ALGORITHMS & SYSTEMS EXPERT',true);
+  await sleep(100);
+  if(ctaContainer){
+    ctaContainer.classList.remove('opacity-0','translate-y-3','pointer-events-none');
+    ctaContainer.classList.add('opacity-100','translate-y-0');
+  }
+}
+
+const portraitWindow=document.getElementById('portrait-mac-window');
+const portraitBody=document.getElementById('portrait-window-body');
+const portraitMinBar=document.getElementById('portrait-minimized-bar');
+const portraitRestoreDock=document.getElementById('portrait-restore-dock');
+let isPortraitMinimized=false;
+
+function closePortraitWindow(){
+  portraitWindow.classList.add('opacity-0','scale-90','pointer-events-none');
+  setTimeout(()=>{
+    portraitWindow.classList.add('hidden');
+    portraitRestoreDock.classList.remove('hidden');
+  },300);
+}
+
+function restorePortraitWindow(){
+  portraitRestoreDock.classList.add('hidden');
+  portraitWindow.classList.remove('hidden');
+  requestAnimationFrame(()=>{
+    portraitWindow.classList.remove('opacity-0','scale-90','pointer-events-none');
+  });
+  if(isPortraitMinimized){
+    minimizePortraitWindow();
+  }
+}
+
+function minimizePortraitWindow(){
+  isPortraitMinimized=!isPortraitMinimized;
+  if(isPortraitMinimized){
+    portraitBody.classList.remove('max-h-[540px]','opacity-100');
+    portraitBody.classList.add('max-h-0','opacity-0');
+    portraitMinBar.classList.remove('hidden');
+    portraitMinBar.classList.add('flex');
+  }else{
+    portraitBody.classList.remove('max-h-0','opacity-0');
+    portraitBody.classList.add('max-h-[540px]','opacity-100');
+    portraitMinBar.classList.add('hidden');
+    portraitMinBar.classList.remove('flex');
+  }
+}
+
+function maximizePortraitWindow(){
+  if(isPortraitMinimized){
+    minimizePortraitWindow();
+  }
+  const imgSrc=document.getElementById('heroProfileImage').src;
+  openModal(imgSrc);
+}
+
+function openModal(imgSrc){
+  const modal=document.getElementById('certModal');
+  const modalImg=document.getElementById('modalImage');
+  modalImg.src=imgSrc;
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+  setTimeout(()=>{
+    modal.classList.remove('opacity-0');
+  },10);
+}
+
+function closeModal(){
+  const modal=document.getElementById('certModal');
+  modal.classList.add('opacity-0');
+  setTimeout(()=>{
+    modal.classList.remove('flex');
+    modal.classList.add('hidden');
+    document.getElementById('modalImage').src="";
+  },300);
+}
+
+document.getElementById('certModal').addEventListener('click',function(e){
+  if(e.target===this)closeModal();
+});
+
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){
+    if(!document.getElementById('certModal').classList.contains('hidden')) closeModal();
+    if(!document.getElementById('contactSheet').classList.contains('hidden')) closeContactSheet();
+  } else if (e.key === 'ArrowRight') {
+    navigatePage(1);
+  } else if (e.key === 'ArrowLeft') {
+    navigatePage(-1);
+  }
+});
+</script>
+</body>
+</html>
