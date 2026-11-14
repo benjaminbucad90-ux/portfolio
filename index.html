@@ -141,7 +141,7 @@ h1,h2,h3,h4,p{text-shadow:0 2px 12px rgba(0,0,0,0.45);}
 <button type="button" onclick="switchPage('home')" data-menu-link="home" class="menubar-link text-white font-semibold hover:text-white transition-colors">Homepage</button>
 <button type="button" onclick="switchPage('about')" data-menu-link="about" class="menubar-link hover:text-white transition-colors">Personal Information</button>
 <button type="button" onclick="switchPage('achievements')" data-menu-link="achievements" class="menubar-link hover:text-white transition-colors">Achievements</button>
-<button type="button" onclick="switchPage('family')" data-menu-link="family" class="menubar-link hover:text-white transition-colors">Foundation</button>
+<button type="button" onclick="switchPage('family')" data-menu-link="family" class="menubar-link hover:text-white transition-colors">Friends and Families</button>
 </div>
 </div>
 <div class="flex items-center gap-3.5 text-mac-silver text-[12.5px]">
@@ -202,9 +202,9 @@ Baguio, PH
 <span class="dock-dot absolute -bottom-[7px] sm:-bottom-[8px] w-1 h-1 rounded-full bg-white transition-all duration-300 opacity-0"></span>
 </button>
 
-<!-- PAGE 4: FOUNDATION ICON -->
+<!-- PAGE 4: FRIENDS AND FAMILIES ICON -->
 <button type="button" onclick="switchPage('family')" data-section="family" class="dock-item group relative flex flex-col items-center justify-center cursor-pointer focus:outline-none w-[52px] h-[52px] sm:w-[58px] sm:h-[58px]">
-<div class="dock-tooltip liquid-glass-elevated px-3 py-1.5 rounded-lg text-[12px] font-medium text-white shadow-lg">Page 4: Foundation</div>
+<div class="dock-tooltip liquid-glass-elevated px-3 py-1.5 rounded-lg text-[12px] font-medium text-white shadow-lg">Page 4: Friends and Families</div>
 <div class="mac-app-icon absolute w-[46px] h-[46px] sm:w-[52px] sm:h-[52px] flex items-center justify-center rounded-[11px] sm:rounded-[13px]">
 <svg class="w-full h-full" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
 <defs>
@@ -652,7 +652,7 @@ Reopen <span class="font-mono text-white">portrait.png</span>
               <div class="flex items-center gap-1.5 mb-0.5">
                 <span class="text-mac-silver text-[9px] font-bold uppercase tracking-wider">2011 - 2013</span>
               </div>
-              <h3 class="text-[14px] font-bold text-white leading-snug">Lifetren Academy School</h3>
+              <h3 class="text-[14px] font-bold text-white leading-snug">Lifetrend Academy Inc School</h3>
               <p class="text-white/60 text-[11.5px]">Kindergarten</p>
             </div>
           </div>
@@ -800,11 +800,11 @@ Reopen <span class="font-mono text-white">portrait.png</span>
 </div>
 </section>
 
-<!-- PAGE 4: FOUNDATION -->
+<!-- PAGE 4: FRIENDS AND FAMILIES -->
 <section id="family" class="page-section hidden min-h-[calc(100dvh-7rem)] py-12 flex flex-col justify-center">
 <div class="reveal mb-12 text-center md:text-left max-w-[76rem] mx-auto w-full px-4 sm:px-6">
-<p class="text-mac-amber font-bold text-xs uppercase tracking-[0.2em] mb-2">Family</p>
-<h2 class="text-3xl sm:text-4xl font-bold text-white mb-4 scroll-type min-h-[2.75rem] tracking-tight" data-text="My Foundation">My Foundation</h2>
+<p class="text-mac-amber font-bold text-xs uppercase tracking-[0.2em] mb-2">Friends and Families</p>
+<h2 class="text-3xl sm:text-4xl font-bold text-white mb-4 scroll-type min-h-[2.75rem] tracking-tight" data-text="Friends and Families">Friends and Families</h2>
 <p class="text-white text-base md:text-lg max-w-4xl leading-relaxed font-normal mx-auto md:mx-0">
 Behind every professional milestone is the unwavering support of my parents. They are the true anchors of my career and character. The strategic mindset I apply to enterprise systems and competitive chess was honed through my father's guidance, while the resilience to execute under pressure stems directly from my mother's boundless support.
 </p>
@@ -1009,7 +1009,7 @@ const pageTitles = {
   'home': 'Homepage',
   'about': 'About Me',
   'achievements': 'Achievements',
-  'family': 'Foundation'
+  'family': 'Friends and Families'
 };
 let currentPageIndex = 0;
 
