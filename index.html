@@ -155,9 +155,9 @@ Baguio, PH
 </header>
 
 <!-- NEXT/PREV FLOATING BUTTONS -->
-<div id="floating-nav" class="fixed inset-y-0 w-full max-w-[94rem] mx-auto left-1/2 -translate-x-1/2 pointer-events-none z-[80] hidden lg:flex items-center justify-between px-4 xl:px-8 2xl:px-0">
+<div id="floating-nav" class="fixed inset-y-0 w-full max-w-[104rem] mx-auto left-1/2 -translate-x-1/2 pointer-events-none z-[80] hidden lg:flex items-center justify-between px-4 sm:px-8 lg:px-12">
   <button id="nav-prev-btn" onclick="navigatePage(-1)" class="nav-btn group relative pointer-events-auto flex items-center justify-center w-14 h-14 rounded-full text-white focus:outline-none shadow-[0_4px_16px_rgba(0,0,0,0.4)]" aria-label="Previous Page">
-    <span id="nav-prev-top-label" class="absolute -top-6 text-[10px] font-bold text-white/90 uppercase tracking-widest whitespace-nowrap drop-shadow-lg pointer-events-none transition-opacity duration-300"></span>
+    <span id="nav-prev-top-label" class="absolute bottom-[calc(100%+10px)] left-1/2 -translate-x-1/2 w-max max-w-[88px] text-center px-2.5 py-1 rounded-[10px] bg-[#121620]/85 backdrop-blur-md border border-white/20 text-[9.5px] leading-[1.15] font-semibold text-white/95 tracking-tight shadow-[0_4px_12px_rgba(0,0,0,0.45)] pointer-events-none transition-all duration-300 group-hover:opacity-0 flex items-center justify-center"></span>
     <div class="nav-tooltip right liquid-glass-elevated px-3 py-1.5 rounded-lg text-[12px] font-medium text-white shadow-lg border border-white/20">
       <span class="opacity-70 text-[10px] uppercase tracking-wider block mb-0.5">Previous</span>
       <span id="nav-prev-label" class="font-bold"></span>
@@ -166,7 +166,7 @@ Baguio, PH
   </button>
   
   <button id="nav-next-btn" onclick="navigatePage(1)" class="nav-btn group relative pointer-events-auto flex items-center justify-center w-14 h-14 rounded-full text-white focus:outline-none shadow-[0_4px_16px_rgba(0,0,0,0.4)]" aria-label="Next Page">
-    <span id="nav-next-top-label" class="absolute -top-6 text-[10px] font-bold text-white/90 uppercase tracking-widest whitespace-nowrap drop-shadow-lg pointer-events-none transition-opacity duration-300"></span>
+    <span id="nav-next-top-label" class="absolute bottom-[calc(100%+10px)] left-1/2 -translate-x-1/2 w-max max-w-[88px] text-center px-2.5 py-1 rounded-[10px] bg-[#121620]/85 backdrop-blur-md border border-white/20 text-[9.5px] leading-[1.15] font-semibold text-white/95 tracking-tight shadow-[0_4px_12px_rgba(0,0,0,0.45)] pointer-events-none transition-all duration-300 group-hover:opacity-0 flex items-center justify-center"></span>
     <div class="nav-tooltip left liquid-glass-elevated px-3 py-1.5 rounded-lg text-[12px] font-medium text-white shadow-lg border border-white/20 text-right">
       <span class="opacity-70 text-[10px] uppercase tracking-wider block mb-0.5">Next</span>
       <span id="nav-next-label" class="font-bold"></span>
@@ -177,11 +177,11 @@ Baguio, PH
 
 <!-- DOCK NAVIGATION -->
 <nav aria-label="macOS Dock Navigation" class="fixed bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 z-[60] max-w-[98vw]">
-<div class="mac-dock rounded-[22px] sm:rounded-[24px] px-[8px] sm:px-[10px] pt-[6px] sm:pt-[8px] pb-[10px] sm:pb-[12px] flex items-center gap-[8px] sm:gap-[10px]">
+<div class="mac-dock rounded-[22px] sm:rounded-[24px] px-[14px] sm:px-[22px] pt-[6px] sm:pt-[8px] pb-[10px] sm:pb-[12px] flex items-center gap-[10px] sm:gap-[18px]">
 
 <!-- PAGE 1: HOMEPAGE ICON -->
-<button type="button" onclick="switchPage('home')" data-section="home" class="dock-item group relative flex flex-col items-center justify-center cursor-pointer focus:outline-none w-[52px] h-[52px] sm:w-[58px] sm:h-[58px]">
-<span class="absolute -top-6 sm:-top-7 text-[9px] sm:text-[10px] font-bold text-white/90 tracking-wide whitespace-nowrap drop-shadow-lg pointer-events-none">Homepage</span>
+<button type="button" onclick="switchPage('home')" data-section="home" class="dock-item group relative flex flex-col items-center justify-center cursor-pointer focus:outline-none w-[66px] h-[52px] sm:w-[82px] sm:h-[58px]">
+<span class="absolute bottom-[calc(100%+12px)] sm:bottom-[calc(100%+14px)] left-1/2 -translate-x-1/2 px-2 sm:px-2.5 py-0.5 rounded-full bg-[#121620]/75 backdrop-blur-md border border-white/20 text-[8.5px] sm:text-[10.5px] font-semibold text-white/95 tracking-tight whitespace-nowrap shadow-[0_4px_12px_rgba(0,0,0,0.45)] pointer-events-none transition-opacity duration-200 group-hover:opacity-0">Homepage</span>
 <div class="dock-tooltip liquid-glass-elevated px-3 py-1.5 rounded-lg text-[12px] font-medium text-white shadow-lg">Page 1: Homepage</div>
 <div class="mac-app-icon absolute w-[46px] h-[46px] sm:w-[52px] sm:h-[52px] flex items-center justify-center bg-white rounded-[11px] sm:rounded-[13px]">
 <img src="homepagelogo.jpg" alt="Homepage" class="w-full h-full object-cover transform scale-[1.24]">
@@ -190,16 +190,16 @@ Baguio, PH
 </button>
 
 <!-- PAGE 2: PERSONAL INFORMATION ICON -->
-<button type="button" onclick="switchPage('about')" data-section="about" class="dock-item group relative flex flex-col items-center justify-center cursor-pointer focus:outline-none w-[52px] h-[52px] sm:w-[58px] sm:h-[58px]">
-<span class="absolute -top-6 sm:-top-7 text-[9px] sm:text-[10px] font-bold text-white/90 tracking-wide whitespace-nowrap drop-shadow-lg pointer-events-none">Personal Information</span>
+<button type="button" onclick="switchPage('about')" data-section="about" class="dock-item group relative flex flex-col items-center justify-center cursor-pointer focus:outline-none w-[66px] h-[52px] sm:w-[82px] sm:h-[58px]">
+<span class="absolute bottom-[calc(100%+12px)] sm:bottom-[calc(100%+14px)] left-1/2 -translate-x-1/2 px-2 sm:px-2.5 py-0.5 rounded-full bg-[#121620]/75 backdrop-blur-md border border-white/20 text-[8.5px] sm:text-[10.5px] font-semibold text-white/95 tracking-tight whitespace-nowrap shadow-[0_4px_12px_rgba(0,0,0,0.45)] pointer-events-none transition-opacity duration-200 group-hover:opacity-0">Personal Information</span>
 <div class="dock-tooltip liquid-glass-elevated px-3 py-1.5 rounded-lg text-[12px] font-medium text-white shadow-lg">Page 2: Personal Information</div>
 <img src="personal information icon.webp" alt="Personal Information" class="absolute w-[50px] h-[50px] sm:w-[56px] sm:h-[56px] object-contain drop-shadow-[0_10px_22px_rgba(0,0,0,0.45)]">
 <span class="dock-dot absolute -bottom-[7px] sm:-bottom-[8px] w-1 h-1 rounded-full bg-white transition-all duration-300 opacity-0"></span>
 </button>
 
 <!-- PAGE 3: ACHIEVEMENTS ICON -->
-<button type="button" onclick="switchPage('achievements')" data-section="achievements" class="dock-item group relative flex flex-col items-center justify-center cursor-pointer focus:outline-none w-[52px] h-[52px] sm:w-[58px] sm:h-[58px]">
-<span class="absolute -top-6 sm:-top-7 text-[9px] sm:text-[10px] font-bold text-white/90 tracking-wide whitespace-nowrap drop-shadow-lg pointer-events-none">Achievements</span>
+<button type="button" onclick="switchPage('achievements')" data-section="achievements" class="dock-item group relative flex flex-col items-center justify-center cursor-pointer focus:outline-none w-[66px] h-[52px] sm:w-[82px] sm:h-[58px]">
+<span class="absolute bottom-[calc(100%+12px)] sm:bottom-[calc(100%+14px)] left-1/2 -translate-x-1/2 px-2 sm:px-2.5 py-0.5 rounded-full bg-[#121620]/75 backdrop-blur-md border border-white/20 text-[8.5px] sm:text-[10.5px] font-semibold text-white/95 tracking-tight whitespace-nowrap shadow-[0_4px_12px_rgba(0,0,0,0.45)] pointer-events-none transition-opacity duration-200 group-hover:opacity-0">Achievements</span>
 <div class="dock-tooltip liquid-glass-elevated px-3 py-1.5 rounded-lg text-[12px] font-medium text-white shadow-lg">Page 3: Achievements</div>
 <div class="mac-app-icon absolute w-[46px] h-[46px] sm:w-[52px] sm:h-[52px] flex items-center justify-center bg-gradient-to-br from-[#FFD54F] to-[#FF8F00] rounded-[11px] sm:rounded-[13px]">
 <i data-lucide="trophy" class="w-6 h-6 sm:w-7 sm:h-7 text-white drop-shadow-md"></i>
@@ -208,8 +208,8 @@ Baguio, PH
 </button>
 
 <!-- PAGE 4: FRIENDS AND FAMILIES ICON -->
-<button type="button" onclick="switchPage('family')" data-section="family" class="dock-item group relative flex flex-col items-center justify-center cursor-pointer focus:outline-none w-[52px] h-[52px] sm:w-[58px] sm:h-[58px]">
-<span class="absolute -top-6 sm:-top-7 text-[9px] sm:text-[10px] font-bold text-white/90 tracking-wide whitespace-nowrap drop-shadow-lg pointer-events-none">Friends and Families</span>
+<button type="button" onclick="switchPage('family')" data-section="family" class="dock-item group relative flex flex-col items-center justify-center cursor-pointer focus:outline-none w-[66px] h-[52px] sm:w-[82px] sm:h-[58px]">
+<span class="absolute bottom-[calc(100%+12px)] sm:bottom-[calc(100%+14px)] left-1/2 -translate-x-1/2 px-2 sm:px-2.5 py-0.5 rounded-full bg-[#121620]/75 backdrop-blur-md border border-white/20 text-[8.5px] sm:text-[10.5px] font-semibold text-white/95 tracking-tight whitespace-nowrap shadow-[0_4px_12px_rgba(0,0,0,0.45)] pointer-events-none transition-opacity duration-200 group-hover:opacity-0">Friends and Families</span>
 <div class="dock-tooltip liquid-glass-elevated px-3 py-1.5 rounded-lg text-[12px] font-medium text-white shadow-lg">Page 4: Friends and Families</div>
 <div class="mac-app-icon absolute w-[46px] h-[46px] sm:w-[52px] sm:h-[52px] flex items-center justify-center rounded-[11px] sm:rounded-[13px]">
 <svg class="w-full h-full" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1093,7 +1093,7 @@ function updateFloatingNav() {
     prevLabel.textContent = prevPageName;
     if(prevTopLabel) {
       prevTopLabel.textContent = prevPageName;
-      prevTopLabel.style.opacity = '1';
+      prevTopLabel.style.opacity = '';
     }
   }
 
@@ -1106,7 +1106,7 @@ function updateFloatingNav() {
     nextLabel.textContent = nextPageName;
     if(nextTopLabel) {
       nextTopLabel.textContent = nextPageName;
-      nextTopLabel.style.opacity = '1';
+      nextTopLabel.style.opacity = '';
     }
   }
 }
