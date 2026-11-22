@@ -71,11 +71,11 @@ h1,h2,h3,h4,p{text-shadow:0 2px 12px rgba(0,0,0,0.45);}
 
 /* Floating Nav Buttons */
 .nav-btn {
-  background: rgba(255, 255, 255, 0.1); /* Increased background visibility */
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.2); /* Stronger border */
-  opacity: 0.75; /* Significantly more visible than before */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  opacity: 0.75;
   transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .nav-btn:hover:not(:disabled) {
@@ -338,18 +338,15 @@ Reopen <span class="font-mono text-white">portrait.png</span>
 
 <!-- PAGE 2: PERSONAL INFORMATION -->
 <section id="about" class="page-section hidden min-h-[calc(100dvh-7rem)] py-6 sm:py-8 flex flex-col justify-center">
-<div class="max-w-[86rem] mx-auto w-full px-4 sm:px-6 flex flex-col gap-6">
+<div class="max-w-[82rem] mx-auto w-full px-4 sm:px-6 flex flex-col gap-5">
   
-  <!-- Header Title & Subtitle -->
+  <!-- Header Title -->
   <div class="reveal text-center md:text-left">
-    <h2 class="text-3xl sm:text-4xl font-bold text-white mb-2 scroll-type min-h-[2.5rem] tracking-tight" data-text="Personal information">Personal information</h2>
-    <p class="text-white text-[14px] sm:text-[15px] lg:text-[16px] max-w-2xl leading-snug font-normal mx-auto md:mx-0 opacity-80 italic">
-      Strategy in every move, logic in every process, and purpose in every system.
-    </p>
+    <h2 class="text-3xl sm:text-4xl font-bold text-white scroll-type min-h-[2.5rem] tracking-tight" data-text="Personal information">Personal information</h2>
   </div>
 
   <!-- Two-Window macOS Layout -->
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch w-full">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch w-full">
     
     <!-- LEFT WINDOW: Profile (span 7) -->
     <div class="reveal liquid-glass-elevated rounded-mac-lg overflow-hidden border border-white/20 flex flex-col lg:col-span-7">
@@ -366,64 +363,70 @@ Reopen <span class="font-mono text-white">portrait.png</span>
         <div class="w-10"></div>
       </div>
 
-      <div class="p-6 sm:p-10 flex flex-col justify-start flex-grow gap-8">
-        <div>
-          <p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1">Full name</p>
-          <h3 class="text-2xl sm:text-[2.2rem] font-black text-white tracking-tight leading-tight">Benjamin Pagosto Bucad</h3>
+      <div class="p-6 sm:p-8 flex flex-col justify-between flex-grow gap-6">
+        <!-- Full Name Header -->
+        <div class="pb-5 border-b border-white/10">
+          <p class="text-xs font-bold uppercase tracking-widest text-mac-silver/80 mb-1.5">Full name</p>
+          <h3 class="text-3xl sm:text-[2.45rem] font-black text-white tracking-tight leading-none">Benjamin Pagosto Bucad</h3>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-6 pt-6 border-t border-white/10">
+        <!-- Clean 2x4 Aligned Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
           <div>
-            <p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1 flex items-center gap-1.5"><i data-lucide="calendar" class="w-3.5 h-3.5"></i> Birthday</p>
-            <h4 class="text-[15px] font-bold text-white">Oct 8, 2008</h4>
+            <p class="text-xs font-bold uppercase tracking-wider text-mac-silver/80 mb-1.5 flex items-center gap-2"><i data-lucide="calendar" class="w-4 h-4 text-mac-silver"></i> Birthday</p>
+            <h4 class="text-[17px] sm:text-[18.5px] font-bold text-white leading-snug">Oct 8, 2008</h4>
           </div>
           <div>
-            <p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1 flex items-center gap-1.5"><i data-lucide="user-check" class="w-3.5 h-3.5"></i> Status</p>
-            <h4 class="text-[15px] font-bold text-white">Single</h4>
+            <p class="text-xs font-bold uppercase tracking-wider text-mac-silver/80 mb-1.5 flex items-center gap-2"><i data-lucide="user-check" class="w-4 h-4 text-mac-silver"></i> Status</p>
+            <h4 class="text-[17px] sm:text-[18.5px] font-bold text-white leading-snug">Single</h4>
           </div>
-          <div class="sm:col-span-2">
-            <p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1 flex items-center gap-1.5"><i data-lucide="building" class="w-3.5 h-3.5"></i> Born in</p>
-            <h4 class="text-[15px] font-bold text-white">Benguet General Hospital</h4>
-            <span class="text-[13px] text-mac-silver font-medium block">in La Trinidad, Benguet</span>
+          <div>
+            <p class="text-xs font-bold uppercase tracking-wider text-mac-silver/80 mb-1.5 flex items-center gap-2"><i data-lucide="building" class="w-4 h-4 text-mac-silver"></i> Born in</p>
+            <h4 class="text-[17px] sm:text-[18.5px] font-bold text-white leading-snug">Benguet General Hospital</h4>
+            <span class="text-sm text-mac-silver/80 font-medium block mt-0.5">La Trinidad, Benguet</span>
           </div>
-          <div class="col-start-1">
-            <p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1 flex items-center gap-1.5"><i data-lucide="home" class="w-3.5 h-3.5"></i> Residence</p>
-            <h4 class="text-[15px] font-bold text-white">Kias, Baguio City</h4>
+          <div>
+            <p class="text-xs font-bold uppercase tracking-wider text-mac-silver/80 mb-1.5 flex items-center gap-2"><i data-lucide="map" class="w-4 h-4 text-mac-silver"></i> Hometown</p>
+            <h4 class="text-[17px] sm:text-[18.5px] font-bold text-white leading-snug">Besao, Mountain Province</h4>
           </div>
-          <div class="col-start-2 -mt-[56px]">
-            <p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1 flex items-center gap-1.5"><i data-lucide="map" class="w-3.5 h-3.5"></i> Hometown</p>
-            <h4 class="text-[15px] font-bold text-white">Besao, Mountain Province</h4>
+          <div>
+            <p class="text-xs font-bold uppercase tracking-wider text-mac-silver/80 mb-1.5 flex items-center gap-2"><i data-lucide="home" class="w-4 h-4 text-mac-silver"></i> Residence</p>
+            <h4 class="text-[17px] sm:text-[18.5px] font-bold text-white leading-snug">Kias, Baguio City</h4>
           </div>
-          <div class="col-start-1">
-            <p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1 flex items-center gap-1.5"><i data-lucide="globe" class="w-3.5 h-3.5"></i> Nationality</p>
-            <h4 class="text-[15px] font-bold text-white">Filipino</h4>
+          <div>
+            <p class="text-xs font-bold uppercase tracking-wider text-mac-silver/80 mb-1.5 flex items-center gap-2"><i data-lucide="globe" class="w-4 h-4 text-mac-silver"></i> Nationality</p>
+            <h4 class="text-[17px] sm:text-[18.5px] font-bold text-white leading-snug">Filipino</h4>
           </div>
-          <div class="col-start-2">
-            <p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1 flex items-center gap-1.5"><i data-lucide="languages" class="w-3.5 h-3.5"></i> Languages</p>
-            <h4 class="text-[15px] font-bold text-white">English, Ilocano, Tagalog</h4>
+          <div>
+            <p class="text-xs font-bold uppercase tracking-wider text-mac-silver/80 mb-1.5 flex items-center gap-2"><i data-lucide="languages" class="w-4 h-4 text-mac-silver"></i> Languages</p>
+            <h4 class="text-[17px] sm:text-[18.5px] font-bold text-white leading-snug">English, Ilocano, Tagalog</h4>
           </div>
+          <div>
+            <p class="text-xs font-bold uppercase tracking-wider text-mac-silver/80 mb-1.5 flex items-center gap-2"><i data-lucide="users" class="w-4 h-4 text-mac-silver"></i> Siblings</p>
+            <h4 class="text-[17px] sm:text-[18.5px] font-bold text-white leading-snug">3</h4>
+          </div>
+        </div>
 
-          <!-- Grouped Physical Stats (Spans full width, 3 columns internal) -->
-          <div class="sm:col-span-2 grid grid-cols-3 gap-4 pt-3 border-t border-white/5 mt-1">
-            <div>
-              <p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1 flex items-center gap-1.5"><i data-lucide="ruler" class="w-3.5 h-3.5"></i> Height</p>
-              <h4 class="text-[15px] font-bold text-white">1.73 m</h4>
-            </div>
-            <div>
-              <p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1 flex items-center gap-1.5"><i data-lucide="weight" class="w-3.5 h-3.5"></i> Weight</p>
-              <h4 class="text-[15px] font-bold text-white">74 kg</h4>
-            </div>
-            <div>
-              <p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-1 flex items-center gap-1.5"><i data-lucide="activity" class="w-3.5 h-3.5"></i> BMI</p>
-              <h4 class="text-[15px] font-bold text-white">24.7 <span class="text-[11.5px] font-normal text-mac-silver/80 block xl:inline">(Normal)</span></h4>
-            </div>
+        <!-- Physical Stats Bar -->
+        <div class="grid grid-cols-3 gap-4 px-5 py-4 rounded-xl bg-white/[0.04] border border-white/10">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-wider text-mac-silver/80 mb-1 flex items-center gap-1.5"><i data-lucide="ruler" class="w-4 h-4 text-mac-silver"></i> Height</p>
+            <h4 class="text-lg sm:text-[19px] font-bold text-white">1.73 m</h4>
+          </div>
+          <div>
+            <p class="text-xs font-bold uppercase tracking-wider text-mac-silver/80 mb-1 flex items-center gap-1.5"><i data-lucide="weight" class="w-4 h-4 text-mac-silver"></i> Weight</p>
+            <h4 class="text-lg sm:text-[19px] font-bold text-white">74 kg</h4>
+          </div>
+          <div>
+            <p class="text-xs font-bold uppercase tracking-wider text-mac-silver/80 mb-1 flex items-center gap-1.5"><i data-lucide="activity" class="w-4 h-4 text-mac-silver"></i> BMI</p>
+            <h4 class="text-lg sm:text-[19px] font-bold text-white">24.7 <span class="text-xs sm:text-[13px] font-normal text-mac-silver/80 block xl:inline">(Normal)</span></h4>
           </div>
         </div>
       </div>
     </div>
 
     <!-- RIGHT COLUMN: Connect & Skills Windows (span 5) -->
-    <div class="flex flex-col gap-6 lg:col-span-5">
+    <div class="flex flex-col gap-5 lg:col-span-5">
       
       <!-- Connect Window -->
       <div class="reveal liquid-glass-elevated rounded-mac-lg overflow-hidden border border-white/20 flex flex-col">
@@ -440,11 +443,11 @@ Reopen <span class="font-mono text-white">portrait.png</span>
           <div class="w-10"></div>
         </div>
 
-        <div class="p-6 flex flex-col gap-5">
+        <div class="p-5 flex flex-col gap-3.5">
           <!-- Gmail -->
           <div class="flex items-center justify-between group/c">
             <div class="flex items-center gap-3.5 min-w-0">
-              <img src="gmail.svg" alt="Gmail" class="w-10 h-10 object-contain flex-shrink-0">
+              <img src="gmail.svg" alt="Gmail" class="w-9 h-9 object-contain flex-shrink-0">
               <div class="min-w-0">
                 <p class="text-[10.5px] font-bold uppercase tracking-wider text-mac-muted mb-0.5">Email address</p>
                 <a href="mailto:benjaminbucad90@gmail.com" class="text-[14.5px] font-bold text-white hover:text-mac-blue transition-colors truncate block">benjaminbucad90@gmail.com</a>
@@ -454,9 +457,9 @@ Reopen <span class="font-mono text-white">portrait.png</span>
           </div>
 
           <!-- Phone -->
-          <div class="flex items-center justify-between group/c border-t border-white/10 pt-4">
+          <div class="flex items-center justify-between group/c border-t border-white/10 pt-3.5">
             <div class="flex items-center gap-3.5 min-w-0">
-              <img src="phone.webp" alt="Phone" class="w-10 h-10 object-contain flex-shrink-0">
+              <img src="phone.webp" alt="Phone" class="w-9 h-9 object-contain flex-shrink-0">
               <div class="min-w-0">
                 <p class="text-[10.5px] font-bold uppercase tracking-wider text-mac-muted mb-0.5">Phone number</p>
                 <a href="tel:09993066711" class="text-[14.5px] font-bold text-white hover:text-mac-green transition-colors block">09993066711 <span class="text-xs font-medium text-mac-silver">(Smart)</span></a>
@@ -466,12 +469,28 @@ Reopen <span class="font-mono text-white">portrait.png</span>
           </div>
 
           <!-- GitHub -->
-          <div class="flex items-center justify-between group/c border-t border-white/10 pt-4">
+          <div class="flex items-center justify-between group/c border-t border-white/10 pt-3.5">
             <div class="flex items-center gap-3.5 min-w-0">
-              <img src="github.svg" alt="GitHub" class="w-10 h-10 object-contain flex-shrink-0">
+              <img src="github.svg" alt="GitHub" class="w-9 h-9 object-contain flex-shrink-0">
               <div class="min-w-0">
                 <p class="text-[10.5px] font-bold uppercase tracking-wider text-mac-muted mb-0.5">Technical portfolio</p>
                 <a href="https://github.com/benjaminbucad90-ux" target="_blank" rel="noopener noreferrer" class="text-[14.5px] font-bold text-white hover:text-mac-blue transition-colors truncate block">github.com/benjaminbucad90-ux</a>
+              </div>
+            </div>
+            <i data-lucide="external-link" class="w-4 h-4 text-white/50 group-hover/c:text-white transition-colors flex-shrink-0"></i>
+          </div>
+
+          <!-- Facebook -->
+          <div class="flex items-center justify-between group/c border-t border-white/10 pt-3.5">
+            <div class="flex items-center gap-3.5 min-w-0">
+              <div class="w-9 h-9 rounded-xl bg-[#1877F2] flex items-center justify-center flex-shrink-0 shadow-md">
+                <svg class="w-5 h-5 text-white fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
+                </svg>
+              </div>
+              <div class="min-w-0">
+                <p class="text-[10.5px] font-bold uppercase tracking-wider text-mac-muted mb-0.5">Social profile</p>
+                <a href="https://facebook.com/benjamin.bucad.90" target="_blank" rel="noopener noreferrer" class="text-[14.5px] font-bold text-white hover:text-mac-blue transition-colors truncate block">facebook.com/benjamin.bucad.90</a>
               </div>
             </div>
             <i data-lucide="external-link" class="w-4 h-4 text-white/50 group-hover/c:text-white transition-colors flex-shrink-0"></i>
@@ -480,7 +499,7 @@ Reopen <span class="font-mono text-white">portrait.png</span>
       </div>
 
       <!-- Skills & Interests Window -->
-      <div class="reveal liquid-glass-elevated rounded-mac-lg overflow-hidden border border-white/20 flex flex-col">
+      <div class="reveal liquid-glass-elevated rounded-mac-lg overflow-hidden border border-white/20 flex flex-col flex-grow">
         <div class="mac-titlebar px-4 py-2.5 flex items-center justify-between select-none relative z-20">
           <div class="flex items-center gap-2 traffic-group">
             <span class="w-3 h-3 rounded-full bg-[#FF5F56] border border-[#E0443E]"></span>
@@ -494,7 +513,7 @@ Reopen <span class="font-mono text-white">portrait.png</span>
           <div class="w-10"></div>
         </div>
 
-        <div class="p-6 flex flex-col gap-4">
+        <div class="p-5 flex flex-col justify-center flex-grow gap-4">
           <div>
             <p class="text-[11px] font-bold uppercase tracking-widest text-mac-silver mb-2.5">Skills</p>
             <div class="flex flex-wrap gap-2">
@@ -510,8 +529,6 @@ Reopen <span class="font-mono text-white">portrait.png</span>
               <span class="glass-tag px-3.5 py-1.5 rounded-lg text-white text-[13px] font-medium flex items-center gap-1.5">
                 <i data-lucide="layout-dashboard" class="w-4 h-4 text-white/90"></i> MS Office
               </span>
-            </div>
-            <div class="mt-2">
               <span class="glass-tag px-3.5 py-1.5 rounded-lg text-white text-[13px] font-medium inline-flex items-center gap-1.5">
                 <i data-lucide="wrench" class="w-4 h-4 text-white/90"></i> PC troubleshooting
               </span>
